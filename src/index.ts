@@ -1,3 +1,5 @@
+export { compilePattern } from './pattern'
+
 export {
-    compilePattern,
-} from './pattern'
+    calculatePartSpecTotalCompiledDuration,
+} from './support'

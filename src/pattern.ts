@@ -1,4 +1,4 @@
-import { Entity, Pattern, PatternMaterial, Scale, ThreadSpec } from '@musical-patterns/shared'
+import { Entity, Pattern, PatternMaterial, Scale, ThreadSpec } from '@musical-patterns/utilities'
 import { compileThreadSpecs } from './threads'
 
 const compilePattern: (compilePatternParameters: Pattern) => Promise<ThreadSpec[]> =

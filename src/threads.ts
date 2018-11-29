@@ -1,4 +1,4 @@
-import { Entity, ThreadSpec } from '@musical-patterns/shared'
+import { Entity, ThreadSpec } from '@musical-patterns/utilities'
 import { compileThreadSpec } from './thread'
 import { CompileThreadsParameters } from './types'
 

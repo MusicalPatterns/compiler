@@ -11,7 +11,7 @@ import {
     Scalar,
     Time,
     to,
-} from '@musical-patterns/shared'
+} from '@musical-patterns/utilities'
 import { compileNoteProperty } from './noteProperty'
 import { CompileNotesOptions } from './types'
 

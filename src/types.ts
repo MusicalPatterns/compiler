@@ -1,4 +1,4 @@
-import { Coordinate, CoordinateElement, Entity, Frequency, Scalar, Scale, Time } from '@musical-patterns/shared'
+import { Coordinate, CoordinateElement, Entity, Frequency, Scalar, Scale, Time } from '@musical-patterns/utilities'
 
 interface CompileThreadParameters {
     entity: Entity,

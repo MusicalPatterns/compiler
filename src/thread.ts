@@ -1,4 +1,4 @@
-import { OscillatorName, Part, SpatializationType, ThreadSpec, VoiceType } from '@musical-patterns/shared'
+import { OscillatorName, Part, SpatializationType, ThreadSpec, VoiceType } from '@musical-patterns/utilities'
 import { compilePart } from './part'
 import { CompileThreadParameters } from './types'
 

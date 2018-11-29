@@ -1,4 +1,4 @@
-import { from, NotePropertySpec, NoteSpec, PartSpec, Scale, Time, to } from '@musical-patterns/shared'
+import { from, NotePropertySpec, NoteSpec, PartSpec, Scale, Time, to } from '@musical-patterns/utilities'
 import { compileNoteProperty } from '../noteProperty'
 
 const calculatePartSpecTotalCompiledDuration: (partSpec: PartSpec, scales: Scale[]) => Time =

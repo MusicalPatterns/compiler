@@ -11,4 +11,4 @@ lint:
 	musical-patterns lint
 
 build:
-	musical-patterns build --command "tsc -m commonjs"
+	musical-patterns build "tsc -m commonjs"

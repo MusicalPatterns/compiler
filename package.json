@@ -1,10 +1,11 @@
 {
   "name": "@musical-patterns/compiler",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "dist/index.js",
   "devDependencies": {
     "@musical-patterns/cli": "^1.0.0",
-    "@musical-patterns/utilities": "^1.0.69",
+    "@musical-patterns/performer": "^1.0.40",
+    "@musical-patterns/utilities": "^1.0.70",
     "ts-node": "^7.0.1",
     "tsc": "^1.20150623.0",
     "typescript": "^3.1.6"

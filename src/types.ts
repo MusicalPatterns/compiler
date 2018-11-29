@@ -1,4 +1,5 @@
-import { Coordinate, CoordinateElement, Entity, Frequency, Scalar, Scale, Time } from '@musical-patterns/utilities'
+import { VoiceSpec } from '@musical-patterns/performer'
+import { Coordinate, CoordinateElement, Frequency, Index, Offset, Scalar, Time } from '@musical-patterns/utilities'
 
 interface CompileThreadParameters {
     entity: Entity,
@@ -20,9 +21,64 @@ interface CompileNotesOptions {
     scales: Scale[],
 }
 
+interface PatternMaterial {
+    buildEntitiesFunction: BuildEntitiesFunction,
+    buildScalesFunction: BuildScalesFunction,
+}
+
+interface CompilePatternParameters {
+    material: PatternMaterial,
+    // tslint:disable-next-line:no-any
+    spec: any,
+}
+
+// tslint:disable-next-line:no-any
+type BuildEntitiesFunction = (patternSpec?: any) => Entity[]
+// tslint:disable-next-line:no-any
+type BuildScalesFunction = (patternSpec?: any) => Scale[]
+
+interface Entity {
+    partSpec?: PartSpec,
+    voiceSpec?: VoiceSpec,
+}
+
+interface Scale extends Adjustable {
+    scalars: Scalar[],
+}
+
+interface NoteSpec {
+    durationSpec?: NotePropertySpec,
+    gainSpec?: NotePropertySpec,
+    pitchSpec?: NotePropertySpec,
+    positionSpec?: NotePropertySpec | NotePropertySpec[],
+    sustainSpec?: NotePropertySpec,
+}
+
+type PartSpec = NoteSpec[]
+
+interface Adjustable {
+    offset?: Offset,
+    scalar?: Scalar,
+}
+
+interface NotePropertySpec extends Adjustable {
+    index?: Index,
+    scaleIndex?: Index,
+}
+
 export {
     CompileThreadParameters,
     CompileThreadsParameters,
     NoteProperty,
     CompileNotesOptions,
+    BuildEntitiesFunction,
+    BuildScalesFunction,
+    Entity,
+    Scale,
+    NoteSpec,
+    PartSpec,
+    Adjustable,
+    NotePropertySpec,
+    CompilePatternParameters,
+    PatternMaterial,
 }

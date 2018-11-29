@@ -1,22 +1,18 @@
-import { OscillatorName, Part, SpatializationType, ThreadSpec, VoiceType } from '@musical-patterns/utilities'
-import { compilePart } from './part'
+import { Note, ThreadSpec } from '@musical-patterns/performer'
+import { compileNotes } from './notes'
 import { CompileThreadParameters } from './types'
 
 const compileThreadSpec: (compileEntityParameters: CompileThreadParameters) => ThreadSpec =
     ({ entity, scales }: CompileThreadParameters): ThreadSpec => {
         const {
             partSpec = [],
-            voiceSpec = {
-                spatialization: SpatializationType.MONO,
-                timbre: OscillatorName.SQUARE,
-                voiceType: VoiceType.OSCILLATOR,
-            },
+            voiceSpec,
         } = entity
 
-        const part: Part = compilePart(partSpec, { scales })
+        const notes: Note[] = compileNotes(partSpec, { scales })
 
         return {
-            part,
+            notes,
             voiceSpec,
         }
     }

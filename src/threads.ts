@@ -1,6 +1,6 @@
-import { Entity, ThreadSpec } from '@musical-patterns/utilities'
+import { ThreadSpec } from '@musical-patterns/performer'
 import { compileThreadSpec } from './thread'
-import { CompileThreadsParameters } from './types'
+import { CompileThreadsParameters, Entity } from './types'
 
 const compileThreadSpecs: (compileThreadsParameters: CompileThreadsParameters) => ThreadSpec[] =
     ({ entities, scales }: CompileThreadsParameters): ThreadSpec[] =>

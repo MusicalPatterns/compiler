@@ -6,4 +6,11 @@ export {
 export {
     PatternMaterial,
     CompilePatternParameters,
+    PartSpec,
+    Scale,
+    Entity,
+    NoteSpec,
+    NotePropertySpec,
+    BuildEntitiesFunction,
+    BuildScalesFunction,
 } from './types'

@@ -1,5 +1,14 @@
 import { VoiceSpec } from '@musical-patterns/performer'
-import { Coordinate, CoordinateElement, Frequency, Index, Offset, Scalar, Time } from '@musical-patterns/utilities'
+import {
+    AnyOtherProperties,
+    Coordinate,
+    CoordinateElement,
+    Frequency,
+    Index,
+    Offset,
+    Scalar,
+    Time,
+} from '@musical-patterns/utilities'
 
 interface CompileThreadParameters {
     entity: Entity,
@@ -26,7 +35,7 @@ interface PatternMaterial {
     buildScalesFunction: BuildScalesFunction,
 }
 
-interface CompilePatternParameters {
+interface CompilePatternParameters extends AnyOtherProperties {
     material: PatternMaterial,
     // tslint:disable-next-line:no-any
     spec: any,

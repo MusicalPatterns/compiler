@@ -7,7 +7,7 @@ const compilePattern: (compilePatternParameters: CompilePatternParameters) => Pr
         const { buildEntitiesFunction, buildScalesFunction }: PatternMaterial = material
 
         const entities: Entity[] = buildEntitiesFunction(spec)
-        const scales: Scale[] = buildScalesFunction(spec)
+        const scales: Scale[] = buildScalesFunction ? buildScalesFunction(spec) : []
 
         return compileThreadSpecs({ entities, scales })
     }

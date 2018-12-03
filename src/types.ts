@@ -12,12 +12,12 @@ import {
 
 interface CompileThreadParameters {
     entity: Entity,
-    scales: Scale[]
+    scales?: Scale[]
 }
 
 interface CompileThreadsParameters {
     entities: Entity[],
-    scales: Scale[]
+    scales?: Scale[]
 }
 
 type NoteProperty = Time |
@@ -27,18 +27,18 @@ type NoteProperty = Time |
     CoordinateElement
 
 interface CompileNotesOptions {
-    scales: Scale[],
+    scales?: Scale[],
 }
 
 interface PatternMaterial {
     buildEntitiesFunction: BuildEntitiesFunction,
-    buildScalesFunction: BuildScalesFunction,
+    buildScalesFunction?: BuildScalesFunction,
 }
 
 interface CompilePatternParameters extends AnyOtherProperties {
     material: PatternMaterial,
     // tslint:disable-next-line:no-any
-    spec: any,
+    spec?: any,
 }
 
 // tslint:disable-next-line:no-any

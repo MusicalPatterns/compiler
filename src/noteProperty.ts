@@ -1,8 +1,8 @@
 import { apply, Maybe, to } from '@musical-patterns/utilities'
 import { CompileNotesOptions, NoteProperty, NotePropertySpec, Scale } from './types'
 
-const compileNoteProperty: (notePropertySpec: NotePropertySpec, options: CompileNotesOptions) => NoteProperty =
-    (notePropertySpec: NotePropertySpec, { scales }: CompileNotesOptions): NoteProperty => {
+const compileNoteProperty: (notePropertySpec: NotePropertySpec, options?: CompileNotesOptions) => NoteProperty =
+    (notePropertySpec: NotePropertySpec, options?: CompileNotesOptions): NoteProperty => {
         const {
             index = to.Index(0),
             offset: noteOffset = to.Offset(0),
@@ -10,11 +10,12 @@ const compileNoteProperty: (notePropertySpec: NotePropertySpec, options: Compile
             scaleIndex = to.Index(0),
         }: NotePropertySpec = notePropertySpec
 
-        const scale: Scale = apply.Index(scales, scaleIndex)
+        const { scales = [] } = options || {}
+        const scale: Scale = scales.length ? apply.Index(scales, scaleIndex) : { scalars: [] }
         const {
             offset: scaleOffset = to.Offset(0),
             scalar: scaleScalar = to.Scalar(1),
-            scalars = [],
+            scalars,
         }: Scale = scale
 
         const scaleElement: Maybe<NoteProperty> = apply.Index(scalars, index)

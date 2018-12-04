@@ -5,6 +5,7 @@ import { CompileNotesOptions, NotePropertySpec, NoteSpec, PartSpec } from './typ
 
 const defaultNotePropertySpec: NotePropertySpec = {
     index: to.Index(0),
+    offset: to.Offset(0),
     scalar: to.Scalar(1),
     scaleIndex: to.Index(0),
 }

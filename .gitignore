@@ -9,7 +9,7 @@ dist
 patterns/**/node_modules
 tsconfig-common.json
 tsconfig.json
+tsconfig-node.json
 tslint.json
-test/tsconfig.json
 test/tslint.json
 test/mockDom.ts

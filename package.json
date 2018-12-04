@@ -8,7 +8,7 @@
     "@musical-patterns/utilities": "^1.0.71"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.8",
+    "@musical-patterns/cli": "^1.0.10",
     "typescript": "^3.1.6"
   }
 }

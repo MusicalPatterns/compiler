@@ -1,4 +1,6 @@
-import { VoiceSpec } from '@musical-patterns/performer'
+// tslint:disable:max-file-line-count
+
+import { OscillatorName, SampleName, VoiceSpec } from '@musical-patterns/performer'
 import {
     AnyOtherProperties,
     Coordinate,
@@ -20,7 +22,8 @@ interface CompileThreadsParameters {
     scales?: Scale[]
 }
 
-type NoteProperty = Time |
+type NoteProperty =
+    Time |
     Scalar |
     Frequency |
     Coordinate |
@@ -75,6 +78,12 @@ interface NotePropertySpec extends Adjustable {
     scaleIndex?: Index,
 }
 
+// tslint:disable-next-line:variable-name typedef
+const VoiceName = {
+    ...OscillatorName,
+    ...SampleName,
+}
+
 export {
     CompileThreadParameters,
     CompileThreadsParameters,
@@ -90,4 +99,5 @@ export {
     NotePropertySpec,
     CompilePatternParameters,
     PatternMaterial,
+    VoiceName,
 }

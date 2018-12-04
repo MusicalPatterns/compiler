@@ -13,4 +13,5 @@ export {
     NotePropertySpec,
     BuildEntitiesFunction,
     BuildScalesFunction,
+    VoiceName,
 } from './types'

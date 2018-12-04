@@ -40,9 +40,8 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
 
 const compileNotes: (partSpec: PartSpec, options: CompileNotesOptions) => Note[] =
     (partSpec: PartSpec, options: CompileNotesOptions): Note[] =>
-        partSpec.map((noteSpec: NoteSpec): Note => {
-            return compileNote(noteSpec, options)
-        })
+        partSpec.map((noteSpec: NoteSpec): Note =>
+            compileNote(noteSpec, options))
 
 export {
     compileNote,

@@ -1,5 +1,5 @@
-import { compileNoteProperty, CompileNotesOptions, NoteProperty, NotePropertySpec, Scale } from '../../src/indexForTest'
 import { to } from '@musical-patterns/utilities'
+import { compileNoteProperty, CompileNotesOptions, NoteProperty, NotePropertySpec, Scale } from '../../src/indexForTest'
 
 describe('compile note property', () => {
     let scales: Scale[]

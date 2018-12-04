@@ -1,15 +1,14 @@
-import { compilePattern, PatternMaterial, BuildEntitiesFunction, Entity } from '../../src/indexForTest'
 import { ThreadSpec } from '@musical-patterns/performer'
+import { BuildEntitiesFunction, compilePattern, Entity, PatternMaterial } from '../../src/indexForTest'
 
 describe('compile pattern', () => {
     it('takes pattern material and produces specs for threads which the performer can perform', async (done: DoneFn) => {
-        const buildEntitiesFunction: BuildEntitiesFunction = (): Entity[] => {
-            return [
+        const buildEntitiesFunction: BuildEntitiesFunction = (): Entity[] =>
+            [
                 {
 
-                }
+                },
             ]
-        }
 
         const material: PatternMaterial = {
             buildEntitiesFunction,
@@ -22,7 +21,7 @@ describe('compile pattern', () => {
                 {
                     notes: [],
                     voiceSpec: undefined,
-                }
+                },
             ])
 
         done()

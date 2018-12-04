@@ -7,5 +7,9 @@ node_modules
 *.log*
 dist
 patterns/**/node_modules
-tsconfig.json
 tsconfig-common.json
+tsconfig.json
+tslint.json
+test/tsconfig.json
+test/tslint.json
+test/mockDom.ts

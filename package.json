@@ -4,13 +4,11 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "@musical-patterns/performer": "^1.0.45"
-  },
-  "peerDependencies": {
+    "@musical-patterns/performer": "^1.0.45",
     "@musical-patterns/utilities": "^1.0.71"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.5",
+    "@musical-patterns/cli": "^1.0.8",
     "ts-node": "^7.0.1",
     "tsc": "^1.20150623.0",
     "typescript": "^3.1.6"

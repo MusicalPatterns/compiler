@@ -58,7 +58,7 @@ type BuildScalesFunction = (patternSpec?: any) => Scale[]
 interface Entity {
     partSpec?: PartSpec,
     // @ts-ignore
-    timbreName?: TimbreName,
+    timbreName?: string,
 }
 
 interface Scale extends Adjustable {

@@ -1,24 +1,22 @@
-import { SampleName, VoiceSpec, VoiceType } from '@musical-patterns/performer'
-import { TimbreName } from './types'
+import { OscillatorName, SampleName, VoiceSpec, VoiceType } from '@musical-patterns/performer'
+import { Maybe } from '@musical-patterns/utilities'
 
-// @ts-ignore
-const compileTimbre: (timbre: TimbreName) => VoiceSpec =
-    // @ts-ignore
-    (timbre: TimbreName): VoiceSpec => {
-        // tslint:disable-next-line:no-unsafe-any
+const compileTimbre: (timbre?: string) => Maybe<VoiceSpec> =
+    (timbre: string = ''): Maybe<VoiceSpec> => {
         if (timbre in SampleName) {
             return {
-                // tslint:disable-next-line:no-unsafe-any
-                timbre,
+                timbre: timbre as SampleName,
                 voiceType: VoiceType.SAMPLE,
             }
         }
-        else {
+        else if (timbre in OscillatorName) {
             return {
-                // tslint:disable-next-line:no-unsafe-any
-                timbre,
+                timbre: timbre as OscillatorName,
                 voiceType: VoiceType.OSCILLATOR,
             }
+        }
+        else {
+            return undefined
         }
     }
 

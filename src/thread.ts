@@ -12,7 +12,7 @@ const compileThreadSpec: (compileEntityParameters: CompileThreadParameters) => T
         } = entity
 
         const notes: Note[] = compileNotes(partSpec, { scales })
-        const voiceSpec: Maybe<VoiceSpec> = timbreName && compileTimbre(timbreName)
+        const voiceSpec: Maybe<VoiceSpec> = compileTimbre(timbreName)
 
         return {
             notes,

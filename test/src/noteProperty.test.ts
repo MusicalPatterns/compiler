@@ -1,3 +1,5 @@
+// tslint:disable:no-any
+
 import { to } from '@musical-patterns/utilities'
 import { compileNoteProperty, CompileNotesOptions, NoteProperty, NotePropertySpec, Scale } from '../../src/indexForTest'
 
@@ -77,8 +79,8 @@ describe('compile note property', () => {
 
     it('applies offset from the scale, too', () => {
         const scaleWithOffset: Scale = {
-            scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
             offset: to.Offset(3),
+            scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
         }
         const notePropertySpec: NotePropertySpec = {}
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithOffset ] })
@@ -89,8 +91,8 @@ describe('compile note property', () => {
 
     it('applies scalar from the scale, too', () => {
         const scaleWithScalar: Scale = {
-            scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
             scalar: to.Scalar(7),
+            scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
         }
         const notePropertySpec: NotePropertySpec = {}
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalar ] })
@@ -113,9 +115,9 @@ describe('compile note property', () => {
     it('applies scalar from the scale first, then offset from the scale', () => {
         const notePropertySpec: NotePropertySpec = {}
         const scaleWithScalarAndOffset: Scale = {
-            scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
-            scalar: to.Scalar(7),
             offset: to.Offset(3),
+            scalar: to.Scalar(7),
+            scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
         }
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndOffset ] })
 
@@ -129,9 +131,9 @@ describe('compile note property', () => {
             scalar: to.Scalar(1.25),
         }
         const scaleWithScalarAndOffset: Scale = {
-            scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
-            scalar: to.Scalar(7),
             offset: to.Offset(3),
+            scalar: to.Scalar(7),
+            scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
         }
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndOffset ] })
 

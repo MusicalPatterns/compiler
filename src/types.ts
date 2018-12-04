@@ -1,6 +1,6 @@
 // tslint:disable:max-file-line-count
 
-import { OscillatorName, SampleName, VoiceSpec } from '@musical-patterns/performer'
+import { OscillatorName, SampleName } from '@musical-patterns/performer'
 import {
     AnyOtherProperties,
     Coordinate,
@@ -11,6 +11,12 @@ import {
     Scalar,
     Time,
 } from '@musical-patterns/utilities'
+
+// tslint:disable-next-line:variable-name typedef
+const TimbreName = {
+    ...OscillatorName,
+    ...SampleName,
+}
 
 interface CompileThreadParameters {
     entity: Entity,
@@ -51,7 +57,8 @@ type BuildScalesFunction = (patternSpec?: any) => Scale[]
 
 interface Entity {
     partSpec?: PartSpec,
-    voiceSpec?: VoiceSpec,
+    // @ts-ignore
+    timbreName?: TimbreName,
 }
 
 interface Scale extends Adjustable {
@@ -78,12 +85,6 @@ interface NotePropertySpec extends Adjustable {
     scaleIndex?: Index,
 }
 
-// tslint:disable-next-line:variable-name typedef
-const VoiceName = {
-    ...OscillatorName,
-    ...SampleName,
-}
-
 export {
     CompileThreadParameters,
     CompileThreadsParameters,
@@ -99,5 +100,5 @@ export {
     NotePropertySpec,
     CompilePatternParameters,
     PatternMaterial,
-    VoiceName,
+    TimbreName,
 }

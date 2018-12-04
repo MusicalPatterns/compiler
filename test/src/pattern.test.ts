@@ -27,5 +27,5 @@ describe('compile pattern', () => {
         done()
     })
 
-    // also takes pattern spec?
+    it('also takes pattern spec?')
 })

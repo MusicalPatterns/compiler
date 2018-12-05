@@ -8,6 +8,7 @@ node_modules
 dist
 patterns/**/node_modules
 tsconfig-common.json
+tsconfig-library.json
 tsconfig.json
 tsconfig-node.json
 tslint.json

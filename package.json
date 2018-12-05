@@ -1,14 +1,14 @@
 {
   "name": "@musical-patterns/compiler",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "@musical-patterns/performer": "^1.0.48",
-    "@musical-patterns/utilities": "^1.0.75"
+    "@musical-patterns/performer": "^1.0.51",
+    "@musical-patterns/utilities": "^1.0.82"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.17",
+    "@musical-patterns/cli": "^1.0.24",
     "typescript": "^3.2.1"
   }
 }

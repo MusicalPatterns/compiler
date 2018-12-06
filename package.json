@@ -1,17 +1,17 @@
 {
   "name": "@musical-patterns/compiler",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig-library.json"
   },
   "dependencies": {
-    "@musical-patterns/performer": "^1.0.52",
-    "@musical-patterns/utilities": "^1.0.84"
+    "@musical-patterns/performer": "^1.0.54",
+    "@musical-patterns/utilities": "^1.0.87"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.35",
+    "@musical-patterns/cli": "^1.0.38",
     "typescript": "^3.2.1"
   }
 }

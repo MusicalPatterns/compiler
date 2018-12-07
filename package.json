@@ -6,6 +6,11 @@
   "scripts": {
     "build": "tsc -p tsconfig-library.json"
   },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MusicalPatterns/compiler.git"
+  },
   "dependencies": {
     "@musical-patterns/performer": "^1.0.54",
     "@musical-patterns/utilities": "^1.0.87"

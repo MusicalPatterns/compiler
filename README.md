@@ -1,6 +1,8 @@
-# Musical Patterns Compiler
+# Musical Patterns - compiler
 
-compiles patterns
+Compiles patterns into a format playable by the performer.
+
+## usage
 
 ```
 import { compilePattern } from '@musical-patterns/compiler'

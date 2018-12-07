@@ -4,6 +4,7 @@ export { compileNote } from './notes'
 export { compileNoteProperty } from './noteProperty'
 export { compilePattern } from './pattern'
 export { compileTimbre } from './timbre'
+export { compileThreadSpec } from './thread'
 
 export {
     CompileNotesOptions,
@@ -13,6 +14,7 @@ export {
     NoteSpec,
     PatternMaterial,
     BuildEntitiesFunction,
+    BuildScalesFunction,
     Entity,
     TimbreName,
 } from './types'

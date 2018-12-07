@@ -7,11 +7,11 @@ import { CompileThreadParameters } from './types'
 const compileThreadSpec: (compileEntityParameters: CompileThreadParameters) => ThreadSpec =
     ({ entity, scales }: CompileThreadParameters): ThreadSpec => {
         const {
-            partSpec = [],
+            noteSpecs = [],
             timbreName,
         } = entity
 
-        const notes: Note[] = compileNotes(partSpec, { scales })
+        const notes: Note[] = compileNotes(noteSpecs, { scales })
         const voiceSpec: Maybe<VoiceSpec> = compileTimbre(timbreName)
 
         return {

@@ -1,12 +1,11 @@
 export { compilePattern } from './pattern'
 
 export {
-    calculatePartSpecTotalCompiledDuration,
+    calculateNoteSpecsTotalCompiledDuration,
 } from './support'
 export {
     PatternMaterial,
     CompilePatternParameters,
-    PartSpec,
     Scale,
     Entity,
     NoteSpec,

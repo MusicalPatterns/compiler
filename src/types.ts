@@ -56,7 +56,7 @@ type BuildEntitiesFunction = (patternSpec?: any) => Entity[]
 type BuildScalesFunction = (patternSpec?: any) => Scale[]
 
 interface Entity {
-    partSpec?: PartSpec,
+    noteSpecs?: NoteSpec[],
     // @ts-ignore
     timbreName?: string,
 }
@@ -72,8 +72,6 @@ interface NoteSpec {
     positionSpec?: NotePropertySpec | NotePropertySpec[],
     sustainSpec?: NotePropertySpec,
 }
-
-type PartSpec = NoteSpec[]
 
 interface Adjustable {
     offset?: Offset,
@@ -95,7 +93,6 @@ export {
     Entity,
     Scale,
     NoteSpec,
-    PartSpec,
     Adjustable,
     NotePropertySpec,
     CompilePatternParameters,

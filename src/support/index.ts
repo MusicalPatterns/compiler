@@ -1,1 +1,1 @@
-export { calculatePartSpecTotalCompiledDuration } from './calculatePartSpecTotalCompiledDuration'
+export { calculateNoteSpecsTotalCompiledDuration } from './calculateNoteSpecsTotalCompiledDuration'

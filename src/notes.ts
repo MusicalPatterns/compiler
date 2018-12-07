@@ -1,7 +1,7 @@
 import { Note } from '@musical-patterns/performer'
 import { Coordinate, CoordinateElement, Frequency, Scalar, Time, to } from '@musical-patterns/utilities'
 import { compileNoteProperty } from './noteProperty'
-import { CompileNotesOptions, NotePropertySpec, NoteSpec, PartSpec } from './types'
+import { CompileNotesOptions, NotePropertySpec, NoteSpec } from './types'
 
 const defaultNotePropertySpec: NotePropertySpec = {
     index: to.Index(0),
@@ -39,9 +39,9 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
         return { duration, gain, frequency, position, sustain }
     }
 
-const compileNotes: (partSpec: PartSpec, options: CompileNotesOptions) => Note[] =
-    (partSpec: PartSpec, options: CompileNotesOptions): Note[] =>
-        partSpec.map((noteSpec: NoteSpec): Note =>
+const compileNotes: (noteSpecs: NoteSpec[], options: CompileNotesOptions) => Note[] =
+    (noteSpecs: NoteSpec[], options: CompileNotesOptions): Note[] =>
+        noteSpecs.map((noteSpec: NoteSpec): Note =>
             compileNote(noteSpec, options))
 
 export {

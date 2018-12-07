@@ -5,6 +5,8 @@ export { compileNoteProperty } from './noteProperty'
 export { compilePattern } from './pattern'
 export { compileTimbre } from './timbre'
 export { compileThreadSpec } from './thread'
+export { calculateNoteSpecsTotalCompiledDuration } from './support/indexForTest'
+export { migrate, CompilerVersion, ThreadSpecOneZeroSeven } from './migration/indexForTest'
 
 export {
     CompileNotesOptions,

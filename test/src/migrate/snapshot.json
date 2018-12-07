@@ -1,0 +1,45 @@
+[
+  {
+    "notes": [
+      {
+        "duration": 3,
+        "gain": 3,
+        "frequency": 3,
+        "position": [
+          3
+        ],
+        "sustain": 3
+      },
+      {
+        "duration": 2,
+        "gain": 2,
+        "frequency": 2,
+        "position": [
+          2
+        ],
+        "sustain": 2
+      }
+    ],
+    "voiceSpec": {
+      "timbre": "SINE",
+      "voiceType": "OSCILLATOR"
+    }
+  },
+  {
+    "notes": [
+      {
+        "duration": 13,
+        "gain": 4,
+        "frequency": 7,
+        "position": [
+          8
+        ],
+        "sustain": 3
+      }
+    ],
+    "voiceSpec": {
+      "timbre": "KICK",
+      "voiceType": "SAMPLE"
+    }
+  }
+]

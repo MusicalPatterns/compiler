@@ -1,22 +1,19 @@
 {
   "name": "@musical-patterns/compiler",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc -p tsconfig-library.json"
-  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/MusicalPatterns/compiler.git"
   },
   "dependencies": {
-    "@musical-patterns/performer": "^1.0.56",
-    "@musical-patterns/utilities": "^1.0.89"
+    "@musical-patterns/performer": "^1.0.59",
+    "@musical-patterns/utilities": "^1.0.91"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.42",
+    "@musical-patterns/cli": "^1.0.46",
     "typescript": "^3.2.2"
   }
 }

@@ -11,6 +11,7 @@ Gemfile text eol=lf
 *.ts text eol=lf
 *.jsx text eol=lf
 *.tsx text eol=lf
+*.json text eol=lf
 
 *.mp3 binary
 *.wav binary

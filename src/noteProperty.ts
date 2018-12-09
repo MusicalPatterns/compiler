@@ -15,7 +15,7 @@ const compileNoteProperty: (notePropertySpec: NotePropertySpec, options?: Compil
         const {
             offset: scaleOffset = to.Offset(0),
             scalar: scaleScalar = to.Scalar(1),
-            scalars,
+            scalars = [],
         }: Scale = scale
 
         const scaleElement: Maybe<NoteProperty> = apply.Index(scalars, index)

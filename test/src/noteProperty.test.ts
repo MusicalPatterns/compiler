@@ -14,9 +14,6 @@ describe('compile note property', () => {
             {
                 scalars: [ 3, 9, 27, 81 ].map(to.Scalar),
             },
-            {
-                scalars: [],
-            },
         ]
         options = { scales }
     })

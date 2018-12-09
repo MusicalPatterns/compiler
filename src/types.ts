@@ -62,7 +62,7 @@ interface Entity {
 }
 
 interface Scale extends Adjustable {
-    scalars: Scalar[],
+    scalars?: Scalar[],
 }
 
 interface NoteSpec {

@@ -25,14 +25,59 @@ describe('compile note', () => {
                 .toBe(to.Frequency(1))
         })
 
-        it('position to a single element array, offset slightly from the origin of a 1D line', () => {
+        it('position to the origin', () => {
             expect(note.position)
-                .toEqual(to.Coordinate([ 1 ]))
+                .toEqual(to.Coordinate([ 0, 0, 0 ]))
         })
 
         it('sustain to 1', () => {
             expect(note.sustain)
                 .toBe(to.Time(1))
+        })
+    })
+
+    describe('adding dimensions to the position until it is 3D', () => {
+        it('works when using a non-array position', () => {
+            const noteSpec: NoteSpec = {
+                positionSpec: {
+                    scalar: to.Scalar(3),
+                },
+            }
+            const note: Note = compileNote(noteSpec)
+
+            expect(note.position)
+                .toEqual(to.Coordinate([ 3, 0, 0 ]))
+        })
+
+        it('works for a single element position', () => {
+            const noteSpec: NoteSpec = {
+                positionSpec: [
+                    {
+                        scalar: to.Scalar(3),
+                    },
+                ],
+            }
+            const note: Note = compileNote(noteSpec)
+
+            expect(note.position)
+                .toEqual(to.Coordinate([ 3, 0, 0 ]))
+        })
+
+        it('works for a two element position', () => {
+            const noteSpec: NoteSpec = {
+                positionSpec: [
+                    {
+                        scalar: to.Scalar(3),
+                    },
+                    {
+                        scalar: to.Scalar(2),
+                    },
+                ],
+            }
+            const note: Note = compileNote(noteSpec)
+
+            expect(note.position)
+                .toEqual(to.Coordinate([ 3, 2, 0 ]))
         })
     })
 

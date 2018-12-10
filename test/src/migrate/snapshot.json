@@ -6,7 +6,9 @@
         "gain": 3,
         "frequency": 3,
         "position": [
-          3
+          3,
+          0,
+          0
         ],
         "sustain": 3
       },
@@ -15,7 +17,9 @@
         "gain": 2,
         "frequency": 2,
         "position": [
-          2
+          2,
+          0,
+          0
         ],
         "sustain": 2
       }
@@ -32,7 +36,9 @@
         "gain": 4,
         "frequency": 7,
         "position": [
-          8
+          8,
+          0,
+          0
         ],
         "sustain": 3
       }

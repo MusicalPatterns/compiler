@@ -1,5 +1,14 @@
 import { Note } from '@musical-patterns/performer'
-import { Coordinate, CoordinateElement, Frequency, Scalar, Time, to } from '@musical-patterns/utilities'
+import {
+    Coordinate,
+    CoordinateElement,
+    Frequency,
+    from,
+    Scalar,
+    THREE_DIMENSIONAL,
+    Time,
+    to,
+} from '@musical-patterns/utilities'
 import { compileNoteProperty } from './noteProperty'
 import { CompileNotesOptions, NotePropertySpec, NoteSpec } from './types'
 
@@ -16,19 +25,24 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
             durationSpec = defaultNotePropertySpec,
             gainSpec = defaultNotePropertySpec,
             pitchSpec = defaultNotePropertySpec,
-            positionSpec = defaultNotePropertySpec,
+            positionSpec,
             sustainSpec = defaultNotePropertySpec,
         } = noteSpec
 
         const duration: Time = compileNoteProperty(durationSpec, options) as Time
         const gain: Scalar = compileNoteProperty(gainSpec, options) as Scalar
-        const position: Coordinate =
+        const position: Coordinate = positionSpec ?
             positionSpec instanceof Array ?
                 positionSpec.map(
                     (positionElementSpec: NotePropertySpec): CoordinateElement =>
                         compileNoteProperty(positionElementSpec, options) as CoordinateElement)
                 :
                 [ compileNoteProperty(positionSpec, options) as CoordinateElement ]
+            :
+            []
+        while (position.length < from.Count(THREE_DIMENSIONAL)) {
+            position.push(to.CoordinateElement(0))
+        }
         const frequency: Frequency = compileNoteProperty(pitchSpec, options) as Frequency
         const sustainAttempt: Time = compileNoteProperty(sustainSpec, options) as Time
 

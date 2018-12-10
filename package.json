@@ -9,11 +9,11 @@
     "url": "https://github.com/MusicalPatterns/compiler.git"
   },
   "dependencies": {
-    "@musical-patterns/performer": "^1.0.60",
+    "@musical-patterns/performer": "^1.0.66",
     "@musical-patterns/utilities": "^1.0.93"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.53",
+    "@musical-patterns/cli": "^1.0.55",
     "typescript": "^3.2.2"
   }
 }

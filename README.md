@@ -12,7 +12,11 @@ const material: PatternMaterial = {
 	buildEntitiesFunction,
 }
 
-const threadSpecs: ThreadSpec[] = await compilePattern({ material })
+const spec: MyPatternSpec = {
+	// anything
+}
+
+const threadSpecs: ThreadSpec[] = await compilePattern({ material, spec })
 
 setupPerformer({ autoStart: { threadSpecs } })
 

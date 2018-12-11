@@ -4,6 +4,7 @@ export {
     calculateNoteSpecsTotalCompiledDuration,
 } from './support'
 export {
+    Adjustable,
     PatternMaterial,
     CompilePatternParameters,
     Scale,

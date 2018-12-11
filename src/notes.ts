@@ -39,7 +39,7 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
                 :
                 [ compileNoteProperty(positionSpec, options) as CoordinateElement ]
             :
-            []
+            [] as Coordinate
         while (position.length < from.Count(THREE_DIMENSIONAL)) {
             position.push(to.CoordinateElement(0))
         }
@@ -50,12 +50,15 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
             sustainAttempt :
             duration
 
-        return { duration, gain, frequency, position, sustain }
+        const note: Note = { duration, gain, frequency, position, sustain }
+
+        return note
     }
 
 const compileNotes: (noteSpecs: NoteSpec[], options: CompileNotesOptions) => Note[] =
     (noteSpecs: NoteSpec[], options: CompileNotesOptions): Note[] =>
         noteSpecs.map((noteSpec: NoteSpec): Note =>
+            // tslint:disable-next-line:no-unsafe-any
             compileNote(noteSpec, options))
 
 export {

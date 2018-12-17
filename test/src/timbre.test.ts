@@ -1,24 +1,24 @@
 import { OscillatorName, SampleName, VoiceSpec, VoiceType } from '@musical-patterns/performer'
 import { Maybe } from '@musical-patterns/utilities'
-import { compileTimbre, TimbreName } from '../../src/indexForTest'
+import { compileTimbre, TimbreNameEnum } from '../../src/indexForTest'
 
 describe('compile timbre', () => {
     it('works for samples', () => {
-        const voiceSpec: Maybe<VoiceSpec> = compileTimbre(TimbreName.KICK)
+        const voiceSpec: Maybe<VoiceSpec> = compileTimbre(TimbreNameEnum.KICK)
 
         expect(voiceSpec)
             .toEqual({
-                timbre: SampleName.KICK,
+                timbreName: SampleName.KICK,
                 voiceType: VoiceType.SAMPLE,
             })
     })
 
     it('works for oscillators', () => {
-        const voiceSpec: Maybe<VoiceSpec> = compileTimbre(TimbreName.SINE)
+        const voiceSpec: Maybe<VoiceSpec> = compileTimbre(TimbreNameEnum.SINE)
 
         expect(voiceSpec)
             .toEqual({
-                timbre: OscillatorName.SINE,
+                timbreName: OscillatorName.SINE,
                 voiceType: VoiceType.OSCILLATOR,
             })
     })

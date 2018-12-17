@@ -6,7 +6,7 @@ export { compilePattern } from './pattern'
 export { compileTimbre } from './timbre'
 export { compileThreadSpec } from './thread'
 export { calculateNoteSpecsTotalCompiledDuration } from './support/indexForTest'
-export { migrate, CompilerVersion, ThreadSpecOneZeroSeven } from './migration/indexForTest'
+export { migrate, CompilerVersion, ThreadSpecOneZeroSeven, ThreadSpecOneZeroThirty } from './migration/indexForTest'
 
 export {
     CompileNotesOptions,
@@ -18,5 +18,5 @@ export {
     BuildEntitiesFunction,
     BuildScalesFunction,
     Entity,
-    TimbreName,
+    TimbreNameEnum,
 } from './types'

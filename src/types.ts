@@ -13,7 +13,7 @@ import {
 } from '@musical-patterns/utilities'
 
 // tslint:disable-next-line:variable-name typedef
-const TimbreName = {
+const TimbreNameEnum = {
     ...OscillatorName,
     ...SampleName,
 }
@@ -97,5 +97,5 @@ export {
     NotePropertySpec,
     CompilePatternParameters,
     PatternMaterial,
-    TimbreName,
+    TimbreNameEnum,
 }

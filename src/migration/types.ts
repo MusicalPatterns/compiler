@@ -1,19 +1,36 @@
-import { Note, VoiceSpec } from '@musical-patterns/performer'
+import { Note, TimbreName, VoiceType } from '@musical-patterns/performer'
+
+type NoteOneZeroZero = Note
+type TimbreNameOneZeroZero = TimbreName
+type VoiceTypeOneZeroZero = VoiceType
+
+interface VoiceSpecOneZeroZero {
+    timbre: TimbreNameOneZeroZero,
+    voiceType: VoiceTypeOneZeroZero,
+}
 
 interface ThreadSpecOneZeroSeven {
-    part: Note[],
-    voiceSpec: VoiceSpec,
+    part: NoteOneZeroZero[],
+    voiceSpec: VoiceSpecOneZeroZero,
+}
+
+interface ThreadSpecOneZeroThirty {
+    noteSpecs?: NoteOneZeroZero[],
+    voiceSpec?: VoiceSpecOneZeroZero,
 }
 
 type OutmodedThreadSpec =
-    ThreadSpecOneZeroSeven
+    ThreadSpecOneZeroSeven |
+    ThreadSpecOneZeroThirty
 
 enum CompilerVersion {
     '1.0.7' = '1.0.7',
+    '1.0.30' = '1.0.30',
 }
 
 export {
     OutmodedThreadSpec,
     CompilerVersion,
     ThreadSpecOneZeroSeven,
+    ThreadSpecOneZeroThirty,
 }

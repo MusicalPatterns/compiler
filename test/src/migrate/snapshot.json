@@ -25,7 +25,7 @@
       }
     ],
     "voiceSpec": {
-      "timbre": "SINE",
+      "timbreName": "SINE",
       "voiceType": "OSCILLATOR"
     }
   },
@@ -44,7 +44,7 @@
       }
     ],
     "voiceSpec": {
-      "timbre": "KICK",
+      "timbreName": "KICK",
       "voiceType": "SAMPLE"
     }
   }

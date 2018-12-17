@@ -13,5 +13,5 @@ export {
     NotePropertySpec,
     BuildEntitiesFunction,
     BuildScalesFunction,
-    TimbreName,
+    TimbreNameEnum,
 } from './types'

@@ -1,4 +1,4 @@
-import { OscillatorName, SampleName, ThreadSpec, VoiceType } from '@musical-patterns/performer'
+import { ThreadSpec } from '@musical-patterns/performer'
 import { Scalar, to } from '@musical-patterns/utilities'
 import {
     BuildEntitiesFunction,
@@ -7,7 +7,6 @@ import {
     Entity,
     PatternMaterial,
     Scale,
-    TimbreName,
 } from '../../src/indexForTest'
 
 // tslint:disable-next-line:no-type-definitions-outside-types-modules

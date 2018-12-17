@@ -7,7 +7,7 @@ import {
     Entity,
     PatternMaterial,
     Scale,
-    TimbreName,
+    TimbreNameEnum,
 } from '../../../src/indexForTest'
 
 describe('if this test fails, you need to include a new migration', () => {
@@ -31,7 +31,7 @@ describe('if this test fails, you need to include a new migration', () => {
                             sustainSpec: { scalar: to.Scalar(2) },
                         },
                     ],
-                    timbreName: TimbreName.SINE,
+                    timbreName: TimbreNameEnum.SINE,
                 },
                 {
                     noteSpecs: [
@@ -58,7 +58,7 @@ describe('if this test fails, you need to include a new migration', () => {
                             },
                         },
                     ],
-                    timbreName: TimbreName.KICK,
+                    timbreName: TimbreNameEnum.KICK,
                 },
             ]
 

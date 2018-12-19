@@ -7,6 +7,7 @@
     "node_modules/@musical-patterns/cli/lint"
   ],
   "rules": {
+    "ban-ts-ignore": false,
     "no-unused-variable": false,
     "completed-docs": false,
     "cyclomatic-complexity": [true, 5],

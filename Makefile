@@ -1,12 +1,9 @@
-.PHONY: lint
-lint:
-	musical-patterns lint
+MAKEFLAGS += --no-print-directory
 
+.PHONY: lint
 .PHONY: test
-test:
-	musical-patterns test
 
 %:
-	musical-patterns $@
+	@musical-patterns $@
 
 -include Makefile.*

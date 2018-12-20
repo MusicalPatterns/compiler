@@ -1,7 +1,10 @@
-MAKEFLAGS += --no-print-directory
+MAKEFLAGS += --no-print-directory --always-make
 
-.PHONY: lint
-.PHONY: test
+Makefile.cli:
+	@:
+
+Makefile:
+	@:
 
 %:
 	@musical-patterns $@

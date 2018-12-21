@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@musical-patterns/performer": "^1.0.80",
-    "@musical-patterns/utilities": "^1.0.105"
+    "@musical-patterns/utilities": "^1.0.106"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.99",
+    "@musical-patterns/cli": "^1.0.112",
     "typescript": "^3.2.2"
   }
 }

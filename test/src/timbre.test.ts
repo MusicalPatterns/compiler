@@ -4,6 +4,7 @@ import { compileTimbre, TimbreNameEnum } from '../../src/indexForTest'
 
 describe('compile timbre', () => {
     it('works for samples', () => {
+        // tslint:disable-next-line:no-unsafe-any
         const voiceSpec: Maybe<VoiceSpec> = compileTimbre(TimbreNameEnum.KICK)
 
         expect(voiceSpec)
@@ -14,6 +15,7 @@ describe('compile timbre', () => {
     })
 
     it('works for oscillators', () => {
+        // tslint:disable-next-line:no-unsafe-any
         const voiceSpec: Maybe<VoiceSpec> = compileTimbre(TimbreNameEnum.SINE)
 
         expect(voiceSpec)
@@ -24,6 +26,7 @@ describe('compile timbre', () => {
     })
 
     it('returns undefined if you provide neither an oscillator name nor a sample name', () => {
+        // tslint:disable-next-line:no-unsafe-any
         const voiceSpec: Maybe<VoiceSpec> = compileTimbre('ORCHESTRA_HIT')
 
         expect(voiceSpec)

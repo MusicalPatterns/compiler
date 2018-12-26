@@ -12,6 +12,7 @@ const compileThreadSpec: (compileEntityParameters: CompileThreadParameters) => T
         } = entity
 
         const notes: Note[] = compileNotes(noteSpecs, { scales })
+        // tslint:disable-next-line:no-unsafe-any
         const voiceSpec: Maybe<VoiceSpec> = compileTimbre(timbreName)
 
         return {

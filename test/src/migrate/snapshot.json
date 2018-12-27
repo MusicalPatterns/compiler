@@ -10,7 +10,7 @@
           0,
           0
         ],
-        "sustain": 3
+        "sustain": 2.7
       },
       {
         "duration": 2,
@@ -21,7 +21,7 @@
           0,
           0
         ],
-        "sustain": 2
+        "sustain": 1.8
       }
     ],
     "voiceSpec": {

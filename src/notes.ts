@@ -1,5 +1,6 @@
 import { Note } from '@musical-patterns/performer'
 import {
+    apply,
     Coordinate,
     CoordinateElement,
     Frequency,
@@ -9,6 +10,7 @@ import {
     Time,
     to,
 } from '@musical-patterns/utilities'
+import { DEFAULT_SCALAR_FOR_ALMOST_FULL_SUSTAIN } from './constants'
 import { compileNoteProperty } from './noteProperty'
 import { CompileNotesOptions, NotePropertySpec, NoteSpec } from './types'
 
@@ -43,7 +45,9 @@ const compileSustain: (noteSpec: NoteSpec, duration: Time, options?: CompileNote
         const sustainSpec: NotePropertySpec = noteSpec.sustainSpec || noteSpec.durationSpec || defaultNotePropertySpec
         const sustainAttempt: Time = compileNoteProperty(sustainSpec, options) as Time
 
-        return sustainAttempt < duration ? sustainAttempt : duration
+        return sustainAttempt < duration ?
+            sustainAttempt :
+            apply.Scalar(duration, DEFAULT_SCALAR_FOR_ALMOST_FULL_SUSTAIN)
     }
 
 const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =

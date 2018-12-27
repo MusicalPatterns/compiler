@@ -32,9 +32,9 @@ describe('compile note', () => {
                 .toEqual(to.Coordinate([ 0, 0, 0 ]))
         })
 
-        it('sustain to 1', () => {
+        it('sustain to 0.9', () => {
             expect(note.sustain)
-                .toBe(to.Time(1))
+                .toBe(to.Time(0.9))
         })
     })
 
@@ -84,7 +84,7 @@ describe('compile note', () => {
     })
 
     describe('sustain', () => {
-        it('caps sustain at the duration', () => {
+        it('caps sustain at slightly less than the duration', () => {
             const noteSpec: NoteSpec = {
                 durationSpec: {
                     scalar: to.Scalar(3),
@@ -98,10 +98,10 @@ describe('compile note', () => {
             expect(note.duration)
                 .toEqual(to.Time(3))
             expect(note.sustain)
-                .toEqual(to.Time(3))
+                .toEqual(to.Time(2.7))
         })
 
-        it('defaults sustain to the duration', () => {
+        it('defaults sustain to slightly less than the duration', () => {
             const noteSpec: NoteSpec = {
                 durationSpec: {
                     scalar: to.Scalar(3),
@@ -113,7 +113,7 @@ describe('compile note', () => {
             expect(note.duration)
                 .toEqual(to.Time(3))
             expect(note.sustain)
-                .toEqual(to.Time(3))
+                .toEqual(to.Time(2.7))
         })
 
         it('uses sustain if given and less than duration', () => {

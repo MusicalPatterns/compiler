@@ -83,20 +83,55 @@ describe('compile note', () => {
         })
     })
 
-    it('caps sustain at the duration', () => {
-        const noteSpec: NoteSpec = {
-            durationSpec: {
-                scalar: to.Scalar(3),
-            },
-            sustainSpec: {
-                scalar: to.Scalar(8),
-            },
-        }
-        const note: Note = compileNote(noteSpec)
+    describe('sustain', () => {
+        it('caps sustain at the duration', () => {
+            const noteSpec: NoteSpec = {
+                durationSpec: {
+                    scalar: to.Scalar(3),
+                },
+                sustainSpec: {
+                    scalar: to.Scalar(8),
+                },
+            }
+            const note: Note = compileNote(noteSpec)
 
-        expect(note.duration)
-            .toEqual(to.Time(3))
-        expect(note.sustain)
-            .toEqual(to.Time(3))
+            expect(note.duration)
+                .toEqual(to.Time(3))
+            expect(note.sustain)
+                .toEqual(to.Time(3))
+        })
+
+        it('defaults sustain to the duration', () => {
+            const noteSpec: NoteSpec = {
+                durationSpec: {
+                    scalar: to.Scalar(3),
+                },
+            }
+
+            const note: Note = compileNote(noteSpec)
+
+            expect(note.duration)
+                .toEqual(to.Time(3))
+            expect(note.sustain)
+                .toEqual(to.Time(3))
+        })
+
+        it('uses sustain if given and less than duration', () => {
+            const noteSpec: NoteSpec = {
+                durationSpec: {
+                    scalar: to.Scalar(3),
+                },
+                sustainSpec: {
+                    scalar: to.Scalar(2),
+                },
+            }
+
+            const note: Note = compileNote(noteSpec)
+
+            expect(note.duration)
+                .toEqual(to.Time(3))
+            expect(note.sustain)
+                .toEqual(to.Time(2))
+        })
     })
 })

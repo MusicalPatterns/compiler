@@ -19,18 +19,9 @@ const defaultNotePropertySpec: NotePropertySpec = {
     scaleIndex: to.Index(0),
 }
 
-const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
-    (noteSpec: NoteSpec, options?: CompileNotesOptions): Note => {
-        const {
-            durationSpec = defaultNotePropertySpec,
-            gainSpec = defaultNotePropertySpec,
-            pitchSpec = defaultNotePropertySpec,
-            positionSpec,
-            sustainSpec = defaultNotePropertySpec,
-        } = noteSpec
-
-        const duration: Time = compileNoteProperty(durationSpec, options) as Time
-        const gain: Scalar = compileNoteProperty(gainSpec, options) as Scalar
+const compilePosition:
+    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions) => Coordinate =
+    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions): Coordinate => {
         const position: Coordinate = positionSpec ?
             positionSpec instanceof Array ?
                 positionSpec.map(
@@ -43,16 +34,34 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
         while (position.length < from.Count(THREE_DIMENSIONAL)) {
             position.push(to.CoordinateElement(0))
         }
-        const frequency: Frequency = compileNoteProperty(pitchSpec, options) as Frequency
+
+        return position
+    }
+
+const compileSustain: (noteSpec: NoteSpec, duration: Time, options?: CompileNotesOptions) => Time =
+    (noteSpec: NoteSpec, duration: Time, options?: CompileNotesOptions): Time => {
+        const sustainSpec: NotePropertySpec = noteSpec.sustainSpec || noteSpec.durationSpec || defaultNotePropertySpec
         const sustainAttempt: Time = compileNoteProperty(sustainSpec, options) as Time
 
-        const sustain: Time = sustainAttempt < duration ?
-            sustainAttempt :
-            duration
+        return sustainAttempt < duration ? sustainAttempt : duration
+    }
 
-        const note: Note = { duration, gain, frequency, position, sustain }
+const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
+    (noteSpec: NoteSpec, options?: CompileNotesOptions): Note => {
+        const {
+            durationSpec = defaultNotePropertySpec,
+            gainSpec = defaultNotePropertySpec,
+            pitchSpec = defaultNotePropertySpec,
+        } = noteSpec
 
-        return note
+        const duration: Time = compileNoteProperty(durationSpec, options) as Time
+        const gain: Scalar = compileNoteProperty(gainSpec, options) as Scalar
+        const frequency: Frequency = compileNoteProperty(pitchSpec, options) as Frequency
+
+        const position: Coordinate = compilePosition(noteSpec.positionSpec, options)
+        const sustain: Time = compileSustain(noteSpec, duration, options)
+
+        return { duration, gain, frequency, position, sustain }
     }
 
 const compileNotes: (noteSpecs: NoteSpec[], options: CompileNotesOptions) => Note[] =

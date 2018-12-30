@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/MusicalPatterns/compiler.svg?branch=master)](https://travis-ci.com/MusicalPatterns/compiler)
+
 # Musical Patterns - compiler
 
 Compiles patterns into a format playable by the performer.

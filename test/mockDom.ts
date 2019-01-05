@@ -20,36 +20,29 @@ global.cancelAnimationFrame = (id: number) => {
 }
 
 const mockOscillator: any = {
-    connect: () => {
-    },
-    start: () => {
-    },
+    connect: () => {},
+    start: () => {},
 }
 
 const mockGain: any = {
-    connect: () => {
-    },
+    connect: () => {},
     gain: {},
 }
 
 const mockAudioContext: any = {
     createOscillator: () => mockOscillator,
     createGain: () => mockGain,
-    createPeriodicWave: () => {
-    },
+    createPeriodicWave: () => {},
 }
 
 global.AudioContext = () => mockAudioContext
 global.webkitAudioContext = () => mockAudioContext
 
 global.XMLHttpRequest = () => ({
-    open: () => {
-    },
-    send: () => {
-    },
+    open: () => {},
+    send: () => {},
 })
 
 global.self = {
-    postMessage: () => {
-    },
+    postMessage: () => {},
 }

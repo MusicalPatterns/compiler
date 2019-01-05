@@ -139,7 +139,7 @@ describe('compile note property', () => {
     })
 
     it('handles empty scales', () => {
-        const noteProperty: NoteProperty = compileNoteProperty({}, { scales: [ ] })
+        const noteProperty: NoteProperty = compileNoteProperty({}, { scales: [] })
 
         expect(noteProperty)
             .toBe(1 as any as NoteProperty)

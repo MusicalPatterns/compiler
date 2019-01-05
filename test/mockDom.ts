@@ -35,7 +35,8 @@ const mockGain: any = {
 const mockAudioContext: any = {
     createOscillator: () => mockOscillator,
     createGain: () => mockGain,
-    createPeriodicWave: () => {},
+    createPeriodicWave: () => {
+    },
 }
 
 global.AudioContext = () => mockAudioContext

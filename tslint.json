@@ -10,7 +10,10 @@
     "ban-ts-ignore": false,
     "no-unused-variable": false,
     "completed-docs": false,
-    "cyclomatic-complexity": [true, 5],
+    "cyclomatic-complexity": [
+      true,
+      5
+    ],
     "no-constant-condition": true,
     "semicolon": false,
     "type-literal-delimiter": false,
@@ -53,7 +56,10 @@
     "strict-boolean-expressions": false,
     "no-namespace": false,
     "no-dynamic-delete": false,
-    "no-implicit-dependencies": [true, "dev"],
+    "no-implicit-dependencies": [
+      true,
+      "dev"
+    ],
     "no-reaching-imports": true,
     "no-import-paths-without-names": true,
     "no-type-definitions-outside-types-modules": true

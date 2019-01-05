@@ -1,23 +1,5 @@
-import { Note, TimbreName, VoiceType } from '@musical-patterns/performer'
-
-type NoteOneZeroZero = Note
-type TimbreNameOneZeroZero = TimbreName
-type VoiceTypeOneZeroZero = VoiceType
-
-interface VoiceSpecOneZeroZero {
-    timbre: TimbreNameOneZeroZero,
-    voiceType: VoiceTypeOneZeroZero,
-}
-
-interface ThreadSpecOneZeroSeven {
-    part: NoteOneZeroZero[],
-    voiceSpec: VoiceSpecOneZeroZero,
-}
-
-interface ThreadSpecOneZeroThirty {
-    noteSpecs?: NoteOneZeroZero[],
-    voiceSpec?: VoiceSpecOneZeroZero,
-}
+import { ThreadSpecOneZeroThirty } from './1.0.30'
+import { ThreadSpecOneZeroSeven } from './1.0.7'
 
 type OutmodedThreadSpec =
     ThreadSpecOneZeroSeven |

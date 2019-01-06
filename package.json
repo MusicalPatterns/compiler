@@ -1,12 +1,9 @@
 {
   "name": "@musical-patterns/compiler",
-  "version": "1.0.57",
+  "version": "1.0.58",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
-  "bin": {
-    "mps": "bin/snapshot.sh"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/MusicalPatterns/compiler.git"

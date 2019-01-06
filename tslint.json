@@ -62,6 +62,7 @@
     ],
     "no-reaching-imports": true,
     "no-import-paths-without-names": true,
-    "no-type-definitions-outside-types-modules": true
+    "no-type-definitions-outside-types-modules": true,
+    "no-nonstandard-materials-files": true
   }
 }

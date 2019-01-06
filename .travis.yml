@@ -1,7 +1,8 @@
 language: node_js
 node_js:
   "10"
-before_script:
-  - npm install
-script:
-  - make test
+git:
+  submodules: false
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules || true
+  - git submodule update --init --recursive

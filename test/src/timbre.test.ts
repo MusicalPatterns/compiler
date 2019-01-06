@@ -25,7 +25,7 @@ describe('compile timbre', () => {
             })
     })
 
-    it('returns undefined if you provide neither an oscillator name nor a sample name', () => {
+    it('returns undefined if you provide neither an oscillator name nor a sample name (it will be defaulted to a sine wave by the performer)', () => {
         // tslint:disable-next-line:no-unsafe-any
         const voiceSpec: Maybe<VoiceSpec> = compileTimbre('ORCHESTRA_HIT')
 

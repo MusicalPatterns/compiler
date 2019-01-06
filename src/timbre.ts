@@ -1,5 +1,5 @@
 import { OscillatorName, SampleName, VoiceSpec, VoiceType } from '@musical-patterns/performer'
-import { logMessageToConsole, Maybe } from '@musical-patterns/utilities'
+import { Maybe } from '@musical-patterns/utilities'
 
 const compileTimbre: (timbreName?: string) => Maybe<VoiceSpec> =
     (timbreName: string = ''): Maybe<VoiceSpec> => {
@@ -16,8 +16,6 @@ const compileTimbre: (timbreName?: string) => Maybe<VoiceSpec> =
             }
         }
         else {
-            logMessageToConsole(`${timbreName} is not an available timbre.`)
-
             return undefined
         }
     }

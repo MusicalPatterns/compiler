@@ -6,6 +6,6 @@ Makefile:
 	@:
 
 %:
-	@bash node_modules/.bin/musical-patterns $@
+	@musical-patterns-cli $@
 
 -include Makefile.*

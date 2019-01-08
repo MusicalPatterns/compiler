@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/compiler",
-  "version": "1.0.62",
+  "version": "1.0.63",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
@@ -9,11 +9,11 @@
     "url": "https://github.com/MusicalPatterns/compiler.git"
   },
   "dependencies": {
-    "@musical-patterns/performer": "^1.0.105",
-    "@musical-patterns/utilities": "^1.0.137"
+    "@musical-patterns/performer": "^1.0.114",
+    "@musical-patterns/utilities": "^1.0.142"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.250",
+    "@musical-patterns/cli": "^1.0.252",
     "typescript": "^3.2.2"
   }
 }

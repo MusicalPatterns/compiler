@@ -51,9 +51,9 @@ interface CompilePatternParameters extends AnyOtherProperties {
 }
 
 // tslint:disable-next-line:no-any
-type BuildEntitiesFunction = (patternSpec?: any) => Entity[]
+type BuildEntitiesFunction = (spec?: any) => Entity[]
 // tslint:disable-next-line:no-any
-type BuildScalesFunction = (patternSpec?: any) => Scale[]
+type BuildScalesFunction = (spec?: any) => Scale[]
 
 interface Entity {
     noteSpecs?: NoteSpec[],

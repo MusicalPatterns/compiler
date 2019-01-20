@@ -11,29 +11,29 @@ import {
 
 // tslint:disable-next-line:no-type-definitions-outside-types-modules
 describe('compile pattern', () => {
-    it('given a pattern spec, takes it into account', async (done: DoneFn) => {
-        interface TestPatternSpec {
+    it('given a spec, takes it into account', async (done: DoneFn) => {
+        interface TestSpec {
             testThing: Scalar,
         }
 
-        const buildEntitiesFunction: BuildEntitiesFunction = (patternSpec: TestPatternSpec): Entity[] =>
+        const buildEntitiesFunction: BuildEntitiesFunction = (specForEntities: TestSpec): Entity[] =>
             [
                 {
                     noteSpecs: [
                         {
-                            durationSpec: { scalar: patternSpec.testThing },
-                            gainSpec: { scalar: patternSpec.testThing },
-                            pitchSpec: { scalar: patternSpec.testThing },
-                            positionSpec: { scalar: patternSpec.testThing },
-                            sustainSpec: { scalar: patternSpec.testThing },
+                            durationSpec: { scalar: specForEntities.testThing },
+                            gainSpec: { scalar: specForEntities.testThing },
+                            pitchSpec: { scalar: specForEntities.testThing },
+                            positionSpec: { scalar: specForEntities.testThing },
+                            sustainSpec: { scalar: specForEntities.testThing },
                         },
                     ],
                 },
             ]
 
-        const buildScalesFunction: BuildScalesFunction = (patternSpec: TestPatternSpec): Scale[] => [
+        const buildScalesFunction: BuildScalesFunction = (specForScales: TestSpec): Scale[] => [
             {
-                scalars: [ patternSpec.testThing ],
+                scalars: [ specForScales.testThing ],
             },
         ]
 
@@ -42,7 +42,7 @@ describe('compile pattern', () => {
             buildScalesFunction,
         }
 
-        const spec: TestPatternSpec = {
+        const spec: TestSpec = {
             testThing: to.Scalar(3),
         }
 

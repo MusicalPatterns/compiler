@@ -14,7 +14,7 @@ const material: PatternMaterial = {
 	buildEntitiesFunction,
 }
 
-const spec: MyPatternSpec = {
+const spec: MySpec = {
 	// anything
 }
 

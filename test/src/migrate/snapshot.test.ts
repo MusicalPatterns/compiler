@@ -5,7 +5,7 @@ import {
     BuildScalesFunction,
     compilePattern,
     Entity,
-    PatternMaterial,
+    Material,
     Scale,
     TimbreNameEnum,
 } from '../../../src/indexForTest'
@@ -74,7 +74,7 @@ describe('if this test fails, you need to include a new migration', () => {
             },
         ]
 
-        const material: PatternMaterial = {
+        const material: Material = {
             buildEntitiesFunction,
             buildScalesFunction,
         }

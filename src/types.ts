@@ -39,13 +39,13 @@ interface CompileNotesOptions {
     scales?: Scale[],
 }
 
-interface PatternMaterial {
+interface Material {
     buildEntitiesFunction: BuildEntitiesFunction,
     buildScalesFunction?: BuildScalesFunction,
 }
 
 interface CompilePatternParameters extends AnyOtherProperties {
-    material: PatternMaterial,
+    material: Material,
     // tslint:disable-next-line:no-any
     spec?: any,
 }
@@ -96,6 +96,6 @@ export {
     Adjustable,
     NotePropertySpec,
     CompilePatternParameters,
-    PatternMaterial,
+    Material,
     TimbreNameEnum,
 }

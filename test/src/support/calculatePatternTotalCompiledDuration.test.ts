@@ -1,5 +1,5 @@
 import { Time, to } from '@musical-patterns/utilities'
-import { calculatePatternTotalCompiledDuration, Entity, NoteSpec, PatternMaterial } from '../../../src/indexForTest'
+import { calculatePatternTotalCompiledDuration, Entity, Material, NoteSpec } from '../../../src/indexForTest'
 
 describe('calculate pattern total compiled duration', () => {
     it('tells you how long a pattern will be once compiled', async (done: DoneFn) => {
@@ -27,7 +27,7 @@ describe('calculate pattern total compiled duration', () => {
                 },
             },
         ]
-        const material: PatternMaterial = {
+        const material: Material = {
             buildEntitiesFunction: (): Entity[] => [
                 {
                     noteSpecs: firstNoteSpecs,

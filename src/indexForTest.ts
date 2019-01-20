@@ -17,7 +17,7 @@ export {
     NoteProperty,
     Scale,
     NoteSpec,
-    PatternMaterial,
+    Material,
     BuildEntitiesFunction,
     BuildScalesFunction,
     Entity,

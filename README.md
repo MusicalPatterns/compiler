@@ -10,7 +10,7 @@ Compiles patterns into a format playable by the performer.
 import { compilePattern } from '@musical-patterns/compiler'
 import { setupPerformer } from '@musical-patterns/performer'
 
-const material: PatternMaterial = {
+const material: Material = {
 	buildEntitiesFunction,
 }
 

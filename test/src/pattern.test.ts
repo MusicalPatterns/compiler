@@ -5,7 +5,7 @@ import {
     BuildScalesFunction,
     compilePattern,
     Entity,
-    PatternMaterial,
+    Material,
     Scale,
 } from '../../src/indexForTest'
 
@@ -37,7 +37,7 @@ describe('compile pattern', () => {
             },
         ]
 
-        const material: PatternMaterial = {
+        const material: Material = {
             buildEntitiesFunction,
             buildScalesFunction,
         }

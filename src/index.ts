@@ -6,7 +6,7 @@ export {
 } from './support'
 export {
     Adjustable,
-    PatternMaterial,
+    Material,
     CompilePatternParameters,
     Scale,
     Entity,

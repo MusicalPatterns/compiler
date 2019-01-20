@@ -1,8 +1,0 @@
-{
-  "extends": "../tsconfig.common.json",
-  "compilerOptions": {
-    "allowJs": true,
-    "module": "commonjs",
-    "noEmit": true
-  }
-}

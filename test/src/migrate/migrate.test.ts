@@ -20,12 +20,12 @@ describe('migrate - takes outmoded thread specs and brings them into conformity 
             },
         } ]
 
-        const updatedThreadSpecs: ThreadSpec = migrate(outmodedThreadSpecs, CompilerVersion[ '1.0.7' ])
+        const updatedThreadSpecs: ThreadSpec[] = migrate(outmodedThreadSpecs, CompilerVersion[ '1.0.7' ])
 
         expect(updatedThreadSpecs)
             .toEqual([
                 {
-                    noteSpecs: [
+                    notes: [
                         {
                             duration: to.Time(2),
                             frequency: to.Frequency(2),
@@ -44,7 +44,7 @@ describe('migrate - takes outmoded thread specs and brings them into conformity 
 
     it('works for thread specs built by compiler version 1.0.30', () => {
         const outmodedThreadSpecs: ThreadSpecOneZeroThirty[] = [ {
-            noteSpecs: [
+            notes: [
                 {
                     duration: to.Time(2),
                     frequency: to.Frequency(2),
@@ -59,12 +59,12 @@ describe('migrate - takes outmoded thread specs and brings them into conformity 
             },
         } ]
 
-        const updatedThreadSpecs: ThreadSpec = migrate(outmodedThreadSpecs, CompilerVersion[ '1.0.30' ])
+        const updatedThreadSpecs: ThreadSpec[] = migrate(outmodedThreadSpecs, CompilerVersion[ '1.0.30' ])
 
         expect(updatedThreadSpecs)
             .toEqual([
                 {
-                    noteSpecs: [
+                    notes: [
                         {
                             duration: to.Time(2),
                             frequency: to.Frequency(2),

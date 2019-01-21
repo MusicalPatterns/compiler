@@ -8,13 +8,12 @@ const calculatePatternTotalCompiledDuration: (parameters: CompilePatternParamete
         const threadSpecs: ThreadSpec[] = await compilePattern(parameters)
 
         const times: Time[] = threadSpecs.map((threadSpec: ThreadSpec): Time =>
-            // tslint:disable-next-line:no-unsafe-any
-            threadSpec.notes.reduce(
+            threadSpec.notes ? threadSpec.notes.reduce(
                 (accumulator: Time, note: Note): Time =>
                     // tslint:disable-next-line:no-unsafe-any
                     to.Time(from.Time(accumulator) + from.Time(note.duration)),
                 to.Time(0),
-            ))
+            ) : to.Time(0))
 
         return to.Time(lowestCommonMultiple(...times.map(from.Time)))
     }

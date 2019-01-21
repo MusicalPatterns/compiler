@@ -6,7 +6,7 @@ interface VoiceSpecOneZeroThirty {
 }
 
 interface ThreadSpecOneZeroThirty {
-    noteSpecs?: Note[],
+    notes?: Note[],
     voiceSpec?: VoiceSpecOneZeroThirty,
 }
 

@@ -27,3 +27,4 @@ Makefile
 .idea/jsLibraryMappings.xml
 .idea/misc.xml
 .idea/watcherTasks.xml
+.npmignore

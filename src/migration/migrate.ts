@@ -1,4 +1,4 @@
-import { ThreadSpec } from '@musical-patterns/performer'
+import { OscillatorName, ThreadSpec, TimbreName, VoiceType } from '@musical-patterns/performer'
 import { CompilerVersion, OutmodedThreadSpec, ThreadSpecOneZeroSeven, ThreadSpecOneZeroThirty } from './types'
 
 const migrate: (outmodedThreadSpecs: OutmodedThreadSpec[], fromCompilerVersion: CompilerVersion) => ThreadSpec[] =
@@ -8,24 +8,31 @@ const migrate: (outmodedThreadSpecs: OutmodedThreadSpec[], fromCompilerVersion: 
         if (fromCompilerVersion >= CompilerVersion[ '1.0.7' ]) {
             const oneZeroSevenThreadSpecs: ThreadSpecOneZeroSeven[] = updatingThreadSpecs as ThreadSpecOneZeroSeven[]
             updatingThreadSpecs = oneZeroSevenThreadSpecs.map(
-                (oneZeroSevenThreadSpec: ThreadSpecOneZeroSeven): ThreadSpec =>
-                    ({
-                        noteSpecs: oneZeroSevenThreadSpec.part,
-                        voiceSpec: oneZeroSevenThreadSpec.voiceSpec,
-                    }))
+                (oneZeroSevenThreadSpec: ThreadSpecOneZeroSeven): OutmodedThreadSpec => ({
+                    notes: oneZeroSevenThreadSpec.part,
+                    voiceSpec: oneZeroSevenThreadSpec.voiceSpec,
+                }))
         }
 
         if (fromCompilerVersion >= CompilerVersion[ '1.0.30' ]) {
             const oneZeroThirtyThreadSpecs: ThreadSpecOneZeroThirty[] = updatingThreadSpecs as ThreadSpecOneZeroThirty[]
             updatingThreadSpecs = oneZeroThirtyThreadSpecs.map(
-                (oneZeroThirtyThreadSpec: ThreadSpecOneZeroThirty): ThreadSpec =>
-                    ({
-                        noteSpecs: oneZeroThirtyThreadSpec.noteSpecs,
+                (oneZeroThirtyThreadSpec: ThreadSpecOneZeroThirty): ThreadSpec => {
+                    const timbreName: TimbreName = oneZeroThirtyThreadSpec.voiceSpec ?
+                            oneZeroThirtyThreadSpec.voiceSpec.timbre :
+                            OscillatorName.SINE
+                    const voiceType: VoiceType = oneZeroThirtyThreadSpec.voiceSpec ?
+                        oneZeroThirtyThreadSpec.voiceSpec.voiceType :
+                        VoiceType.SAMPLE
+
+                    return {
+                        notes: oneZeroThirtyThreadSpec.notes,
                         voiceSpec: {
-                            timbreName: oneZeroThirtyThreadSpec.voiceSpec && oneZeroThirtyThreadSpec.voiceSpec.timbre,
-                            voiceType: oneZeroThirtyThreadSpec.voiceSpec && oneZeroThirtyThreadSpec.voiceSpec.voiceType,
+                            timbreName,
+                            voiceType,
                         },
-                    }))
+                    }
+                })
         }
 
         return updatingThreadSpecs as ThreadSpec[]

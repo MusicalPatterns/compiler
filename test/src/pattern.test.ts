@@ -57,7 +57,7 @@ describe('compile pattern', () => {
                             frequency: to.Frequency(9),
                             gain: to.Scalar(9),
                             position: to.Coordinate([ 9, 0, 0 ]),
-                            sustain: to.Time(8.1),
+                            sustain: to.Time(8.9),
                         },
                     ],
                     voiceSpec: undefined,

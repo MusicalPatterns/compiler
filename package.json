@@ -1,6 +1,6 @@
 {
   "name": "@musical-patterns/compiler",
-  "version": "1.0.76",
+  "version": "1.0.77",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",

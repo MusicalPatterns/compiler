@@ -98,7 +98,7 @@ describe('compile note', () => {
             expect(note.duration)
                 .toEqual(to.Time(3))
             expect(note.sustain)
-                .toEqual(to.Time(2.7))
+                .toEqual(to.Time(2.9))
         })
 
         it('defaults sustain to slightly less than the duration', () => {
@@ -113,7 +113,7 @@ describe('compile note', () => {
             expect(note.duration)
                 .toEqual(to.Time(3))
             expect(note.sustain)
-                .toEqual(to.Time(2.7))
+                .toEqual(to.Time(2.9))
         })
 
         it('uses sustain if given and less than duration', () => {

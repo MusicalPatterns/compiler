@@ -10,7 +10,7 @@ import {
     Time,
     to,
 } from '@musical-patterns/utilities'
-import { DEFAULT_SCALAR_FOR_ALMOST_FULL_SUSTAIN } from './constants'
+import { DEFAULT_OFFSET_FOR_ALMOST_FULL_SUSTAIN } from './constants'
 import { compileNoteProperty } from './noteProperty'
 import { CompileNotesOptions, NotePropertySpec, NoteSpec } from './types'
 
@@ -47,7 +47,7 @@ const compileSustain: (noteSpec: NoteSpec, duration: Time, options?: CompileNote
 
         return sustainAttempt < duration ?
             sustainAttempt :
-            apply.Scalar(duration, DEFAULT_SCALAR_FOR_ALMOST_FULL_SUSTAIN)
+            apply.Offset(duration, DEFAULT_OFFSET_FOR_ALMOST_FULL_SUSTAIN)
     }
 
 const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =

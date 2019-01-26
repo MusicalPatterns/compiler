@@ -19,8 +19,9 @@ const migrate: (outmodedThreadSpecs: OutmodedThreadSpec[], fromCompilerVersion: 
             updatingThreadSpecs = oneZeroThirtyThreadSpecs.map(
                 (oneZeroThirtyThreadSpec: ThreadSpecOneZeroThirty): ThreadSpec => {
                     const timbreName: TimbreName = oneZeroThirtyThreadSpec.voiceSpec ?
-                            oneZeroThirtyThreadSpec.voiceSpec.timbre :
-                            OscillatorName.SINE
+                        // tslint:disable-next-line:no-unsafe-any
+                        oneZeroThirtyThreadSpec.voiceSpec.timbre :
+                        OscillatorName.SINE
                     const voiceType: VoiceType = oneZeroThirtyThreadSpec.voiceSpec ?
                         oneZeroThirtyThreadSpec.voiceSpec.voiceType :
                         VoiceType.SAMPLE

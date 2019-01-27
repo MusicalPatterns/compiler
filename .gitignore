@@ -17,8 +17,6 @@ bash.exe.stackdump
 .idea/jsLinters/tslint.xml
 .idea/misc.xml
 .idea/watcherTasks.xml
-.travis.yml
-LICENSE
 Makefile
 test/jasmine.js
 test/mockDom.ts
@@ -29,3 +27,11 @@ tsconfig.json
 tsconfig.library.json
 tsconfig.node.json
 tslint.json
+webpack.browser.js
+webpack.deploy.js
+webpack.dev.js
+webpack.library.js
+webpack.local.js
+webpack.prod.js
+webpack.publish.js
+webpack.qa.js

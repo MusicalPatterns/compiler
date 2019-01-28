@@ -71,7 +71,6 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
 const compileNotes: (noteSpecs: NoteSpec[], options: CompileNotesOptions) => Note[] =
     (noteSpecs: NoteSpec[], options: CompileNotesOptions): Note[] =>
         noteSpecs.map((noteSpec: NoteSpec): Note =>
-            // tslint:disable-next-line:no-unsafe-any
             compileNote(noteSpec, options))
 
 export {

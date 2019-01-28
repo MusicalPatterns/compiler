@@ -1,5 +1,3 @@
-// tslint:disable:no-unsafe-any
-
 import { Note } from '@musical-patterns/performer'
 import { to } from '@musical-patterns/utilities'
 import { compileNote, NoteSpec } from '../../src/indexForTest'

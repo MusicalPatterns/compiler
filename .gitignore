@@ -24,10 +24,10 @@ test/reporter.ts
 test/tslint.json
 tsconfig.common.json
 tsconfig.json
-tsconfig.library.json
 tsconfig.node.json
 tslint.json
 webpack.browser.js
+webpack.common.js
 webpack.deploy.js
 webpack.dev.js
 webpack.library.js

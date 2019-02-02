@@ -14,7 +14,10 @@ const calculatePatternTotalCompiledDuration: (parameters: CompilePatternParamete
                 to.Time(0),
             ) : to.Time(0))
 
-        return to.Time(lowestCommonMultiple(...times.map(from.Time)))
+        const rawRoundedTimes: number[] = times.map(from.Time)
+            .map(Math.round)
+
+        return to.Time(lowestCommonMultiple(...rawRoundedTimes))
     }
 
 export {

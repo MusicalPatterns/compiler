@@ -21,6 +21,7 @@ Makefile
 test/jasmine.js
 test/mockDom.ts
 test/reporter.ts
+test/setup.ts
 test/tslint.json
 tsconfig.common.json
 tsconfig.json
@@ -32,6 +33,7 @@ webpack.deploy.js
 webpack.dev.js
 webpack.library.js
 webpack.local.js
+webpack.port.js
 webpack.prod.js
 webpack.publish.js
 webpack.qa.js

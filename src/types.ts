@@ -28,13 +28,6 @@ interface CompileThreadsParameters {
     scales?: Scale[]
 }
 
-type NoteProperty =
-    Time |
-    Scalar |
-    Frequency |
-    Coordinate |
-    CoordinateElement
-
 interface CompileNotesOptions {
     scales?: Scale[],
 }
@@ -86,7 +79,6 @@ interface NotePropertySpec extends Adjustable {
 export {
     CompileThreadParameters,
     CompileThreadsParameters,
-    NoteProperty,
     CompileNotesOptions,
     BuildEntitiesFunction,
     BuildScalesFunction,

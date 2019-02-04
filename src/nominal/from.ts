@@ -1,10 +1,10 @@
 // tslint:disable:variable-name no-any
 
-import { Core } from './types'
+import { NoteProperty } from './types'
 
-const Core: (core: Core) => number =
-    (core: Core): number => core as any
+const NoteProperty: (noteProperty: NoteProperty) => number =
+    (noteProperty: NoteProperty): number => noteProperty as any
 
 export {
-    Core,
+    NoteProperty,
 }

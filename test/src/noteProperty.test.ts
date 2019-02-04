@@ -1,7 +1,7 @@
 // tslint:disable:no-any
 
 import { to } from '@musical-patterns/utilities'
-import { compileNoteProperty, CompileNotesOptions, NoteProperty, NotePropertySpec, Scale } from '../../src/indexForTest'
+import { compileNoteProperty, CompileNotesOptions, NoteProperty, NotePropertySpec, Scale, to as compilerTo } from '../../src/indexForTest'
 
 describe('compile note property', () => {
     let scales: Scale[]
@@ -23,7 +23,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
         expect(noteProperty)
-            .toBe(2)
+            .toBe(compilerTo.NoteProperty(2))
     })
 
     it('uses index to choose later notes in the scale', () => {
@@ -33,7 +33,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
         expect(noteProperty)
-            .toBe(8)
+            .toBe(compilerTo.NoteProperty(8))
     })
 
     it('uses scale index to switch scales', () => {
@@ -43,7 +43,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
         expect(noteProperty)
-            .toBe(3)
+            .toBe(compilerTo.NoteProperty(3))
     })
 
     it('uses scalar to stretch arbitrarily', () => {
@@ -53,7 +53,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
         expect(noteProperty)
-            .toBe(2.5)
+            .toBe(compilerTo.NoteProperty(2.5))
     })
 
     it('uses offset to shift around arbitrarily', () => {
@@ -63,7 +63,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
         expect(noteProperty)
-            .toBe(2.1)
+            .toBe(compilerTo.NoteProperty(2.1))
     })
 
     it('defaults to 1 if the scale\'s scalars are empty', () => {
@@ -71,7 +71,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ { scalars: [] } ] })
 
         expect(noteProperty)
-            .toBe(1)
+            .toBe(compilerTo.NoteProperty(1))
     })
 
     it('applies offset from the scale, too', () => {
@@ -83,7 +83,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithOffset ] })
 
         expect(noteProperty)
-            .toBe(5)
+            .toBe(compilerTo.NoteProperty(5))
     })
 
     it('applies scalar from the scale, too', () => {
@@ -95,7 +95,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalar ] })
 
         expect(noteProperty)
-            .toBe(14)
+            .toBe(compilerTo.NoteProperty(14))
     })
 
     it('applies scalar first, then offset', () => {
@@ -106,7 +106,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
         expect(noteProperty)
-            .toBe(2.6)
+            .toBe(compilerTo.NoteProperty(2.6))
     })
 
     it('applies scalar from the scale first, then offset from the scale', () => {
@@ -119,7 +119,7 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndOffset ] })
 
         expect(noteProperty)
-            .toBe(17)
+            .toBe(compilerTo.NoteProperty(17))
     })
 
     it('can apply offsets and scalars from both scale and the note, scalars first', () => {
@@ -135,20 +135,20 @@ describe('compile note property', () => {
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndOffset ] })
 
         expect(noteProperty)
-            .toBe(20.6)
+            .toBe(compilerTo.NoteProperty(20.6))
     })
 
     it('handles empty scales', () => {
         const noteProperty: NoteProperty = compileNoteProperty({}, { scales: [] })
 
         expect(noteProperty)
-            .toBe(1)
+            .toBe(compilerTo.NoteProperty(1))
     })
 
     it('handles missing scales', () => {
         const noteProperty: NoteProperty = compileNoteProperty({})
 
         expect(noteProperty)
-            .toBe(1)
+            .toBe(compilerTo.NoteProperty(1))
     })
 })

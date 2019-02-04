@@ -8,9 +8,6 @@
     "type": "git",
     "url": "https://github.com/MusicalPatterns/compiler.git"
   },
-  "resolutions": {
-    "terser": "3.14.1"
-  },
   "dependencies": {
     "@musical-patterns/performer": "^1.0.166",
     "@musical-patterns/utilities": "^1.0.188"

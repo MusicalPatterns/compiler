@@ -80,7 +80,7 @@ describe('if this test fails, you need to include a new migration', () => {
         }
 
         expect(JSON.stringify(await compilePattern({ material }), undefined, 2))
-        // tslint:disable-next-line:no-require-imports
+        // tslint:disable-next-line no-require-imports
             .toEqual(JSON.stringify(require(`./snapshot`), undefined, 2))
 
         done()

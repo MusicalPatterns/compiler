@@ -1,4 +1,4 @@
-// tslint:disable:no-reaching-imports
+// tslint:disable no-reaching-imports
 
 import * as to from './to'
 

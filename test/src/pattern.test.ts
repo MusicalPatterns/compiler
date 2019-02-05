@@ -9,7 +9,7 @@ import {
     Scale,
 } from '../../src/indexForTest'
 
-// tslint:disable-next-line:no-type-definitions-outside-types-modules
+// tslint:disable-next-line no-type-definitions-outside-types-modules
 describe('compile pattern', () => {
     it('given a spec, takes it into account', async (done: DoneFn) => {
         interface TestSpec {

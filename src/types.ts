@@ -1,4 +1,4 @@
-// tslint:disable:max-file-line-count
+// tslint:disable max-file-line-count
 
 import { OscillatorName, SampleName } from '@musical-patterns/performer'
 import {
@@ -12,7 +12,7 @@ import {
     Time,
 } from '@musical-patterns/utilities'
 
-// tslint:disable-next-line:variable-name typedef
+// tslint:disable-next-line variable-name typedef
 const TimbreNameEnum = {
     ...OscillatorName,
     ...SampleName,
@@ -39,13 +39,13 @@ interface Material {
 
 interface CompilePatternParameters extends AnyOtherProperties {
     material: Material,
-    // tslint:disable-next-line:no-any
+    // tslint:disable-next-line no-any
     spec?: any,
 }
 
-// tslint:disable-next-line:no-any
+// tslint:disable-next-line no-any
 type BuildEntitiesFunction = (spec?: any) => Entity[]
-// tslint:disable-next-line:no-any
+// tslint:disable-next-line no-any
 type BuildScalesFunction = (spec?: any) => Scale[]
 
 interface Entity {

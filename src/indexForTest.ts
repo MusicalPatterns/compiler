@@ -1,4 +1,4 @@
-// tslint:disable:no-reaching-imports
+// tslint:disable no-reaching-imports
 
 export { compileNote } from './notes'
 export { compileNoteProperty } from './noteProperty'

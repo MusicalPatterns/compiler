@@ -1,4 +1,4 @@
-// tslint:disable:variable-name no-any
+// tslint:disable variable-name no-any
 
 import { NoteProperty } from './types'
 

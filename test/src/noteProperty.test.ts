@@ -1,4 +1,4 @@
-// tslint:disable:no-any
+// tslint:disable no-any
 
 import { to } from '@musical-patterns/utilities'
 import { compileNoteProperty, CompileNotesOptions, NoteProperty, NotePropertySpec, Scale, to as compilerTo } from '../../src/indexForTest'

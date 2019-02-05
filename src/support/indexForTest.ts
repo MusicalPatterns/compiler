@@ -1,4 +1,4 @@
-// tslint:disable:no-reaching-imports
+// tslint:disable no-reaching-imports
 
 export { calculateNoteSpecsTotalCompiledDuration } from './calculateNoteSpecsTotalCompiledDuration'
 export { calculatePatternTotalCompiledDuration } from './calculatePatternTotalCompiledDuration'

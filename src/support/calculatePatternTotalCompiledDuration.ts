@@ -1,5 +1,5 @@
 import { Note, ThreadSpec } from '@musical-patterns/performer'
-import { from, lowestCommonMultiple, sum, Time, to } from '@musical-patterns/utilities'
+import { from, lowestCommonMultiple, round, sum, Time, to } from '@musical-patterns/utilities'
 import { compilePattern } from '../pattern'
 import { CompilePatternParameters } from '../types'
 
@@ -15,7 +15,7 @@ const calculatePatternTotalCompiledDuration: (parameters: CompilePatternParamete
             ) : to.Time(0))
 
         const rawRoundedTimes: number[] = times.map(from.Time)
-            .map(Math.round)
+            .map(round)
 
         return to.Time(lowestCommonMultiple(...rawRoundedTimes))
     }

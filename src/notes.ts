@@ -10,15 +10,15 @@ import {
     Time,
     to,
 } from '@musical-patterns/utilities'
-import { DEFAULT_OFFSET_FOR_ALMOST_FULL_SUSTAIN } from './constants'
+import { DEFAULT_TRANSLATION_FOR_ALMOST_FULL_SUSTAIN } from './constants'
 import { compileNoteProperty } from './noteProperty'
 import { CompileNotesOptions, NotePropertySpec, NoteSpec } from './types'
 
 const defaultNotePropertySpec: NotePropertySpec = {
-    index: to.Index(0),
-    offset: to.Offset(0),
+    index: to.Ordinal(0),
     scalar: to.Scalar(1),
-    scaleIndex: to.Index(0),
+    scaleIndex: to.Ordinal(0),
+    translation: to.Translation(0),
 }
 
 const compilePosition:
@@ -33,7 +33,7 @@ const compilePosition:
                 [ compileNoteProperty(positionSpec, options) as CoordinateElement ]
             :
             [] as Coordinate
-        while (position.length < from.Count(THREE_DIMENSIONAL)) {
+        while (position.length < from.Cardinal(THREE_DIMENSIONAL)) {
             position.push(to.CoordinateElement(0))
         }
 
@@ -47,7 +47,7 @@ const compileSustain: (noteSpec: NoteSpec, duration: Time, options?: CompileNote
 
         return sustainAttempt < duration ?
             sustainAttempt :
-            apply.Offset(duration, DEFAULT_OFFSET_FOR_ALMOST_FULL_SUSTAIN)
+            apply.Translation(duration, DEFAULT_TRANSLATION_FOR_ALMOST_FULL_SUSTAIN)
     }
 
 const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =

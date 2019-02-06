@@ -37,24 +37,24 @@ describe('if this test fails, you need to include a new migration', () => {
                     noteSpecs: [
                         {
                             durationSpec: {
-                                index: to.Index(4),
-                                scaleIndex: to.Index(1),
+                                index: to.Ordinal(4),
+                                scaleIndex: to.Ordinal(1),
                             },
                             gainSpec: {
-                                index: to.Index(1),
-                                scaleIndex: to.Index(2),
+                                index: to.Ordinal(1),
+                                scaleIndex: to.Ordinal(2),
                             },
                             pitchSpec: {
-                                index: to.Index(2),
-                                scaleIndex: to.Index(1),
+                                index: to.Ordinal(2),
+                                scaleIndex: to.Ordinal(1),
                             },
                             positionSpec: {
-                                index: to.Index(3),
-                                scaleIndex: to.Index(2),
+                                index: to.Ordinal(3),
+                                scaleIndex: to.Ordinal(2),
                             },
                             sustainSpec: {
-                                index: to.Index(0),
-                                scaleIndex: to.Index(1),
+                                index: to.Ordinal(0),
+                                scaleIndex: to.Ordinal(1),
                             },
                         },
                     ],

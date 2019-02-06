@@ -6,10 +6,10 @@ import {
     Coordinate,
     CoordinateElement,
     Frequency,
-    Index,
-    Offset,
+    Ordinal,
     Scalar,
     Time,
+    Translation,
 } from '@musical-patterns/utilities'
 
 // tslint:disable-next-line variable-name typedef
@@ -67,13 +67,13 @@ interface NoteSpec {
 }
 
 interface Adjustable {
-    offset?: Offset,
     scalar?: Scalar,
+    translation?: Translation,
 }
 
 interface NotePropertySpec extends Adjustable {
-    index?: Index,
-    scaleIndex?: Index,
+    index?: Ordinal,
+    scaleIndex?: Ordinal,
 }
 
 export {

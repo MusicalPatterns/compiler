@@ -5,28 +5,28 @@ import { CompileNotesOptions, NotePropertySpec, Scale } from './types'
 const compileNoteProperty: (notePropertySpec: NotePropertySpec, options?: CompileNotesOptions) => NoteProperty =
     (notePropertySpec: NotePropertySpec, options?: CompileNotesOptions): NoteProperty => {
         const {
-            index = to.Index(0),
-            offset: noteOffset = to.Offset(0),
+            index = to.Ordinal(0),
+            translation: noteOffset = to.Translation(0),
             scalar: noteScalar = to.Scalar(1),
-            scaleIndex = to.Index(0),
+            scaleIndex = to.Ordinal(0),
         }: NotePropertySpec = notePropertySpec
 
         const { scales = [] } = options || {}
-        const scale: Scale = scales.length ? apply.Index(scales, scaleIndex) : { scalars: [] }
+        const scale: Scale = scales.length ? apply.Ordinal(scales, scaleIndex) : { scalars: [] }
         const {
-            offset: scaleOffset = to.Offset(0),
+            translation: scaleOffset = to.Translation(0),
             scalar: scaleScalar = to.Scalar(1),
             scalars = [],
         }: Scale = scale
 
-        const scaleElement: Maybe<NoteProperty> = apply.Index(scalars, index)
+        const scaleElement: Maybe<NoteProperty> = apply.Ordinal(scalars, index)
         let noteProperty: NoteProperty = scaleElement || to.Scalar(1)
 
         noteProperty = apply.Scalar(noteProperty, noteScalar)
         noteProperty = apply.Scalar(noteProperty, scaleScalar)
 
-        noteProperty = apply.Offset(noteProperty, noteOffset)
-        noteProperty = apply.Offset(noteProperty, scaleOffset)
+        noteProperty = apply.Translation(noteProperty, noteOffset)
+        noteProperty = apply.Translation(noteProperty, scaleOffset)
 
         return noteProperty
     }

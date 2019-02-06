@@ -11,7 +11,7 @@ describe('calculate note specs total compiled duration', () => {
             },
             {
                 durationSpec: {
-                    index: to.Index(1),
+                    index: to.Ordinal(1),
                 },
             },
         ]

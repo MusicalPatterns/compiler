@@ -18,7 +18,7 @@ describe('compile note property', () => {
         options = { scales }
     })
 
-    it('defaults scale index to zero, index to zero, offset to zero, and scalar to zero', () => {
+    it('defaults scale index to zero, index to zero, translation to zero, and scalar to zero', () => {
         const notePropertySpec: NotePropertySpec = {}
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
@@ -28,7 +28,7 @@ describe('compile note property', () => {
 
     it('uses index to choose later notes in the scale', () => {
         const notePropertySpec: NotePropertySpec = {
-            index: to.Index(2),
+            index: to.Ordinal(2),
         }
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
@@ -38,7 +38,7 @@ describe('compile note property', () => {
 
     it('uses scale index to switch scales', () => {
         const notePropertySpec: NotePropertySpec = {
-            scaleIndex: to.Index(1),
+            scaleIndex: to.Ordinal(1),
         }
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
@@ -56,9 +56,9 @@ describe('compile note property', () => {
             .toBe(compilerTo.NoteProperty(2.5))
     })
 
-    it('uses offset to shift around arbitrarily', () => {
+    it('uses translation to shift around arbitrarily', () => {
         const notePropertySpec: NotePropertySpec = {
-            offset: to.Offset(0.1),
+            translation: to.Translation(0.1),
         }
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
@@ -74,10 +74,10 @@ describe('compile note property', () => {
             .toBe(compilerTo.NoteProperty(1))
     })
 
-    it('applies offset from the scale, too', () => {
+    it('applies translation from the scale, too', () => {
         const scaleWithOffset: Scale = {
-            offset: to.Offset(3),
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
+            translation: to.Translation(3),
         }
         const notePropertySpec: NotePropertySpec = {}
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithOffset ] })
@@ -98,10 +98,10 @@ describe('compile note property', () => {
             .toBe(compilerTo.NoteProperty(14))
     })
 
-    it('applies scalar first, then offset', () => {
+    it('applies scalar first, then translation', () => {
         const notePropertySpec: NotePropertySpec = {
-            offset: to.Offset(0.1),
             scalar: to.Scalar(1.25),
+            translation: to.Translation(0.1),
         }
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
 
@@ -109,12 +109,12 @@ describe('compile note property', () => {
             .toBe(compilerTo.NoteProperty(2.6))
     })
 
-    it('applies scalar from the scale first, then offset from the scale', () => {
+    it('applies scalar from the scale first, then translation from the scale', () => {
         const notePropertySpec: NotePropertySpec = {}
         const scaleWithScalarAndOffset: Scale = {
-            offset: to.Offset(3),
             scalar: to.Scalar(7),
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
+            translation: to.Translation(3),
         }
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndOffset ] })
 
@@ -124,13 +124,13 @@ describe('compile note property', () => {
 
     it('can apply offsets and scalars from both scale and the note, scalars first', () => {
         const notePropertySpec: NotePropertySpec = {
-            offset: to.Offset(0.1),
             scalar: to.Scalar(1.25),
+            translation: to.Translation(0.1),
         }
         const scaleWithScalarAndOffset: Scale = {
-            offset: to.Offset(3),
             scalar: to.Scalar(7),
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
+            translation: to.Translation(3),
         }
         const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndOffset ] })
 

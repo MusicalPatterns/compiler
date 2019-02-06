@@ -1,4 +1,4 @@
-import { from, Time, to } from '@musical-patterns/utilities'
+import { sum, Time, to } from '@musical-patterns/utilities'
 import { compileNoteProperty } from '../noteProperty'
 import { NotePropertySpec, NoteSpec, Scale } from '../types'
 
@@ -9,7 +9,7 @@ const calculateNoteSpecsTotalCompiledDuration: (noteSpecs: NoteSpec[], scales?: 
                 const durationSpec: NotePropertySpec = noteSpec.durationSpec || {}
                 const duration: Time = compileNoteProperty(durationSpec, { scales }) as Time
 
-                return to.Time(from.Time(totalDuration) + from.Time(duration))
+                return sum(totalDuration, duration)
             },
             to.Time(0),
         )

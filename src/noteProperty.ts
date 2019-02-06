@@ -6,7 +6,7 @@ const compileNoteProperty: (notePropertySpec: NotePropertySpec, options?: Compil
     (notePropertySpec: NotePropertySpec, options?: CompileNotesOptions): NoteProperty => {
         const {
             index = to.Ordinal(0),
-            translation: noteOffset = to.Translation(0),
+            translation: noteTranslation = to.Translation(0),
             scalar: noteScalar = to.Scalar(1),
             scaleIndex = to.Ordinal(0),
         }: NotePropertySpec = notePropertySpec
@@ -14,7 +14,7 @@ const compileNoteProperty: (notePropertySpec: NotePropertySpec, options?: Compil
         const { scales = [] } = options || {}
         const scale: Scale = scales.length ? apply.Ordinal(scales, scaleIndex) : { scalars: [] }
         const {
-            translation: scaleOffset = to.Translation(0),
+            translation: scaleTranslation = to.Translation(0),
             scalar: scaleScalar = to.Scalar(1),
             scalars = [],
         }: Scale = scale
@@ -25,8 +25,8 @@ const compileNoteProperty: (notePropertySpec: NotePropertySpec, options?: Compil
         noteProperty = apply.Scalar(noteProperty, noteScalar)
         noteProperty = apply.Scalar(noteProperty, scaleScalar)
 
-        noteProperty = apply.Translation(noteProperty, noteOffset)
-        noteProperty = apply.Translation(noteProperty, scaleOffset)
+        noteProperty = apply.Translation(noteProperty, noteTranslation)
+        noteProperty = apply.Translation(noteProperty, scaleTranslation)
 
         return noteProperty
     }

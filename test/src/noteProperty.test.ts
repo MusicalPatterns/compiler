@@ -75,12 +75,12 @@ describe('compile note property', () => {
     })
 
     it('applies translation from the scale, too', () => {
-        const scaleWithOffset: Scale = {
+        const scaleWithTranslation: Scale = {
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
             translation: to.Translation(3),
         }
         const notePropertySpec: NotePropertySpec = {}
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithOffset ] })
+        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithTranslation ] })
 
         expect(noteProperty)
             .toBe(compilerTo.NoteProperty(5))
@@ -111,28 +111,28 @@ describe('compile note property', () => {
 
     it('applies scalar from the scale first, then translation from the scale', () => {
         const notePropertySpec: NotePropertySpec = {}
-        const scaleWithScalarAndOffset: Scale = {
+        const scaleWithScalarAndTranslation: Scale = {
             scalar: to.Scalar(7),
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
             translation: to.Translation(3),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndOffset ] })
+        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndTranslation ] })
 
         expect(noteProperty)
             .toBe(compilerTo.NoteProperty(17))
     })
 
-    it('can apply offsets and scalars from both scale and the note, scalars first', () => {
+    it('can apply translations and scalars from both scale and the note, scalars first', () => {
         const notePropertySpec: NotePropertySpec = {
             scalar: to.Scalar(1.25),
             translation: to.Translation(0.1),
         }
-        const scaleWithScalarAndOffset: Scale = {
+        const scaleWithScalarAndTranslation: Scale = {
             scalar: to.Scalar(7),
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
             translation: to.Translation(3),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndOffset ] })
+        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndTranslation ] })
 
         expect(noteProperty)
             .toBe(compilerTo.NoteProperty(20.6))

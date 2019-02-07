@@ -1,10 +1,13 @@
 import { Note } from '@musical-patterns/performer'
 import {
+    ADDITIVE_IDENTITY,
     apply,
     Coordinate,
     CoordinateElement,
     Frequency,
     from,
+    INITIAL,
+    MULTIPLICATIVE_IDENTITY,
     Scalar,
     THREE_DIMENSIONAL,
     Time,
@@ -15,10 +18,10 @@ import { compileNoteProperty } from './noteProperty'
 import { CompileNotesOptions, NotePropertySpec, NoteSpec } from './types'
 
 const defaultNotePropertySpec: NotePropertySpec = {
-    index: to.Ordinal(0),
-    scalar: to.Scalar(1),
-    scaleIndex: to.Ordinal(0),
-    translation: to.Translation(0),
+    index: INITIAL,
+    scalar: MULTIPLICATIVE_IDENTITY,
+    scaleIndex: INITIAL,
+    translation: ADDITIVE_IDENTITY,
 }
 
 const compilePosition:

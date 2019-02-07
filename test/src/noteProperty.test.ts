@@ -151,4 +151,14 @@ describe('compile note property', () => {
         expect(noteProperty)
             .toBe(compilerTo.NoteProperty(1))
     })
+
+    it('rounds, to avoid off by 0.000000000001 errors when comparing patterns compiled on different systems', () => {
+        const notePropertySpec: NotePropertySpec = {
+            translation: to.Translation(0.1239147293578729037982375),
+        }
+        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
+
+        expect(noteProperty)
+            .toBe(compilerTo.NoteProperty(2.12391))
+    })
 })

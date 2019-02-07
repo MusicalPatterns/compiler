@@ -1,4 +1,5 @@
-import { apply, Maybe, to } from '@musical-patterns/utilities'
+import { apply, Maybe, round, to } from '@musical-patterns/utilities'
+import { COMPILER_PRECISION } from './constants'
 import { NoteProperty } from './nominal'
 import { CompileNotesOptions, NotePropertySpec, Scale } from './types'
 
@@ -28,7 +29,7 @@ const compileNoteProperty: (notePropertySpec: NotePropertySpec, options?: Compil
         noteProperty = apply.Translation(noteProperty, noteTranslation)
         noteProperty = apply.Translation(noteProperty, scaleTranslation)
 
-        return noteProperty
+        return round(noteProperty, COMPILER_PRECISION)
     }
 
 export {

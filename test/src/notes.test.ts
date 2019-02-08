@@ -12,7 +12,7 @@ describe('compile note', () => {
 
         it('duration to 1', () => {
             expect(note.duration)
-                .toBe(to.Time(1))
+                .toBe(to.Ms(1))
         })
 
         it('gain to 1', () => {
@@ -22,7 +22,7 @@ describe('compile note', () => {
 
         it('frequency to 1', () => {
             expect(note.frequency)
-                .toBe(to.Frequency(1))
+                .toBe(to.Hz(1))
         })
 
         it('position to the origin', () => {
@@ -32,7 +32,7 @@ describe('compile note', () => {
 
         it('sustain to 0.9', () => {
             expect(note.sustain)
-                .toBe(to.Time(0.9))
+                .toBe(to.Ms(0.9))
         })
     })
 
@@ -94,9 +94,9 @@ describe('compile note', () => {
             const note: Note = compileNote(noteSpec)
 
             expect(note.duration)
-                .toEqual(to.Time(3))
+                .toEqual(to.Ms(3))
             expect(note.sustain)
-                .toEqual(to.Time(2.9))
+                .toEqual(to.Ms(2.9))
         })
 
         it('defaults sustain to slightly less than the duration', () => {
@@ -109,9 +109,9 @@ describe('compile note', () => {
             const note: Note = compileNote(noteSpec)
 
             expect(note.duration)
-                .toEqual(to.Time(3))
+                .toEqual(to.Ms(3))
             expect(note.sustain)
-                .toEqual(to.Time(2.9))
+                .toEqual(to.Ms(2.9))
         })
 
         it('uses sustain if given and less than duration', () => {
@@ -127,9 +127,9 @@ describe('compile note', () => {
             const note: Note = compileNote(noteSpec)
 
             expect(note.duration)
-                .toEqual(to.Time(3))
+                .toEqual(to.Ms(3))
             expect(note.sustain)
-                .toEqual(to.Time(2))
+                .toEqual(to.Ms(2))
         })
     })
 })

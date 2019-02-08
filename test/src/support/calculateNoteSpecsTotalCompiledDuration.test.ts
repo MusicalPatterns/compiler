@@ -1,4 +1,4 @@
-import { Time, to } from '@musical-patterns/utilities'
+import { Ms, to } from '@musical-patterns/utilities'
 import { calculateNoteSpecsTotalCompiledDuration, NoteSpec, Scale } from '../../../src/indexForTest'
 
 describe('calculate note specs total compiled duration', () => {
@@ -19,9 +19,9 @@ describe('calculate note specs total compiled duration', () => {
             { scalars: [ 5, 7 ].map(to.Scalar) },
         ]
 
-        const actual: Time = calculateNoteSpecsTotalCompiledDuration(noteSpecs, scales)
+        const actual: Ms = calculateNoteSpecsTotalCompiledDuration(noteSpecs, scales)
 
         expect(actual)
-            .toBe(to.Time(17))
+            .toBe(to.Ms(17))
     })
 })

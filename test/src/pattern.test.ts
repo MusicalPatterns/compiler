@@ -53,11 +53,11 @@ describe('compile pattern', () => {
                 {
                     notes: [
                         {
-                            duration: to.Time(9),
-                            frequency: to.Frequency(9),
+                            duration: to.Ms(9),
+                            frequency: to.Hz(9),
                             gain: to.Scalar(9),
                             position: to.Coordinate([ 9, 0, 0 ]),
-                            sustain: to.Time(8.9),
+                            sustain: to.Ms(8.9),
                         },
                     ],
                     voiceSpec: undefined,

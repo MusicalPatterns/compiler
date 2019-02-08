@@ -7,11 +7,11 @@ describe('migrate - takes outmoded thread specs and brings them into conformity 
         const outmodedThreadSpecs: ThreadSpecOneZeroSeven[] = [ {
             part: [
                 {
-                    duration: to.Time(2),
-                    frequency: to.Frequency(2),
+                    duration: to.Ms(2),
+                    frequency: to.Hz(2),
                     gain: to.Scalar(2),
                     position: to.Coordinate([ 2 ]),
-                    sustain: to.Time(2),
+                    sustain: to.Ms(2),
                 },
             ],
             voiceSpec: {
@@ -27,11 +27,11 @@ describe('migrate - takes outmoded thread specs and brings them into conformity 
                 {
                     notes: [
                         {
-                            duration: to.Time(2),
-                            frequency: to.Frequency(2),
+                            duration: to.Ms(2),
+                            frequency: to.Hz(2),
                             gain: to.Scalar(2),
                             position: to.Coordinate([ 2 ]),
-                            sustain: to.Time(2),
+                            sustain: to.Ms(2),
                         },
                     ],
                     voiceSpec: {
@@ -46,11 +46,11 @@ describe('migrate - takes outmoded thread specs and brings them into conformity 
         const outmodedThreadSpecs: ThreadSpecOneZeroThirty[] = [ {
             notes: [
                 {
-                    duration: to.Time(2),
-                    frequency: to.Frequency(2),
+                    duration: to.Ms(2),
+                    frequency: to.Hz(2),
                     gain: to.Scalar(2),
                     position: to.Coordinate([ 2, 0, 0 ]),
-                    sustain: to.Time(2),
+                    sustain: to.Ms(2),
                 },
             ],
             voiceSpec: {
@@ -66,11 +66,11 @@ describe('migrate - takes outmoded thread specs and brings them into conformity 
                 {
                     notes: [
                         {
-                            duration: to.Time(2),
-                            frequency: to.Frequency(2),
+                            duration: to.Ms(2),
+                            frequency: to.Hz(2),
                             gain: to.Scalar(2),
                             position: to.Coordinate([ 2, 0, 0 ]),
-                            sustain: to.Time(2),
+                            sustain: to.Ms(2),
                         },
                     ],
                     voiceSpec: {

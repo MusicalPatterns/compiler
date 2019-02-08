@@ -1,4 +1,4 @@
-import { Time, to } from '@musical-patterns/utilities'
+import { Ms, to } from '@musical-patterns/utilities'
 import { calculatePatternTotalCompiledDuration, Entity, Material, NoteSpec } from '../../../src/indexForTest'
 
 describe('calculate pattern total compiled duration', () => {
@@ -38,10 +38,10 @@ describe('calculate pattern total compiled duration', () => {
             ],
         }
 
-        const actual: Time = await calculatePatternTotalCompiledDuration({ material })
+        const actual: Ms = await calculatePatternTotalCompiledDuration({ material })
 
         expect(actual)
-            .toBe(to.Time(40))
+            .toBe(to.Ms(40))
 
         done()
     })

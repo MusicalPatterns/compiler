@@ -5,10 +5,10 @@ import {
     AnyOtherProperties,
     Coordinate,
     CoordinateElement,
-    Frequency,
+    Hz,
+    Ms,
     Ordinal,
     Scalar,
-    Time,
     Translation,
 } from '@musical-patterns/utilities'
 

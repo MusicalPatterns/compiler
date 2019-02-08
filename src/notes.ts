@@ -4,13 +4,13 @@ import {
     apply,
     Coordinate,
     CoordinateElement,
-    Frequency,
     from,
+    Hz,
     INITIAL,
+    Ms,
     MULTIPLICATIVE_IDENTITY,
     Scalar,
     THREE_DIMENSIONAL,
-    Time,
     to,
 } from '@musical-patterns/utilities'
 import { DEFAULT_TRANSLATION_FOR_ALMOST_FULL_SUSTAIN } from './constants'
@@ -43,10 +43,10 @@ const compilePosition:
         return position
     }
 
-const compileSustain: (noteSpec: NoteSpec, duration: Time, options?: CompileNotesOptions) => Time =
-    (noteSpec: NoteSpec, duration: Time, options?: CompileNotesOptions): Time => {
+const compileSustain: (noteSpec: NoteSpec, duration: Ms, options?: CompileNotesOptions) => Ms =
+    (noteSpec: NoteSpec, duration: Ms, options?: CompileNotesOptions): Ms => {
         const sustainSpec: NotePropertySpec = noteSpec.sustainSpec || noteSpec.durationSpec || defaultNotePropertySpec
-        const sustainAttempt: Time = compileNoteProperty(sustainSpec, options) as Time
+        const sustainAttempt: Ms = compileNoteProperty(sustainSpec, options) as Ms
 
         return sustainAttempt < duration ?
             sustainAttempt :
@@ -61,12 +61,12 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
             pitchSpec = defaultNotePropertySpec,
         } = noteSpec
 
-        const duration: Time = compileNoteProperty(durationSpec, options) as Time
+        const duration: Ms = compileNoteProperty(durationSpec, options) as Ms
         const gain: Scalar = compileNoteProperty(gainSpec, options) as Scalar
-        const frequency: Frequency = compileNoteProperty(pitchSpec, options) as Frequency
+        const frequency: Hz = compileNoteProperty(pitchSpec, options) as Hz
 
         const position: Coordinate = compilePosition(noteSpec.positionSpec, options)
-        const sustain: Time = compileSustain(noteSpec, duration, options)
+        const sustain: Ms = compileSustain(noteSpec, duration, options)
 
         return { duration, gain, frequency, position, sustain }
     }

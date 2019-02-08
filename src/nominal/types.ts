@@ -1,9 +1,9 @@
-import { Coordinate, CoordinateElement, Frequency, Scalar, Time } from '@musical-patterns/utilities'
+import { Coordinate, CoordinateElement, Hz, Ms, Scalar } from '@musical-patterns/utilities'
 
 type NoteProperty =
-    Time |
+    Ms |
     Scalar |
-    Frequency |
+    Hz |
     Coordinate |
     CoordinateElement
 

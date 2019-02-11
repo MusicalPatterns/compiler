@@ -1,5 +1,5 @@
 import { Note, ThreadSpec } from '@musical-patterns/performer'
-import { from, lowestCommonMultiple, Ms, round, sum, to } from '@musical-patterns/utilities'
+import { from, Integer, lowestCommonMultiple, Ms, round, sum, to } from '@musical-patterns/utilities'
 import { compilePattern } from '../pattern'
 import { CompilePatternParameters } from '../types'
 
@@ -14,8 +14,10 @@ const calculatePatternTotalCompiledDuration: (parameters: CompilePatternParamete
                 to.Ms(0),
             ) : to.Ms(0))
 
-        const rawRoundedDurations: number[] = durations.map(from.Ms)
-            .map(round)
+        const rawRoundedDurations: Integer[] = durations.map(from.Ms)
+        // tslint:disable-next-line no-unnecessary-callback-wrapper
+            .map((duration: number) => round(duration))
+            .map(to.Integer)
 
         return to.Ms(lowestCommonMultiple(...rawRoundedDurations))
     }

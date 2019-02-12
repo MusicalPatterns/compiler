@@ -27,7 +27,7 @@ describe('compile note', () => {
 
         it('position to the origin', () => {
             expect(note.position)
-                .toEqual(to.Coordinate([ 0, 0, 0 ]))
+                .toEqual([ 0, 0, 0 ].map(to.Meters))
         })
 
         it('sustain to 0.9', () => {
@@ -46,7 +46,7 @@ describe('compile note', () => {
             const note: Note = compileNote(noteSpec)
 
             expect(note.position)
-                .toEqual(to.Coordinate([ 3, 0, 0 ]))
+                .toEqual([ 3, 0, 0 ].map(to.Meters))
         })
 
         it('works for a single element position', () => {
@@ -60,7 +60,7 @@ describe('compile note', () => {
             const note: Note = compileNote(noteSpec)
 
             expect(note.position)
-                .toEqual(to.Coordinate([ 3, 0, 0 ]))
+                .toEqual([ 3, 0, 0 ].map(to.Meters))
         })
 
         it('works for a two element position', () => {
@@ -77,7 +77,7 @@ describe('compile note', () => {
             const note: Note = compileNote(noteSpec)
 
             expect(note.position)
-                .toEqual(to.Coordinate([ 3, 2, 0 ]))
+                .toEqual([ 3, 2, 0 ].map(to.Meters))
         })
     })
 

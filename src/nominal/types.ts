@@ -1,11 +1,11 @@
-import { Coordinate, CoordinateElement, Hz, Ms, Scalar } from '@musical-patterns/utilities'
+import { Coordinate, Hz, Meters, Ms, Scalar } from '@musical-patterns/utilities'
 
 type NoteProperty =
     Ms |
     Scalar |
     Hz |
-    Coordinate |
-    CoordinateElement
+    Coordinate<Meters> |
+    Meters
 
 export {
     NoteProperty,

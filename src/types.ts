@@ -1,16 +1,7 @@
 // tslint:disable max-file-line-count
 
 import { OscillatorName, SampleName } from '@musical-patterns/performer'
-import {
-    AnyOtherProperties,
-    Coordinate,
-    CoordinateElement,
-    Hz,
-    Ms,
-    Ordinal,
-    Scalar,
-    Translation,
-} from '@musical-patterns/utilities'
+import { AnyOtherProperties, Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
 
 // tslint:disable-next-line variable-name typedef
 const TimbreNameEnum = {

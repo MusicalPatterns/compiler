@@ -3,10 +3,9 @@ import {
     ADDITIVE_IDENTITY,
     apply,
     Coordinate,
-    CoordinateElement,
     from,
     Hz,
-    INITIAL,
+    INITIAL, Meters,
     Ms,
     MULTIPLICATIVE_IDENTITY,
     Scalar,
@@ -25,19 +24,19 @@ const defaultNotePropertySpec: NotePropertySpec = {
 }
 
 const compilePosition:
-    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions) => Coordinate =
-    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions): Coordinate => {
-        const position: Coordinate = positionSpec ?
+    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions) => Coordinate<Meters> =
+    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions): Coordinate<Meters>  => {
+        const position: Coordinate<Meters> = positionSpec ?
             positionSpec instanceof Array ?
                 positionSpec.map(
-                    (positionElementSpec: NotePropertySpec): CoordinateElement =>
-                        compileNoteProperty(positionElementSpec, options) as CoordinateElement)
+                    (positionElementSpec: NotePropertySpec): Meters =>
+                        compileNoteProperty(positionElementSpec, options) as Meters)
                 :
-                [ compileNoteProperty(positionSpec, options) as CoordinateElement ]
+                [ compileNoteProperty(positionSpec, options) as Meters ]
             :
-            [] as Coordinate
+            [] as Coordinate<Meters>
         while (position.length < from.Cardinal(THREE_DIMENSIONAL)) {
-            position.push(to.CoordinateElement(0))
+            position.push(to.Meters(0))
         }
 
         return position
@@ -65,7 +64,7 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
         const gain: Scalar = compileNoteProperty(gainSpec, options) as Scalar
         const frequency: Hz = compileNoteProperty(pitchSpec, options) as Hz
 
-        const position: Coordinate = compilePosition(noteSpec.positionSpec, options)
+        const position: Coordinate<Meters> = compilePosition(noteSpec.positionSpec, options)
         const sustain: Ms = compileSustain(noteSpec, duration, options)
 
         return { duration, gain, frequency, position, sustain }

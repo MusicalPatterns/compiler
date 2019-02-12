@@ -56,7 +56,7 @@ describe('compile pattern', () => {
                             duration: to.Ms(9),
                             frequency: to.Hz(9),
                             gain: to.Scalar(9),
-                            position: to.Coordinate([ 9, 0, 0 ]),
+                            position: [ 9, 0, 0 ].map(to.Meters),
                             sustain: to.Ms(8.9),
                         },
                     ],

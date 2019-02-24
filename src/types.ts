@@ -32,6 +32,8 @@ interface CompilePatternParameters extends AnyOtherProperties {
     material: Material,
     // tslint:disable-next-line no-any
     spec?: any,
+    // tslint:disable-next-line no-any
+    specData?: { initial: any },
 }
 
 // tslint:disable-next-line no-any

@@ -1,3 +1,0 @@
-export {
-    ThreadSpecOneZeroZeroThroughOneZeroSeven,
-} from './types'

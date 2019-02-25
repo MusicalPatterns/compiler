@@ -9,14 +9,6 @@ export {
     calculateNoteSpecsTotalCompiledDuration,
     calculatePatternTotalCompiledDuration,
 } from './support/indexForTest'
-export {
-    migrate,
-    CompilerVersion,
-    ThreadSpecOneZeroZeroThroughOneZeroSeven,
-    ThreadSpecOneZeroSevenThroughOneZeroThirty,
-    CoordinateOneZeroZeroThroughOneZeroNinetyFour,
-    ThreadSpecOneZeroThirtyThroughOneZeroNinetyfour,
-} from './migration/indexForTest'
 export { NoteProperty, to } from './nominal/indexForTest'
 
 export {

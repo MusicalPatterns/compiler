@@ -1,20 +1,21 @@
 import { ThreadSpec } from '@musical-patterns/performer'
-import { ThreadSpecOneZeroThirty } from './1.0.30'
-import { ThreadSpecOneZeroSeven } from './1.0.7'
+import { ThreadSpecOneZeroZeroThroughOneZeroSeven } from './1.0.007'
+import { ThreadSpecOneZeroSevenThroughOneZeroThirty } from './1.0.030'
+import { ThreadSpecOneZeroThirtyThroughOneZeroNinetyfour } from './1.0.094'
 
 type OutmodedThreadSpec =
-    ThreadSpecOneZeroSeven |
-    ThreadSpecOneZeroThirty |
+    ThreadSpecOneZeroZeroThroughOneZeroSeven |
+    ThreadSpecOneZeroSevenThroughOneZeroThirty |
+    ThreadSpecOneZeroThirtyThroughOneZeroNinetyfour |
     ThreadSpec
 
 enum CompilerVersion {
-    '1.0.7' = '1.0.7',
-    '1.0.30' = '1.0.30',
+    '1.0.007' = '1.0.007',
+    '1.0.030' = '1.0.030',
+    '1.0.094' = '1.0.094',
 }
 
 export {
     OutmodedThreadSpec,
     CompilerVersion,
-    ThreadSpecOneZeroSeven,
-    ThreadSpecOneZeroThirty,
 }

@@ -1,23 +1,33 @@
-import { OscillatorName, ThreadSpec, TimbreName, VoiceType } from '@musical-patterns/performer'
-import { CompilerVersion, OutmodedThreadSpec, ThreadSpecOneZeroSeven, ThreadSpecOneZeroThirty } from './types'
+import { Note, OscillatorName, ThreadSpec, TimbreName, VoiceType } from '@musical-patterns/performer'
+import { to } from '@musical-patterns/utilities'
+import { ThreadSpecOneZeroZeroThroughOneZeroSeven } from './1.0.007'
+import { ThreadSpecOneZeroSevenThroughOneZeroThirty } from './1.0.030'
+import {
+    CoordinateElementOneZeroZeroThroughOneZeroNinetyFour,
+    NoteOneZeroZeroThroughOneZeroNinetyfour,
+    ThreadSpecOneZeroThirtyThroughOneZeroNinetyfour,
+} from './1.0.094'
+import { CompilerVersion, OutmodedThreadSpec } from './types'
 
 const migrate: (outmodedThreadSpecs: OutmodedThreadSpec[], fromCompilerVersion: CompilerVersion) => ThreadSpec[] =
     (outmodedThreadSpecs: OutmodedThreadSpec[], fromCompilerVersion: CompilerVersion): ThreadSpec[] => {
         let updatingThreadSpecs: OutmodedThreadSpec[] = outmodedThreadSpecs
 
-        if (fromCompilerVersion >= CompilerVersion[ '1.0.7' ]) {
-            const oneZeroSevenThreadSpecs: ThreadSpecOneZeroSeven[] = updatingThreadSpecs as ThreadSpecOneZeroSeven[]
+        if (fromCompilerVersion <= CompilerVersion[ '1.0.007' ]) {
+            const oneZeroSevenThreadSpecs: ThreadSpecOneZeroZeroThroughOneZeroSeven[] =
+                updatingThreadSpecs as ThreadSpecOneZeroZeroThroughOneZeroSeven[]
             updatingThreadSpecs = oneZeroSevenThreadSpecs.map(
-                (oneZeroSevenThreadSpec: ThreadSpecOneZeroSeven): OutmodedThreadSpec => ({
+                (oneZeroSevenThreadSpec: ThreadSpecOneZeroZeroThroughOneZeroSeven): OutmodedThreadSpec => ({
                     notes: oneZeroSevenThreadSpec.part,
                     voiceSpec: oneZeroSevenThreadSpec.voiceSpec,
                 }))
         }
 
-        if (fromCompilerVersion >= CompilerVersion[ '1.0.30' ]) {
-            const oneZeroThirtyThreadSpecs: ThreadSpecOneZeroThirty[] = updatingThreadSpecs as ThreadSpecOneZeroThirty[]
+        if (fromCompilerVersion <= CompilerVersion[ '1.0.030' ]) {
+            const oneZeroThirtyThreadSpecs: ThreadSpecOneZeroSevenThroughOneZeroThirty[] =
+                updatingThreadSpecs as ThreadSpecOneZeroSevenThroughOneZeroThirty[]
             updatingThreadSpecs = oneZeroThirtyThreadSpecs.map(
-                (oneZeroThirtyThreadSpec: ThreadSpecOneZeroThirty): ThreadSpec => {
+                (oneZeroThirtyThreadSpec: ThreadSpecOneZeroSevenThroughOneZeroThirty): OutmodedThreadSpec => {
                     const timbreName: TimbreName = oneZeroThirtyThreadSpec.voiceSpec ?
                         oneZeroThirtyThreadSpec.voiceSpec.timbre :
                         OscillatorName.SINE
@@ -33,6 +43,24 @@ const migrate: (outmodedThreadSpecs: OutmodedThreadSpec[], fromCompilerVersion: 
                         },
                     }
                 })
+        }
+
+        if (fromCompilerVersion <= CompilerVersion[ '1.0.094' ]) {
+            const oneZeroThirtyThreadSpecs: ThreadSpecOneZeroThirtyThroughOneZeroNinetyfour[] =
+                updatingThreadSpecs as ThreadSpecOneZeroThirtyThroughOneZeroNinetyfour[]
+            updatingThreadSpecs = oneZeroThirtyThreadSpecs.map(
+                (oneZeroNinetyfourThreadSpec: ThreadSpecOneZeroThirtyThroughOneZeroNinetyfour): ThreadSpec => ({
+                    notes: oneZeroNinetyfourThreadSpec.notes && oneZeroNinetyfourThreadSpec.notes.map(
+                        (oneZeroNinetyfourNote: NoteOneZeroZeroThroughOneZeroNinetyfour): Note => ({
+                            ...oneZeroNinetyfourNote,
+                            position: (oneZeroNinetyfourNote.position).map(
+                                (positionElement: CoordinateElementOneZeroZeroThroughOneZeroNinetyFour) =>
+                                    // tslint:disable-next-line no-any
+                                    to.Meters(positionElement as any as number)),
+                        }),
+                    ),
+                    voiceSpec: oneZeroNinetyfourThreadSpec.voiceSpec,
+                }))
         }
 
         return updatingThreadSpecs as ThreadSpec[]

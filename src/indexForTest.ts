@@ -9,7 +9,7 @@ export {
     calculateNoteSpecsTotalCompiledDuration,
     calculatePatternTotalCompiledDuration,
 } from './support/indexForTest'
-export { NoteProperty, to } from './nominal/indexForTest'
+export { NoteProperty, to } from './nominal'
 
 export {
     CompileNotesOptions,

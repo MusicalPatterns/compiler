@@ -1,7 +1,14 @@
 // tslint:disable no-any
 
 import { to } from '@musical-patterns/utilities'
-import { compileNoteProperty, CompileNotesOptions, NoteProperty, NotePropertySpec, Scale, to as compilerTo } from '../../src/indexForTest'
+import {
+    compileNoteProperty,
+    CompileNotesOptions,
+    NoteProperty,
+    NotePropertySpec,
+    Scale,
+    to as compilerTo,
+} from '../../src/indexForTest'
 
 describe('compile note property', () => {
     let scales: Scale[]

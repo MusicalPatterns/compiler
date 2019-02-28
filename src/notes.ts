@@ -5,7 +5,8 @@ import {
     Coordinate,
     from,
     Hz,
-    INITIAL, Meters,
+    INITIAL,
+    Meters,
     Ms,
     MULTIPLICATIVE_IDENTITY,
     Scalar,
@@ -25,7 +26,7 @@ const defaultNotePropertySpec: NotePropertySpec = {
 
 const compilePosition:
     (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions) => Coordinate<Meters> =
-    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions): Coordinate<Meters>  => {
+    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions): Coordinate<Meters> => {
         const position: Coordinate<Meters> = positionSpec ?
             positionSpec instanceof Array ?
                 positionSpec.map(

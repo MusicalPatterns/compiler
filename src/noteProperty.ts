@@ -1,12 +1,4 @@
-import {
-    ADDITIVE_IDENTITY,
-    apply,
-    INITIAL,
-    Maybe,
-    MULTIPLICATIVE_IDENTITY,
-    round,
-    to,
-} from '@musical-patterns/utilities'
+import { ADDITIVE_IDENTITY, apply, INITIAL, Maybe, MULTIPLICATIVE_IDENTITY, round } from '@musical-patterns/utilities'
 import { COMPILER_PRECISION } from './constants'
 import { NoteProperty } from './nominal'
 import { CompileNotesOptions, NotePropertySpec, Scale } from './types'

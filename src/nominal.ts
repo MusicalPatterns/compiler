@@ -1,4 +1,4 @@
-// tslint:disable ban-types no-type-definitions-outside-types-modules no-any
+// tslint:disable ban-types no-any
 
 import {
     buildNominalInterface,

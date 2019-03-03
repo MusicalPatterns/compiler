@@ -8,6 +8,7 @@ dist/*
 bash.exe.stackdump
 .npmignore
 report*.json
+running
 .gitattributes
 .idea/codeStyles/codeStyleConfig.xml
 .idea/codeStyles/Project.xml

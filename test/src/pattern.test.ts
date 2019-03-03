@@ -9,8 +9,8 @@ import {
     Scale,
 } from '../../src/indexForTest'
 
-// tslint:disable-next-line no-type-definitions-outside-types-modules
 describe('compile pattern', () => {
+    // tslint:disable-next-line no-type-definitions-outside-types-modules
     interface TestSpec {
         testThing: Scalar,
     }

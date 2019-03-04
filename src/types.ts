@@ -1,5 +1,3 @@
-// tslint:disable max-file-line-count
-
 import { OscillatorName, SampleName } from '@musical-patterns/performer'
 import { AnyOtherProperties, Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
 

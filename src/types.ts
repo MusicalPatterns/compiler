@@ -41,7 +41,6 @@ type BuildScalesFunction = (spec?: any) => Scale[]
 
 interface Entity {
     noteSpecs?: NoteSpec[],
-    // @ts-ignore
     timbreName?: string,
 }
 

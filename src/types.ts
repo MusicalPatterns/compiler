@@ -1,5 +1,5 @@
 import { OscillatorName, SampleName } from '@musical-patterns/performer'
-import { AnyOtherProperties, Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
+import { Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
 
 // tslint:disable-next-line variable-name typedef
 const TimbreNameEnum = {
@@ -26,7 +26,7 @@ interface Material {
     buildScalesFunction?: BuildScalesFunction,
 }
 
-interface CompilePatternParameters extends AnyOtherProperties {
+interface CompilePatternParameters {
     material: Material,
     // tslint:disable-next-line no-any
     spec?: any,

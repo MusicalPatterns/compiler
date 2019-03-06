@@ -19,7 +19,7 @@ type NoteProperty =
 
 const { to, from } = buildNominalInterface({
     number: {
-        NoteProperty: DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE as any as NoteProperty,
+        NoteProperty: DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE as NoteProperty,
     },
 })
 

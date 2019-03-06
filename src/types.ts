@@ -1,4 +1,4 @@
-import { OscillatorName, SampleName } from '@musical-patterns/performer'
+import { OscillatorName, SampleName, TimbreName } from '@musical-patterns/performer'
 import { Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
 
 // tslint:disable-next-line variable-name typedef
@@ -41,7 +41,7 @@ type BuildScalesFunction = (spec?: any) => Scale[]
 
 interface Entity {
     noteSpecs?: NoteSpec[],
-    timbreName?: string,
+    timbreName?: TimbreName,
 }
 
 interface Scale extends Adjustable {

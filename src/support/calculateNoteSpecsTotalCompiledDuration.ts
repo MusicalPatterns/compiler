@@ -7,7 +7,7 @@ const calculateNoteSpecsTotalCompiledDuration: (noteSpecs: NoteSpec[], scales?: 
         noteSpecs.reduce(
             (totalDuration: Ms, noteSpec: NoteSpec): Ms => {
                 const durationSpec: NotePropertySpec = noteSpec.durationSpec || {}
-                const duration: Ms = compileNoteProperty(durationSpec, { scales }) as Ms
+                const duration: Ms = compileNoteProperty(durationSpec, { scales })
 
                 return sum(totalDuration, duration)
             },

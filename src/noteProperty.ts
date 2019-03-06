@@ -3,8 +3,9 @@ import { COMPILER_PRECISION } from './constants'
 import { NoteProperty } from './nominal'
 import { CompileNotesOptions, NotePropertySpec, Scale } from './types'
 
-const compileNoteProperty: (notePropertySpec: NotePropertySpec, options?: CompileNotesOptions) => NoteProperty =
-    (notePropertySpec: NotePropertySpec, options?: CompileNotesOptions): NoteProperty => {
+const compileNoteProperty:
+    <T extends NoteProperty>(notePropertySpec: NotePropertySpec, options?: CompileNotesOptions) => T =
+    <T extends NoteProperty>(notePropertySpec: NotePropertySpec, options?: CompileNotesOptions): T => {
         const {
             index = INITIAL,
             translation: noteTranslation = ADDITIVE_IDENTITY,
@@ -29,7 +30,7 @@ const compileNoteProperty: (notePropertySpec: NotePropertySpec, options?: Compil
         noteProperty = apply.Translation(noteProperty, noteTranslation)
         noteProperty = apply.Translation(noteProperty, scaleTranslation)
 
-        return round(noteProperty, COMPILER_PRECISION)
+        return round(noteProperty, COMPILER_PRECISION) as T
     }
 
 export {

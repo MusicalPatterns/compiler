@@ -31,11 +31,11 @@ const compilePosition:
             positionSpec instanceof Array ?
                 positionSpec.map(
                     (positionElementSpec: NotePropertySpec): Meters =>
-                        compileNoteProperty(positionElementSpec, options) as Meters)
+                        compileNoteProperty(positionElementSpec, options))
                 :
-                [ compileNoteProperty(positionSpec, options) as Meters ]
+                [ compileNoteProperty(positionSpec, options) ]
             :
-            [] as Coordinate<Meters>
+            []
         while (position.length < from.Cardinal(THREE_DIMENSIONAL)) {
             position.push(to.Meters(0))
         }
@@ -46,7 +46,7 @@ const compilePosition:
 const compileSustain: (noteSpec: NoteSpec, duration: Ms, options?: CompileNotesOptions) => Ms =
     (noteSpec: NoteSpec, duration: Ms, options?: CompileNotesOptions): Ms => {
         const sustainSpec: NotePropertySpec = noteSpec.sustainSpec || noteSpec.durationSpec || defaultNotePropertySpec
-        const sustainAttempt: Ms = compileNoteProperty(sustainSpec, options) as Ms
+        const sustainAttempt: Ms = compileNoteProperty(sustainSpec, options)
 
         return sustainAttempt < duration ?
             sustainAttempt :
@@ -61,9 +61,9 @@ const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
             pitchSpec = defaultNotePropertySpec,
         } = noteSpec
 
-        const duration: Ms = compileNoteProperty(durationSpec, options) as Ms
-        const gain: Scalar = compileNoteProperty(gainSpec, options) as Scalar
-        const frequency: Hz = compileNoteProperty(pitchSpec, options) as Hz
+        const duration: Ms = compileNoteProperty(durationSpec, options)
+        const gain: Scalar = compileNoteProperty(gainSpec, options)
+        const frequency: Hz = compileNoteProperty(pitchSpec, options)
 
         const position: Coordinate<Meters> = compilePosition(noteSpec.positionSpec, options)
         const sustain: Ms = compileSustain(noteSpec, duration, options)

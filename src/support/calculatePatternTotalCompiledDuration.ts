@@ -17,6 +17,7 @@ const calculatePatternTotalCompiledDuration: (parameters: CompilePatternParamete
         const rawRoundedDurations: Integer[] = durations.map(from.Ms)
         // tslint:disable-next-line no-unnecessary-callback-wrapper
             .map((duration: number) => round(duration))
+            .filter((duration: number) => duration !== 0)
             .map(to.Integer)
 
         return to.Ms(lowestCommonMultiple(...rawRoundedDurations))

@@ -12,9 +12,7 @@ import {
 const calculateScaleProperties: (scaleStuffParameters: CalculateScalePropertiesParameters) => ScaleProperties =
     ({ index, scaleIndex, options }: CalculateScalePropertiesParameters): ScaleProperties => {
         const { scales = [] } = options || {}
-        const scale: Scale = scales.length !== 0 ?
-            apply.Ordinal(scales, scaleIndex) || { scalars: [] } :
-            { scalars: [] }
+        const scale: Scale = scales.length !== 0 ? apply.Ordinal(scales, scaleIndex) : { scalars: [] }
         const {
             translation: scaleTranslation = ADDITIVE_IDENTITY,
             scalar: scaleScalar = MULTIPLICATIVE_IDENTITY,

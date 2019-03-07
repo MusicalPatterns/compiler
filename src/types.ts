@@ -1,5 +1,6 @@
 import { OscillatorName, SampleName, TimbreName } from '@musical-patterns/performer'
-import { Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
+import { Maybe, Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
+import { NoteProperty } from './nominal'
 
 // tslint:disable-next-line variable-name typedef
 const TimbreNameEnum = {
@@ -66,6 +67,18 @@ interface NotePropertySpec extends Adjustable {
     scaleIndex?: Ordinal,
 }
 
+interface CalculateScalePropertiesParameters {
+    index: Ordinal,
+    options?: CompileNotesOptions,
+    scaleIndex: Ordinal,
+}
+
+interface ScaleProperties {
+    scaleElement: Maybe<NoteProperty>,
+    scaleScalar: Scalar,
+    scaleTranslation: Translation,
+}
+
 export {
     CompileThreadParameters,
     CompileThreadsParameters,
@@ -80,4 +93,6 @@ export {
     CompilePatternParameters,
     Material,
     TimbreNameEnum,
+    ScaleProperties,
+    CalculateScalePropertiesParameters,
 }

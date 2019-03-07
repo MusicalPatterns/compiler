@@ -1,7 +1,30 @@
 import { ADDITIVE_IDENTITY, apply, INITIAL, Maybe, MULTIPLICATIVE_IDENTITY, round } from '@musical-patterns/utilities'
 import { COMPILER_PRECISION } from './constants'
 import { NoteProperty } from './nominal'
-import { CompileNotesOptions, NotePropertySpec, Scale } from './types'
+import {
+    CalculateScalePropertiesParameters,
+    CompileNotesOptions,
+    NotePropertySpec,
+    Scale,
+    ScaleProperties,
+} from './types'
+
+const calculateScaleProperties: (scaleStuffParameters: CalculateScalePropertiesParameters) => ScaleProperties =
+    ({ index, scaleIndex, options }: CalculateScalePropertiesParameters): ScaleProperties => {
+        const { scales = [] } = options || {}
+        const scale: Scale = scales.length !== 0 ?
+            apply.Ordinal(scales, scaleIndex) || { scalars: [] } :
+            { scalars: [] }
+        const {
+            translation: scaleTranslation = ADDITIVE_IDENTITY,
+            scalar: scaleScalar = MULTIPLICATIVE_IDENTITY,
+            scalars = [],
+        }: Scale = scale
+
+        const scaleElement: Maybe<NoteProperty> = scalars.length !== 0 ? apply.Ordinal(scalars, index) : undefined
+
+        return { scaleTranslation, scaleScalar, scaleElement }
+    }
 
 const compileNoteProperty:
     <T extends NoteProperty>(notePropertySpec: NotePropertySpec, options?: CompileNotesOptions) => T =
@@ -13,15 +36,8 @@ const compileNoteProperty:
             scaleIndex = INITIAL,
         }: NotePropertySpec = notePropertySpec
 
-        const { scales = [] } = options || {}
-        const scale: Scale = scales.length ? apply.Ordinal(scales, scaleIndex) : { scalars: [] }
-        const {
-            translation: scaleTranslation = ADDITIVE_IDENTITY,
-            scalar: scaleScalar = MULTIPLICATIVE_IDENTITY,
-            scalars = [],
-        }: Scale = scale
+        const { scaleElement, scaleScalar, scaleTranslation } = calculateScaleProperties({ index, scaleIndex, options })
 
-        const scaleElement: Maybe<NoteProperty> = apply.Ordinal(scalars, index)
         let noteProperty: NoteProperty = scaleElement || MULTIPLICATIVE_IDENTITY
 
         noteProperty = apply.Scalar(noteProperty, noteScalar)

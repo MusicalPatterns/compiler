@@ -11,11 +11,14 @@ import {
 } from '@musical-patterns/utilities'
 
 type NoteProperty =
-    Ms |
-    Scalar |
-    Hz |
-    Coordinate<Meters> |
-    Meters
+    (
+        // tslint:disable-next-line max-union-size
+        Ms |
+        Scalar |
+        Hz |
+        Coordinate<Meters> |
+        Meters
+        ) & Number
 
 const { to, from } = buildNominalInterface({
     number: {

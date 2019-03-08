@@ -1,13 +1,13 @@
 import { Ms, sum, to } from '@musical-patterns/utilities'
-import { compileNoteProperty } from '../noteProperty'
-import { NotePropertySpec, NoteSpec, Scale } from '../types'
+import { compileNoteAspect } from '../noteAspect'
+import { NoteAspectSpec, NoteSpec, Scale } from '../types'
 
 const calculateNoteSpecsTotalCompiledDuration: (noteSpecs: NoteSpec[], scales?: Scale[]) => Ms =
     (noteSpecs: NoteSpec[], scales?: Scale[]): Ms =>
         noteSpecs.reduce(
             (totalDuration: Ms, noteSpec: NoteSpec): Ms => {
-                const durationSpec: NotePropertySpec = noteSpec.durationSpec || {}
-                const duration: Ms = compileNoteProperty(durationSpec, { scales })
+                const durationSpec: NoteAspectSpec = noteSpec.durationSpec || {}
+                const duration: Ms = compileNoteAspect(durationSpec, { scales })
 
                 return sum(totalDuration, duration)
             },

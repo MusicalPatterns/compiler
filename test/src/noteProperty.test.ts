@@ -2,15 +2,15 @@
 
 import { to } from '@musical-patterns/utilities'
 import {
-    compileNoteProperty,
+    compileNoteAspect,
     CompileNotesOptions,
-    NoteProperty,
-    NotePropertySpec,
+    NoteAspect,
+    NoteAspectSpec,
     Scale,
     to as compilerTo,
 } from '../../src/indexForTest'
 
-describe('compile note property', () => {
+describe('compile note aspect', () => {
     let scales: Scale[]
     let options: CompileNotesOptions
     beforeEach(() => {
@@ -26,59 +26,59 @@ describe('compile note property', () => {
     })
 
     it('defaults scale index to zero, index to zero, translation to zero, and scalar to zero', () => {
-        const notePropertySpec: NotePropertySpec = {}
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
+        const noteAspectSpec: NoteAspectSpec = {}
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, options)
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(2))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(2))
     })
 
     it('uses index to choose later notes in the scale', () => {
-        const notePropertySpec: NotePropertySpec = {
+        const noteAspectSpec: NoteAspectSpec = {
             index: to.Ordinal(2),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, options)
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(8))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(8))
     })
 
     it('uses scale index to switch scales', () => {
-        const notePropertySpec: NotePropertySpec = {
+        const noteAspectSpec: NoteAspectSpec = {
             scaleIndex: to.Ordinal(1),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, options)
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(3))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(3))
     })
 
     it('uses scalar to stretch arbitrarily', () => {
-        const notePropertySpec: NotePropertySpec = {
+        const noteAspectSpec: NoteAspectSpec = {
             scalar: to.Scalar(1.25),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, options)
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(2.5))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(2.5))
     })
 
     it('uses translation to shift around arbitrarily', () => {
-        const notePropertySpec: NotePropertySpec = {
+        const noteAspectSpec: NoteAspectSpec = {
             translation: to.Translation(0.1),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, options)
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(2.1))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(2.1))
     })
 
     it('defaults to 1 if the scale\'s scalars are empty', () => {
-        const notePropertySpec: NotePropertySpec = {}
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ { scalars: [] } ] })
+        const noteAspectSpec: NoteAspectSpec = {}
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, { scales: [ { scalars: [] } ] })
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(1))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(1))
     })
 
     it('applies translation from the scale, too', () => {
@@ -86,11 +86,11 @@ describe('compile note property', () => {
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
             translation: to.Translation(3),
         }
-        const notePropertySpec: NotePropertySpec = {}
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithTranslation ] })
+        const noteAspectSpec: NoteAspectSpec = {}
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, { scales: [ scaleWithTranslation ] })
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(5))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(5))
     })
 
     it('applies scalar from the scale, too', () => {
@@ -98,39 +98,39 @@ describe('compile note property', () => {
             scalar: to.Scalar(7),
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
         }
-        const notePropertySpec: NotePropertySpec = {}
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalar ] })
+        const noteAspectSpec: NoteAspectSpec = {}
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, { scales: [ scaleWithScalar ] })
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(14))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(14))
     })
 
     it('applies scalar first, then translation', () => {
-        const notePropertySpec: NotePropertySpec = {
+        const noteAspectSpec: NoteAspectSpec = {
             scalar: to.Scalar(1.25),
             translation: to.Translation(0.1),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, options)
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(2.6))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(2.6))
     })
 
     it('applies scalar from the scale first, then translation from the scale', () => {
-        const notePropertySpec: NotePropertySpec = {}
+        const noteAspectSpec: NoteAspectSpec = {}
         const scaleWithScalarAndTranslation: Scale = {
             scalar: to.Scalar(7),
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
             translation: to.Translation(3),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndTranslation ] })
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, { scales: [ scaleWithScalarAndTranslation ] })
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(17))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(17))
     })
 
     it('can apply translations and scalars from both scale and the note, scalars first', () => {
-        const notePropertySpec: NotePropertySpec = {
+        const noteAspectSpec: NoteAspectSpec = {
             scalar: to.Scalar(1.25),
             translation: to.Translation(0.1),
         }
@@ -139,33 +139,33 @@ describe('compile note property', () => {
             scalars: [ 2, 4, 6, 8 ].map(to.Scalar),
             translation: to.Translation(3),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, { scales: [ scaleWithScalarAndTranslation ] })
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, { scales: [ scaleWithScalarAndTranslation ] })
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(20.6))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(20.6))
     })
 
     it('handles empty scales', () => {
-        const noteProperty: NoteProperty = compileNoteProperty({}, { scales: [] })
+        const noteAspect: NoteAspect = compileNoteAspect({}, { scales: [] })
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(1))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(1))
     })
 
     it('handles missing scales', () => {
-        const noteProperty: NoteProperty = compileNoteProperty({})
+        const noteAspect: NoteAspect = compileNoteAspect({})
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(1))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(1))
     })
 
     it('rounds, to avoid off by 0.000000000001 errors when comparing patterns compiled on different systems', () => {
-        const notePropertySpec: NotePropertySpec = {
+        const noteAspectSpec: NoteAspectSpec = {
             translation: to.Translation(0.1239147293578729037982375),
         }
-        const noteProperty: NoteProperty = compileNoteProperty(notePropertySpec, options)
+        const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, options)
 
-        expect(noteProperty)
-            .toBe(compilerTo.NoteProperty(2.12391))
+        expect(noteAspect)
+            .toBe(compilerTo.NoteAspect(2.12391))
     })
 })

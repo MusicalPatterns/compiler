@@ -1,10 +1,10 @@
 import { ADDITIVE_IDENTITY, apply, INITIAL, Maybe, MULTIPLICATIVE_IDENTITY, round } from '@musical-patterns/utilities'
 import { COMPILER_PRECISION } from './constants'
-import { NoteProperty } from './nominal'
+import { NoteAspect } from './nominal'
 import {
     CalculateScalePropertiesParameters,
     CompileNotesOptions,
-    NotePropertySpec,
+    NoteAspectSpec,
     Scale,
     ScaleProperties,
 } from './types'
@@ -19,34 +19,34 @@ const calculateScaleProperties: (scaleStuffParameters: CalculateScalePropertiesP
             scalars = [],
         }: Scale = scale
 
-        const scaleElement: Maybe<NoteProperty> = scalars.length !== 0 ? apply.Ordinal(scalars, index) : undefined
+        const scaleElement: Maybe<NoteAspect> = scalars.length !== 0 ? apply.Ordinal(scalars, index) : undefined
 
         return { scaleTranslation, scaleScalar, scaleElement }
     }
 
-const compileNoteProperty:
-    <T extends NoteProperty>(notePropertySpec: NotePropertySpec, options?: CompileNotesOptions) => T =
-    <T extends NoteProperty>(notePropertySpec: NotePropertySpec, options?: CompileNotesOptions): T => {
+const compileNoteAspect:
+    <T extends NoteAspect>(noteAspectSpec: NoteAspectSpec, options?: CompileNotesOptions) => T =
+    <T extends NoteAspect>(noteAspectSpec: NoteAspectSpec, options?: CompileNotesOptions): T => {
         const {
             index = INITIAL,
             translation: noteTranslation = ADDITIVE_IDENTITY,
             scalar: noteScalar = MULTIPLICATIVE_IDENTITY,
             scaleIndex = INITIAL,
-        }: NotePropertySpec = notePropertySpec
+        }: NoteAspectSpec = noteAspectSpec
 
         const { scaleElement, scaleScalar, scaleTranslation } = calculateScaleProperties({ index, scaleIndex, options })
 
-        let noteProperty: NoteProperty = scaleElement || MULTIPLICATIVE_IDENTITY
+        let noteAspect: NoteAspect = scaleElement || MULTIPLICATIVE_IDENTITY
 
-        noteProperty = apply.Scalar(noteProperty, noteScalar)
-        noteProperty = apply.Scalar(noteProperty, scaleScalar)
+        noteAspect = apply.Scalar(noteAspect, noteScalar)
+        noteAspect = apply.Scalar(noteAspect, scaleScalar)
 
-        noteProperty = apply.Translation(noteProperty, noteTranslation)
-        noteProperty = apply.Translation(noteProperty, scaleTranslation)
+        noteAspect = apply.Translation(noteAspect, noteTranslation)
+        noteAspect = apply.Translation(noteAspect, scaleTranslation)
 
-        return round(noteProperty, COMPILER_PRECISION) as T
+        return round(noteAspect, COMPILER_PRECISION) as T
     }
 
 export {
-    compileNoteProperty,
+    compileNoteAspect,
 }

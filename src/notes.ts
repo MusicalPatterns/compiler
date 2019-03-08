@@ -14,10 +14,10 @@ import {
     to,
 } from '@musical-patterns/utilities'
 import { DEFAULT_TRANSLATION_FOR_ALMOST_FULL_SUSTAIN } from './constants'
-import { compileNoteProperty } from './noteProperty'
-import { CompileNotesOptions, NotePropertySpec, NoteSpec } from './types'
+import { compileNoteAspect } from './noteAspect'
+import { CompileNotesOptions, NoteAspectSpec, NoteSpec } from './types'
 
-const defaultNotePropertySpec: NotePropertySpec = {
+const defaultNoteAspectSpec: NoteAspectSpec = {
     index: INITIAL,
     scalar: MULTIPLICATIVE_IDENTITY,
     scaleIndex: INITIAL,
@@ -25,15 +25,15 @@ const defaultNotePropertySpec: NotePropertySpec = {
 }
 
 const compilePosition:
-    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions) => Coordinate<Meters> =
-    (positionSpec?: NotePropertySpec | NotePropertySpec[], options?: CompileNotesOptions): Coordinate<Meters> => {
+    (positionSpec?: NoteAspectSpec | NoteAspectSpec[], options?: CompileNotesOptions) => Coordinate<Meters> =
+    (positionSpec?: NoteAspectSpec | NoteAspectSpec[], options?: CompileNotesOptions): Coordinate<Meters> => {
         const position: Coordinate<Meters> = positionSpec ?
             positionSpec instanceof Array ?
                 positionSpec.map(
-                    (positionElementSpec: NotePropertySpec): Meters =>
-                        compileNoteProperty(positionElementSpec, options))
+                    (positionElementSpec: NoteAspectSpec): Meters =>
+                        compileNoteAspect(positionElementSpec, options))
                 :
-                [ compileNoteProperty(positionSpec, options) ]
+                [ compileNoteAspect(positionSpec, options) ]
             :
             []
         while (position.length < from.Cardinal(THREE_DIMENSIONAL)) {
@@ -45,8 +45,8 @@ const compilePosition:
 
 const compileSustain: (noteSpec: NoteSpec, duration: Ms, options?: CompileNotesOptions) => Ms =
     (noteSpec: NoteSpec, duration: Ms, options?: CompileNotesOptions): Ms => {
-        const sustainSpec: NotePropertySpec = noteSpec.sustainSpec || noteSpec.durationSpec || defaultNotePropertySpec
-        const sustainAttempt: Ms = compileNoteProperty(sustainSpec, options)
+        const sustainSpec: NoteAspectSpec = noteSpec.sustainSpec || noteSpec.durationSpec || defaultNoteAspectSpec
+        const sustainAttempt: Ms = compileNoteAspect(sustainSpec, options)
 
         return sustainAttempt < duration ?
             sustainAttempt :
@@ -56,14 +56,14 @@ const compileSustain: (noteSpec: NoteSpec, duration: Ms, options?: CompileNotesO
 const compileNote: (noteSpec: NoteSpec, options?: CompileNotesOptions) => Note =
     (noteSpec: NoteSpec, options?: CompileNotesOptions): Note => {
         const {
-            durationSpec = defaultNotePropertySpec,
-            gainSpec = defaultNotePropertySpec,
-            pitchSpec = defaultNotePropertySpec,
+            durationSpec = defaultNoteAspectSpec,
+            gainSpec = defaultNoteAspectSpec,
+            pitchSpec = defaultNoteAspectSpec,
         } = noteSpec
 
-        const duration: Ms = compileNoteProperty(durationSpec, options)
-        const gain: Scalar = compileNoteProperty(gainSpec, options)
-        const frequency: Hz = compileNoteProperty(pitchSpec, options)
+        const duration: Ms = compileNoteAspect(durationSpec, options)
+        const gain: Scalar = compileNoteAspect(gainSpec, options)
+        const frequency: Hz = compileNoteAspect(pitchSpec, options)
 
         const position: Coordinate<Meters> = compilePosition(noteSpec.positionSpec, options)
         const sustain: Ms = compileSustain(noteSpec, duration, options)

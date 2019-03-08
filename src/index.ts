@@ -11,7 +11,7 @@ export {
     Scale,
     Entity,
     NoteSpec,
-    NotePropertySpec,
+    NoteAspectSpec,
     BuildEntitiesFunction,
     BuildScalesFunction,
     TimbreNameEnum,

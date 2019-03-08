@@ -73,11 +73,11 @@ describe('compile pattern', () => {
     })
 
     it('also supports finding the spec as initial within spec data, so that you can just pass it a friggin pattern', async (done: DoneFn) => {
-        const patternLikeObject: { material: Material, specData: { initial: TestSpec } } = {
-            material,
-            specData: {
+        const patternLikeObject: { data: { initial: TestSpec }, material: Material } = {
+            data: {
                 initial: spec,
             },
+            material,
         }
 
         const actualThreadSpecs: ThreadSpec[] = await compilePattern(patternLikeObject)
@@ -102,13 +102,13 @@ describe('compile pattern', () => {
     })
 
     it('prefers the top-level spec provision to the finding it inside data', async (done: DoneFn) => {
-        const patternLikeObject: { material: Material, specData: { initial: TestSpec } } = {
-            material,
-            specData: {
+        const patternLikeObject: { data: { initial: TestSpec }, material: Material } = {
+            data: {
                 initial: {
                     testThing: to.Scalar(293587293873),
                 },
             },
+            material,
         }
 
         const actualThreadSpecs: ThreadSpec[] = await compilePattern({ ...patternLikeObject, spec })

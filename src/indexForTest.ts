@@ -1,7 +1,7 @@
 // tslint:disable no-reaching-imports
 
 export { compileNote } from './notes'
-export { compileNoteProperty } from './noteProperty'
+export { compileNoteAspect } from './noteAspect'
 export { compilePattern } from './pattern'
 export { compileTimbre } from './timbre'
 export { compileThreadSpec } from './thread'
@@ -9,11 +9,11 @@ export {
     calculateNoteSpecsTotalCompiledDuration,
     calculatePatternTotalCompiledDuration,
 } from './support/indexForTest'
-export { NoteProperty, to } from './nominal'
+export { NoteAspect, to } from './nominal'
 
 export {
     CompileNotesOptions,
-    NotePropertySpec,
+    NoteAspectSpec,
     Scale,
     NoteSpec,
     Material,

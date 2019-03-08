@@ -1,6 +1,6 @@
 import { OscillatorName, SampleName, TimbreName } from '@musical-patterns/performer'
 import { Maybe, Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
-import { NoteProperty } from './nominal'
+import { NoteAspect } from './nominal'
 
 // tslint:disable-next-line variable-name typedef
 const TimbreNameEnum = {
@@ -28,11 +28,11 @@ interface Material {
 }
 
 interface CompilePatternParameters {
+    // tslint:disable-next-line no-any
+    data?: { initial: any },
     material: Material,
     // tslint:disable-next-line no-any
     spec?: any,
-    // tslint:disable-next-line no-any
-    specData?: { initial: any },
 }
 
 // tslint:disable-next-line no-any
@@ -50,11 +50,11 @@ interface Scale extends Adjustable {
 }
 
 interface NoteSpec {
-    durationSpec?: NotePropertySpec,
-    gainSpec?: NotePropertySpec,
-    pitchSpec?: NotePropertySpec,
-    positionSpec?: NotePropertySpec | NotePropertySpec[],
-    sustainSpec?: NotePropertySpec,
+    durationSpec?: NoteAspectSpec,
+    gainSpec?: NoteAspectSpec,
+    pitchSpec?: NoteAspectSpec,
+    positionSpec?: NoteAspectSpec | NoteAspectSpec[],
+    sustainSpec?: NoteAspectSpec,
 }
 
 interface Adjustable {
@@ -62,7 +62,7 @@ interface Adjustable {
     translation?: Translation,
 }
 
-interface NotePropertySpec extends Adjustable {
+interface NoteAspectSpec extends Adjustable {
     index?: Ordinal,
     scaleIndex?: Ordinal,
 }
@@ -74,7 +74,7 @@ interface CalculateScalePropertiesParameters {
 }
 
 interface ScaleProperties {
-    scaleElement: Maybe<NoteProperty>,
+    scaleElement: Maybe<NoteAspect>,
     scaleScalar: Scalar,
     scaleTranslation: Translation,
 }
@@ -89,7 +89,7 @@ export {
     Scale,
     NoteSpec,
     Adjustable,
-    NotePropertySpec,
+    NoteAspectSpec,
     CompilePatternParameters,
     Material,
     TimbreNameEnum,

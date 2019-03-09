@@ -73,7 +73,7 @@ describe('compile note aspect', () => {
             .toBe(compilerTo.NoteAspect(2.1))
     })
 
-    it('defaults to 1 if the scale\'s scalars are empty', () => {
+    it(`defaults to 1 if the scale's scalars are empty`, () => {
         const noteAspectSpec: NoteAspectSpec = {}
         const noteAspect: NoteAspect = compileNoteAspect(noteAspectSpec, { scales: [ { scalars: [] } ] })
 

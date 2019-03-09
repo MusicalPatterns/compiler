@@ -2,7 +2,7 @@ import { Ms, to } from '@musical-patterns/utilities'
 import { calculatePatternTotalCompiledDuration, Entity, Material, NoteSpec } from '../../../src/indexForTest'
 
 describe('calculate pattern total compiled duration', () => {
-    it('tells you how long a pattern will be once compiled, taking the LCM of each thread\'s duration', async (done: DoneFn) => {
+    it(`tells you how long a pattern will be once compiled, taking the LCM of each thread's duration`, async (done: DoneFn) => {
         const firstNoteSpecs: NoteSpec[] = [
             {
                 durationSpec: {

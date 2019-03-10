@@ -1,7 +1,7 @@
 export { compilePattern } from './pattern'
 
 export {
-    calculateNoteSpecsTotalCompiledDuration,
+    calculateNotesTotalCompiledDuration,
     calculatePatternTotalCompiledDuration,
 } from './support'
 export {
@@ -10,9 +10,9 @@ export {
     CompilePatternParameters,
     Scale,
     Entity,
-    NoteSpec,
-    NoteAspectSpec,
-    BuildEntitiesFunction,
-    BuildScalesFunction,
+    Note,
+    NoteFeature,
+    MaterializeEntities,
+    MaterializeScales,
     TimbreNameEnum,
 } from './types'

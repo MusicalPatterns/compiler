@@ -1,18 +1,18 @@
-import { ThreadSpec } from '@musical-patterns/performer'
-import { compileThreadSpecs } from './threads'
+import { Voice } from '@musical-patterns/performer'
 import { CompilePatternParameters, Entity, Material, Scale } from './types'
+import { compileVoices } from './voices'
 
-const compilePattern: (compilePatternParameters: CompilePatternParameters) => Promise<ThreadSpec[]> =
-    async ({ spec, material, data }: CompilePatternParameters): Promise<ThreadSpec[]> => {
+const compilePattern: (compilePatternParameters: CompilePatternParameters) => Promise<Voice[]> =
+    async ({ spec, material, data }: CompilePatternParameters): Promise<Voice[]> => {
         // tslint:disable-next-line no-any
         const specToCompileWith: any = spec || data && data.initial
 
-        const { buildEntitiesFunction, buildScalesFunction }: Material = material
+        const { materializeEntities, materializeScales }: Material = material
 
-        const entities: Entity[] = buildEntitiesFunction(specToCompileWith)
-        const scales: Scale[] = buildScalesFunction ? buildScalesFunction(specToCompileWith) : []
+        const entities: Entity[] = materializeEntities(specToCompileWith)
+        const scales: Scale[] = materializeScales ? materializeScales(specToCompileWith) : []
 
-        return compileThreadSpecs({ entities, scales })
+        return compileVoices({ entities, scales })
     }
 
 export {

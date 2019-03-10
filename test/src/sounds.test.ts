@@ -1,71 +1,71 @@
-import { Note } from '@musical-patterns/performer'
+import { Sound } from '@musical-patterns/performer'
 import { to } from '@musical-patterns/utilities'
-import { compileNote, NoteSpec } from '../../src/indexForTest'
+import { compileSound, Note } from '../../src/indexForTest'
 
-describe('compile note', () => {
+describe('compile sound', () => {
     describe('defaults', () => {
-        let note: Note
+        let sound: Sound
         beforeEach(() => {
-            const noteSpec: NoteSpec = {}
-            note = compileNote(noteSpec)
+            const note: Note = {}
+            sound = compileSound(note)
         })
 
         it('duration to 1', () => {
-            expect(note.duration)
+            expect(sound.duration)
                 .toBe(to.Ms(1))
         })
 
         it('gain to 1', () => {
-            expect(note.gain)
+            expect(sound.gain)
                 .toBe(to.Scalar(1))
         })
 
         it('frequency to 1', () => {
-            expect(note.frequency)
+            expect(sound.frequency)
                 .toBe(to.Hz(1))
         })
 
         it('position to the origin', () => {
-            expect(note.position)
+            expect(sound.position)
                 .toEqual([ 0, 0, 0 ].map(to.Meters))
         })
 
         it('sustain to 0.9', () => {
-            expect(note.sustain)
+            expect(sound.sustain)
                 .toBe(to.Ms(0.9))
         })
     })
 
     describe('adding dimensions to the position until it is 3D', () => {
         it('works when using a non-array position', () => {
-            const noteSpec: NoteSpec = {
-                positionSpec: {
+            const note: Note = {
+                position: {
                     scalar: to.Scalar(3),
                 },
             }
-            const note: Note = compileNote(noteSpec)
+            const sound: Sound = compileSound(note)
 
-            expect(note.position)
+            expect(sound.position)
                 .toEqual([ 3, 0, 0 ].map(to.Meters))
         })
 
         it('works for a single element position', () => {
-            const noteSpec: NoteSpec = {
-                positionSpec: [
+            const note: Note = {
+                position: [
                     {
                         scalar: to.Scalar(3),
                     },
                 ],
             }
-            const note: Note = compileNote(noteSpec)
+            const sound: Sound = compileSound(note)
 
-            expect(note.position)
+            expect(sound.position)
                 .toEqual([ 3, 0, 0 ].map(to.Meters))
         })
 
         it('works for a two element position', () => {
-            const noteSpec: NoteSpec = {
-                positionSpec: [
+            const note: Note = {
+                position: [
                     {
                         scalar: to.Scalar(3),
                     },
@@ -74,61 +74,61 @@ describe('compile note', () => {
                     },
                 ],
             }
-            const note: Note = compileNote(noteSpec)
+            const sound: Sound = compileSound(note)
 
-            expect(note.position)
+            expect(sound.position)
                 .toEqual([ 3, 2, 0 ].map(to.Meters))
         })
     })
 
     describe('sustain', () => {
         it('caps sustain at slightly less than the duration', () => {
-            const noteSpec: NoteSpec = {
-                durationSpec: {
+            const note: Note = {
+                duration: {
                     scalar: to.Scalar(3),
                 },
-                sustainSpec: {
+                sustain: {
                     scalar: to.Scalar(8),
                 },
             }
-            const note: Note = compileNote(noteSpec)
+            const sound: Sound = compileSound(note)
 
-            expect(note.duration)
+            expect(sound.duration)
                 .toEqual(to.Ms(3))
-            expect(note.sustain)
+            expect(sound.sustain)
                 .toEqual(to.Ms(2.9))
         })
 
         it('defaults sustain to slightly less than the duration', () => {
-            const noteSpec: NoteSpec = {
-                durationSpec: {
+            const note: Note = {
+                duration: {
                     scalar: to.Scalar(3),
                 },
             }
 
-            const note: Note = compileNote(noteSpec)
+            const sound: Sound = compileSound(note)
 
-            expect(note.duration)
+            expect(sound.duration)
                 .toEqual(to.Ms(3))
-            expect(note.sustain)
+            expect(sound.sustain)
                 .toEqual(to.Ms(2.9))
         })
 
         it('uses sustain if given and less than duration', () => {
-            const noteSpec: NoteSpec = {
-                durationSpec: {
+            const note: Note = {
+                duration: {
                     scalar: to.Scalar(3),
                 },
-                sustainSpec: {
+                sustain: {
                     scalar: to.Scalar(2),
                 },
             }
 
-            const note: Note = compileNote(noteSpec)
+            const sound: Sound = compileSound(note)
 
-            expect(note.duration)
+            expect(sound.duration)
                 .toEqual(to.Ms(3))
-            expect(note.sustain)
+            expect(sound.sustain)
                 .toEqual(to.Ms(2))
         })
     })

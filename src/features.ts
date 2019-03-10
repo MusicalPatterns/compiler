@@ -1,10 +1,10 @@
 import { ADDITIVE_IDENTITY, apply, INITIAL, Maybe, MULTIPLICATIVE_IDENTITY, round } from '@musical-patterns/utilities'
 import { COMPILER_PRECISION } from './constants'
-import { NoteAspect } from './nominal'
+import { SoundFeature } from './nominal'
 import {
     CalculateScalePropertiesParameters,
-    CompileNotesOptions,
-    NoteAspectSpec,
+    CompileSoundsOptions,
+    NoteFeature,
     Scale,
     ScaleProperties,
 } from './types'
@@ -19,34 +19,34 @@ const calculateScaleProperties: (scaleStuffParameters: CalculateScalePropertiesP
             scalars = [],
         }: Scale = scale
 
-        const scaleElement: Maybe<NoteAspect> = scalars.length !== 0 ? apply.Ordinal(scalars, index) : undefined
+        const scaleElement: Maybe<SoundFeature> = scalars.length !== 0 ? apply.Ordinal(scalars, index) : undefined
 
         return { scaleTranslation, scaleScalar, scaleElement }
     }
 
-const compileNoteAspect:
-    <T extends NoteAspect>(noteAspectSpec: NoteAspectSpec, options?: CompileNotesOptions) => T =
-    <T extends NoteAspect>(noteAspectSpec: NoteAspectSpec, options?: CompileNotesOptions): T => {
+const compileSoundFeature:
+    <T extends SoundFeature>(noteFeature: NoteFeature, options?: CompileSoundsOptions) => T =
+    <T extends SoundFeature>(noteFeature: NoteFeature, options?: CompileSoundsOptions): T => {
         const {
             index = INITIAL,
             translation: noteTranslation = ADDITIVE_IDENTITY,
             scalar: noteScalar = MULTIPLICATIVE_IDENTITY,
             scaleIndex = INITIAL,
-        }: NoteAspectSpec = noteAspectSpec
+        }: NoteFeature = noteFeature
 
         const { scaleElement, scaleScalar, scaleTranslation } = calculateScaleProperties({ index, scaleIndex, options })
 
-        let noteAspect: NoteAspect = scaleElement || MULTIPLICATIVE_IDENTITY
+        let soundFeature: SoundFeature = scaleElement || MULTIPLICATIVE_IDENTITY
 
-        noteAspect = apply.Scalar(noteAspect, noteScalar)
-        noteAspect = apply.Scalar(noteAspect, scaleScalar)
+        soundFeature = apply.Scalar(soundFeature, noteScalar)
+        soundFeature = apply.Scalar(soundFeature, scaleScalar)
 
-        noteAspect = apply.Translation(noteAspect, noteTranslation)
-        noteAspect = apply.Translation(noteAspect, scaleTranslation)
+        soundFeature = apply.Translation(soundFeature, noteTranslation)
+        soundFeature = apply.Translation(soundFeature, scaleTranslation)
 
-        return round(noteAspect, COMPILER_PRECISION) as T
+        return round(soundFeature, COMPILER_PRECISION) as T
     }
 
 export {
-    compileNoteAspect,
+    compileSoundFeature,
 }

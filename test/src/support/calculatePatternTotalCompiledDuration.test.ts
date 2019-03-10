@@ -1,39 +1,39 @@
 import { Ms, to } from '@musical-patterns/utilities'
-import { calculatePatternTotalCompiledDuration, Entity, Material, NoteSpec } from '../../../src/indexForTest'
+import { calculatePatternTotalCompiledDuration, Entity, Material, Note } from '../../../src/indexForTest'
 
 describe('calculate pattern total compiled duration', () => {
-    it(`tells you how long a pattern will be once compiled, taking the LCM of each thread's duration`, async (done: DoneFn) => {
-        const firstNoteSpecs: NoteSpec[] = [
+    it(`tells you how long a pattern will be once compiled, taking the LCM of each voice's duration`, async (done: DoneFn) => {
+        const firstNotes: Note[] = [
             {
-                durationSpec: {
+                duration: {
                     scalar: to.Scalar(2),
                 },
             },
             {
-                durationSpec: {
+                duration: {
                     scalar: to.Scalar(3),
                 },
             },
         ]
-        const secondNoteSpecs: NoteSpec[] = [
+        const secondNotes: Note[] = [
             {
-                durationSpec: {
+                duration: {
                     scalar: to.Scalar(4),
                 },
             },
             {
-                durationSpec: {
+                duration: {
                     scalar: to.Scalar(4),
                 },
             },
         ]
         const material: Material = {
-            buildEntitiesFunction: (): Entity[] => [
+            materializeEntities: (): Entity[] => [
                 {
-                    noteSpecs: firstNoteSpecs,
+                    notes: firstNotes,
                 },
                 {
-                    noteSpecs: secondNoteSpecs,
+                    notes: secondNotes,
                 },
             ],
         }
@@ -46,38 +46,38 @@ describe('calculate pattern total compiled duration', () => {
         done()
     })
 
-    it('when a thread has no duration, it ignores it in its calculation', async (done: DoneFn) => {
-        const firstNoteSpecs: NoteSpec[] = [
+    it('when a voice has no duration, it ignores it in its calculation', async (done: DoneFn) => {
+        const firstNotes: Note[] = [
             {
-                durationSpec: {
+                duration: {
                     scalar: to.Scalar(2),
                 },
             },
             {
-                durationSpec: {
+                duration: {
                     scalar: to.Scalar(3),
                 },
             },
         ]
-        const secondNoteSpecs: NoteSpec[] = [
+        const secondNotes: Note[] = [
             {
-                durationSpec: {
+                duration: {
                     scalar: to.Scalar(0),
                 },
             },
             {
-                durationSpec: {
+                duration: {
                     scalar: to.Scalar(0),
                 },
             },
         ]
         const material: Material = {
-            buildEntitiesFunction: (): Entity[] => [
+            materializeEntities: (): Entity[] => [
                 {
-                    noteSpecs: firstNoteSpecs,
+                    notes: firstNotes,
                 },
                 {
-                    noteSpecs: secondNoteSpecs,
+                    notes: secondNotes,
                 },
             ],
         }

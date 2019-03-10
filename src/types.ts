@@ -1,6 +1,6 @@
 import { OscillatorName, SampleName, TimbreName } from '@musical-patterns/performer'
 import { Maybe, Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
-import { NoteAspect } from './nominal'
+import { SoundFeature } from './nominal'
 
 // tslint:disable-next-line variable-name typedef
 const TimbreNameEnum = {
@@ -8,23 +8,23 @@ const TimbreNameEnum = {
     ...SampleName,
 }
 
-interface CompileThreadParameters {
+interface CompileVoiceParameters {
     entity: Entity,
     scales?: Scale[]
 }
 
-interface CompileThreadsParameters {
+interface CompileVoicesParameters {
     entities: Entity[],
     scales?: Scale[]
 }
 
-interface CompileNotesOptions {
+interface CompileSoundsOptions {
     scales?: Scale[],
 }
 
 interface Material {
-    buildEntitiesFunction: BuildEntitiesFunction,
-    buildScalesFunction?: BuildScalesFunction,
+    materializeEntities: MaterializeEntities,
+    materializeScales?: MaterializeScales,
 }
 
 interface CompilePatternParameters {
@@ -36,12 +36,12 @@ interface CompilePatternParameters {
 }
 
 // tslint:disable-next-line no-any
-type BuildEntitiesFunction = (spec?: any) => Entity[]
+type MaterializeEntities = (spec?: any) => Entity[]
 // tslint:disable-next-line no-any
-type BuildScalesFunction = (spec?: any) => Scale[]
+type MaterializeScales = (spec?: any) => Scale[]
 
 interface Entity {
-    noteSpecs?: NoteSpec[],
+    notes?: Note[],
     timbreName?: TimbreName,
 }
 
@@ -49,12 +49,12 @@ interface Scale extends Adjustable {
     scalars?: Scalar[],
 }
 
-interface NoteSpec {
-    durationSpec?: NoteAspectSpec,
-    gainSpec?: NoteAspectSpec,
-    pitchSpec?: NoteAspectSpec,
-    positionSpec?: NoteAspectSpec | NoteAspectSpec[],
-    sustainSpec?: NoteAspectSpec,
+interface Note {
+    duration?: NoteFeature,
+    gain?: NoteFeature,
+    pitch?: NoteFeature,
+    position?: NoteFeature | NoteFeature[],
+    sustain?: NoteFeature,
 }
 
 interface Adjustable {
@@ -62,34 +62,34 @@ interface Adjustable {
     translation?: Translation,
 }
 
-interface NoteAspectSpec extends Adjustable {
+interface NoteFeature extends Adjustable {
     index?: Ordinal,
     scaleIndex?: Ordinal,
 }
 
 interface CalculateScalePropertiesParameters {
     index: Ordinal,
-    options?: CompileNotesOptions,
+    options?: CompileSoundsOptions,
     scaleIndex: Ordinal,
 }
 
 interface ScaleProperties {
-    scaleElement: Maybe<NoteAspect>,
+    scaleElement: Maybe<SoundFeature>,
     scaleScalar: Scalar,
     scaleTranslation: Translation,
 }
 
 export {
-    CompileThreadParameters,
-    CompileThreadsParameters,
-    CompileNotesOptions,
-    BuildEntitiesFunction,
-    BuildScalesFunction,
+    CompileVoiceParameters,
+    CompileVoicesParameters,
+    CompileSoundsOptions,
+    MaterializeEntities,
+    MaterializeScales,
     Entity,
     Scale,
-    NoteSpec,
+    Note,
     Adjustable,
-    NoteAspectSpec,
+    NoteFeature,
     CompilePatternParameters,
     Material,
     TimbreNameEnum,

@@ -10,7 +10,7 @@ import {
     Scalar,
 } from '@musical-patterns/utilities'
 
-type NoteAspect =
+type SoundFeature =
     (
         // tslint:disable-next-line max-union-size
         Ms |
@@ -22,12 +22,12 @@ type NoteAspect =
 
 const { to, from } = buildNominalInterface({
     number: {
-        NoteAspect: DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE as NoteAspect,
+        SoundFeature: DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE as SoundFeature,
     },
 })
 
 export {
     to,
     from,
-    NoteAspect,
+    SoundFeature,
 }

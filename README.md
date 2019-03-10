@@ -11,16 +11,16 @@ import { compilePattern } from '@musical-patterns/compiler'
 import { setupPerformer } from '@musical-patterns/performer'
 
 const material: Material = {
-	buildEntitiesFunction,
+	materializeEntities,
 }
 
 const spec: MySpec = {
 	// anything
 }
 
-const threadSpecs: ThreadSpec[] = await compilePattern({ material, spec })
+const voices: Voice[] = await compilePattern({ material, spec })
 
-setupPerformer({ autoStart: { threadSpecs } })
+setupPerformer({ autoStart: { voices } })
 
 ```
 

@@ -1,11 +1,11 @@
-import { ThreadSpec } from '@musical-patterns/performer'
+import { Voice } from '@musical-patterns/performer'
 import { Scalar, to } from '@musical-patterns/utilities'
 import {
-    BuildEntitiesFunction,
-    BuildScalesFunction,
     compilePattern,
     Entity,
     Material,
+    MaterializeEntities,
+    MaterializeScales,
     Scale,
 } from '../../src/indexForTest'
 
@@ -19,30 +19,30 @@ describe('compile pattern', () => {
     let spec: TestSpec
 
     beforeEach(() => {
-        const buildEntitiesFunction: BuildEntitiesFunction = (specForEntities: TestSpec): Entity[] =>
+        const materializeEntities: MaterializeEntities = (specForEntities: TestSpec): Entity[] =>
             [
                 {
-                    noteSpecs: [
+                    notes: [
                         {
-                            durationSpec: { scalar: specForEntities.testThing },
-                            gainSpec: { scalar: specForEntities.testThing },
-                            pitchSpec: { scalar: specForEntities.testThing },
-                            positionSpec: { scalar: specForEntities.testThing },
-                            sustainSpec: { scalar: specForEntities.testThing },
+                            duration: { scalar: specForEntities.testThing },
+                            gain: { scalar: specForEntities.testThing },
+                            pitch: { scalar: specForEntities.testThing },
+                            position: { scalar: specForEntities.testThing },
+                            sustain: { scalar: specForEntities.testThing },
                         },
                     ],
                 },
             ]
 
-        const buildScalesFunction: BuildScalesFunction = (specForScales: TestSpec): Scale[] => [
+        const materializeScales: MaterializeScales = (specForScales: TestSpec): Scale[] => [
             {
                 scalars: [ specForScales.testThing ],
             },
         ]
 
         material = {
-            buildEntitiesFunction,
-            buildScalesFunction,
+            materializeEntities,
+            materializeScales,
         }
 
         spec = {
@@ -51,12 +51,12 @@ describe('compile pattern', () => {
     })
 
     it('given a spec, takes it into account', async (done: DoneFn) => {
-        const actualThreadSpecs: ThreadSpec[] = await compilePattern({ material, spec })
+        const actualVoices: Voice[] = await compilePattern({ material, spec })
 
-        expect(actualThreadSpecs)
+        expect(actualVoices)
             .toEqual([
                 {
-                    notes: [
+                    sounds: [
                         {
                             duration: to.Ms(9),
                             frequency: to.Hz(9),
@@ -65,7 +65,7 @@ describe('compile pattern', () => {
                             sustain: to.Ms(8.9),
                         },
                     ],
-                    voiceSpec: undefined,
+                    sourceRequest: undefined,
                 },
             ])
 
@@ -80,12 +80,12 @@ describe('compile pattern', () => {
             material,
         }
 
-        const actualThreadSpecs: ThreadSpec[] = await compilePattern(patternLikeObject)
+        const actualVoices: Voice[] = await compilePattern(patternLikeObject)
 
-        expect(actualThreadSpecs)
+        expect(actualVoices)
             .toEqual([
                 {
-                    notes: [
+                    sounds: [
                         {
                             duration: to.Ms(9),
                             frequency: to.Hz(9),
@@ -94,7 +94,7 @@ describe('compile pattern', () => {
                             sustain: to.Ms(8.9),
                         },
                     ],
-                    voiceSpec: undefined,
+                    sourceRequest: undefined,
                 },
             ])
 
@@ -111,12 +111,12 @@ describe('compile pattern', () => {
             material,
         }
 
-        const actualThreadSpecs: ThreadSpec[] = await compilePattern({ ...patternLikeObject, spec })
+        const actualVoices: Voice[] = await compilePattern({ ...patternLikeObject, spec })
 
-        expect(actualThreadSpecs)
+        expect(actualVoices)
             .toEqual([
                 {
-                    notes: [
+                    sounds: [
                         {
                             duration: to.Ms(9),
                             frequency: to.Hz(9),
@@ -125,7 +125,7 @@ describe('compile pattern', () => {
                             sustain: to.Ms(8.9),
                         },
                     ],
-                    voiceSpec: undefined,
+                    sourceRequest: undefined,
                 },
             ])
 

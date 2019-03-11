@@ -6,8 +6,8 @@ export { compilePattern } from './pattern'
 export { compileSourceRequest } from './source'
 export { compileVoice } from './voice'
 export {
-    calculateNotesTotalCompiledDuration,
-    calculatePatternTotalCompiledDuration,
+    computeNotesTotalCompiledDuration,
+    computePatternTotalCompiledDuration,
 } from './support/indexForTest'
 export { SoundFeature, to } from './nominal'
 

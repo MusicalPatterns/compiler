@@ -1,9 +1,9 @@
 // tslint:disable ban-types no-any
 
 import {
-    buildNominalInterface,
+    computeNominalInterface,
     Coordinate,
-    DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE,
+    DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE,
     Hz,
     Meters,
     Ms,
@@ -20,9 +20,9 @@ type SoundFeature =
         Meters
         ) & Number
 
-const { to, from } = buildNominalInterface({
+const { to, from } = computeNominalInterface({
     number: {
-        SoundFeature: DUMMY_VALUE_FOR_BUILDING_NOMINAL_INTERFACE as SoundFeature,
+        SoundFeature: DUMMY_VALUE_FOR_COMPUTING_NOMINAL_INTERFACE as SoundFeature,
     },
 })
 

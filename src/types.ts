@@ -67,7 +67,7 @@ interface NoteFeature extends Adjustable {
     scaleIndex?: Ordinal,
 }
 
-interface CalculateScalePropertiesParameters {
+interface ComputeScalePropertiesParameters {
     index: Ordinal,
     options?: CompileSoundsOptions,
     scaleIndex: Ordinal,
@@ -94,5 +94,5 @@ export {
     Material,
     TimbreNameEnum,
     ScaleProperties,
-    CalculateScalePropertiesParameters,
+    ComputeScalePropertiesParameters,
 }

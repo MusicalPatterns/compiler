@@ -1,8 +1,8 @@
 export { compilePattern } from './pattern'
 
 export {
-    calculateNotesTotalCompiledDuration,
-    calculatePatternTotalCompiledDuration,
+    computeNotesTotalCompiledDuration,
+    computePatternTotalCompiledDuration,
 } from './support'
 export {
     Adjustable,

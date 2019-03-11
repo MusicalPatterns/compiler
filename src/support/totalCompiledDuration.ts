@@ -1,9 +1,22 @@
 import { Sound, Voice } from '@musical-patterns/performer'
 import { from, Integer, lowestCommonMultiple, Ms, round, sum, to } from '@musical-patterns/utilities'
+import { compileSoundFeature } from '../features'
 import { compilePattern } from '../pattern'
-import { CompilePatternParameters } from '../types'
+import { CompilePatternParameters, Note, NoteFeature, Scale } from '../types'
 
-const calculatePatternTotalCompiledDuration: (parameters: CompilePatternParameters) => Promise<Ms> =
+const computeNotesTotalCompiledDuration: (notes: Note[], scales?: Scale[]) => Ms =
+    (notes: Note[], scales?: Scale[]): Ms =>
+        notes.reduce(
+            (totalDuration: Ms, note: Note): Ms => {
+                const noteDuration: NoteFeature = note.duration || {}
+                const duration: Ms = compileSoundFeature(noteDuration, { scales })
+
+                return sum(totalDuration, duration)
+            },
+            to.Ms(0),
+        )
+
+const computePatternTotalCompiledDuration: (parameters: CompilePatternParameters) => Promise<Ms> =
     async (parameters: CompilePatternParameters): Promise<Ms> => {
         const voices: Voice[] = await compilePattern(parameters)
 
@@ -24,5 +37,6 @@ const calculatePatternTotalCompiledDuration: (parameters: CompilePatternParamete
     }
 
 export {
-    calculatePatternTotalCompiledDuration,
+    computeNotesTotalCompiledDuration,
+    computePatternTotalCompiledDuration,
 }

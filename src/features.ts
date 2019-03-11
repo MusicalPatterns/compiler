@@ -1,13 +1,7 @@
 import { ADDITIVE_IDENTITY, apply, INITIAL, Maybe, MULTIPLICATIVE_IDENTITY, round } from '@musical-patterns/utilities'
 import { COMPILER_PRECISION } from './constants'
 import { SoundFeature } from './nominal'
-import {
-    CalculateScalePropertiesParameters,
-    CompileSoundsOptions,
-    NoteFeature,
-    Scale,
-    ScaleProperties,
-} from './types'
+import { CalculateScalePropertiesParameters, CompileSoundsOptions, NoteFeature, Scale, ScaleProperties } from './types'
 
 const calculateScaleProperties: (scaleStuffParameters: CalculateScalePropertiesParameters) => ScaleProperties =
     ({ index, scaleIndex, options }: CalculateScalePropertiesParameters): ScaleProperties => {
@@ -25,8 +19,12 @@ const calculateScaleProperties: (scaleStuffParameters: CalculateScalePropertiesP
     }
 
 const compileSoundFeature:
-    <T extends SoundFeature>(noteFeature: NoteFeature, options?: CompileSoundsOptions) => T =
-    <T extends SoundFeature>(noteFeature: NoteFeature, options?: CompileSoundsOptions): T => {
+    <SoundFeatureType extends SoundFeature>(
+        noteFeature: NoteFeature, options?: CompileSoundsOptions,
+    ) => SoundFeatureType =
+    <SoundFeatureType extends SoundFeature>(
+        noteFeature: NoteFeature, options?: CompileSoundsOptions,
+    ): SoundFeatureType => {
         const {
             index = INITIAL,
             translation: noteTranslation = ADDITIVE_IDENTITY,
@@ -44,7 +42,7 @@ const compileSoundFeature:
         soundFeature = apply.Translation(soundFeature, noteTranslation)
         soundFeature = apply.Translation(soundFeature, scaleTranslation)
 
-        return round(soundFeature, COMPILER_PRECISION) as T
+        return round(soundFeature, COMPILER_PRECISION) as SoundFeatureType
     }
 
 export {

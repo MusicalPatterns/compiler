@@ -28,17 +28,17 @@ interface Material {
 }
 
 interface CompilePatternParameters {
-    // tslint:disable-next-line no-any
-    data?: { initial: any },
     material: Material,
     // tslint:disable-next-line no-any
-    spec?: any,
+    spec?: { initial: any },
+    // tslint:disable-next-line no-any
+    specs?: any,
 }
 
 // tslint:disable-next-line no-any
-type MaterializeEntities = (spec?: any) => Entity[]
+type MaterializeEntities = (specs?: any) => Entity[]
 // tslint:disable-next-line no-any
-type MaterializeScales = (spec?: any) => Scale[]
+type MaterializeScales = (specs?: any) => Scale[]
 
 interface Entity {
     notes?: Note[],

@@ -3,14 +3,14 @@ import { CompilePatternParameters, Entity, Material, Scale } from './types'
 import { compileVoices } from './voices'
 
 const compilePattern: (compilePatternParameters: CompilePatternParameters) => Promise<Voice[]> =
-    async ({ spec, material, data }: CompilePatternParameters): Promise<Voice[]> => {
+    async ({ specs, material, spec }: CompilePatternParameters): Promise<Voice[]> => {
         // tslint:disable-next-line no-any
-        const specToCompileWith: any = spec || data && data.initial
+        const specsToCompileWith: any = specs || spec && spec.initial
 
         const { materializeEntities, materializeScales }: Material = material
 
-        const entities: Entity[] = materializeEntities(specToCompileWith)
-        const scales: Scale[] = materializeScales ? materializeScales(specToCompileWith) : []
+        const entities: Entity[] = materializeEntities(specsToCompileWith)
+        const scales: Scale[] = materializeScales ? materializeScales(specsToCompileWith) : []
 
         return compileVoices({ entities, scales })
     }

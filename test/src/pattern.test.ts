@@ -11,32 +11,32 @@ import {
 
 describe('compile pattern', () => {
     // tslint:disable-next-line no-type-definitions-outside-types-modules
-    interface TestSpec {
-        testThing: Scalar,
+    interface TestSpecs {
+        testSpec: Scalar,
     }
 
     let material: Material
-    let spec: TestSpec
+    let specs: TestSpecs
 
     beforeEach(() => {
-        const materializeEntities: MaterializeEntities = (specForEntities: TestSpec): Entity[] =>
+        const materializeEntities: MaterializeEntities = (specsForEntities: TestSpecs): Entity[] =>
             [
                 {
                     notes: [
                         {
-                            duration: { scalar: specForEntities.testThing },
-                            gain: { scalar: specForEntities.testThing },
-                            pitch: { scalar: specForEntities.testThing },
-                            position: { scalar: specForEntities.testThing },
-                            sustain: { scalar: specForEntities.testThing },
+                            duration: { scalar: specsForEntities.testSpec },
+                            gain: { scalar: specsForEntities.testSpec },
+                            pitch: { scalar: specsForEntities.testSpec },
+                            position: { scalar: specsForEntities.testSpec },
+                            sustain: { scalar: specsForEntities.testSpec },
                         },
                     ],
                 },
             ]
 
-        const materializeScales: MaterializeScales = (specForScales: TestSpec): Scale[] => [
+        const materializeScales: MaterializeScales = (specsForScales: TestSpecs): Scale[] => [
             {
-                scalars: [ specForScales.testThing ],
+                scalars: [ specsForScales.testSpec ],
             },
         ]
 
@@ -45,13 +45,13 @@ describe('compile pattern', () => {
             materializeScales,
         }
 
-        spec = {
-            testThing: to.Scalar(3),
+        specs = {
+            testSpec: to.Scalar(3),
         }
     })
 
     it('given a spec, takes it into account', async (done: DoneFn) => {
-        const actualVoices: Voice[] = await compilePattern({ material, spec })
+        const actualVoices: Voice[] = await compilePattern({ material, specs })
 
         expect(actualVoices)
             .toEqual([
@@ -72,12 +72,12 @@ describe('compile pattern', () => {
         done()
     })
 
-    it('also supports finding the spec as initial within spec data, so that you can just pass it a friggin pattern', async (done: DoneFn) => {
-        const patternLikeObject: { data: { initial: TestSpec }, material: Material } = {
-            data: {
-                initial: spec,
-            },
+    it('if specs are not explicitly provided to override default, the default is finding the initial specs within spec, so that you can just pass it a friggin pattern', async (done: DoneFn) => {
+        const patternLikeObject: { material: Material, spec: { initial: TestSpecs } } = {
             material,
+            spec: {
+                initial: specs,
+            },
         }
 
         const actualVoices: Voice[] = await compilePattern(patternLikeObject)
@@ -101,17 +101,17 @@ describe('compile pattern', () => {
         done()
     })
 
-    it('prefers the top-level spec provision to the finding it inside data', async (done: DoneFn) => {
-        const patternLikeObject: { data: { initial: TestSpec }, material: Material } = {
-            data: {
+    it('prefers the top-level specs provision to the finding it inside spec', async (done: DoneFn) => {
+        const patternLikeObject: { material: Material, spec: { initial: TestSpecs } } = {
+            material,
+            spec: {
                 initial: {
-                    testThing: to.Scalar(293587293873),
+                    testSpec: to.Scalar(293587293873),
                 },
             },
-            material,
         }
 
-        const actualVoices: Voice[] = await compilePattern({ ...patternLikeObject, spec })
+        const actualVoices: Voice[] = await compilePattern({ ...patternLikeObject, specs })
 
         expect(actualVoices)
             .toEqual([

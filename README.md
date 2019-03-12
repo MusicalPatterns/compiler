@@ -2,7 +2,12 @@
 
 # Musical Patterns - Compiler
 
-Compiles patterns into a format playable by the performer.
+Takes whatever amazing craziness a given pattern calls for and compiles it down into a basic format playable by the `@musical-patterns/performer`.
+
+First it calls each of the "materialize" functions with the specs you've provided (or defaults to the pattern's initial specs).
+For example, you could materialize some scales and entities using specs provided through making selections in the UI of the `@musical-patterns/playroom`.
+The pattern's specs and materials are unique to each pattern, but their job is to together produce data the compiler can resolve.
+So, once thus materialized, the compiler reduces the large amount of data produced down to fundamental sound instructions for the `@musical-patterns/performer`.
 
 ## usage
 
@@ -14,7 +19,7 @@ const material: Material = {
 	materializeEntities,
 }
 
-const spec: MySpec = {
+const spec: MySpec extends StandardSpec = {
 	// anything
 }
 
@@ -23,12 +28,3 @@ const voices: Voice[] = await compilePattern({ material, spec })
 setupPerformer({ autoStart: { voices } })
 
 ```
-
-## migrations
-
-If something is changing in the `performer` or `compiler` and you want backwards compatibility, use a migration.
-
-Add a new version to the `CompilerVersion` enum. This is the version you are leaving behind.
-You are creating a snapshot of the way things were at this version.
-If a type has not changed from the beginning of time, you can continue to use the modern, simple named version of it.
-If you're changing a type, name it after this final version it was used for, then propagate it backwards.

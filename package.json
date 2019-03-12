@@ -12,7 +12,7 @@
     "@musical-patterns/performer": "^1.0.205"
   },
   "devDependencies": {
-    "@musical-patterns/cli": "^1.0.468",
+    "@musical-patterns/cli": "^1.0.481",
     "@musical-patterns/utilities": "^1.0.329"
   }
 }

@@ -8,7 +8,6 @@ dist/*
 bash.exe.stackdump
 .npmignore
 report*.json
-running
 .gitattributes
 .idea/codeStyles/codeStyleConfig.xml
 .idea/codeStyles/Project.xml
@@ -19,7 +18,10 @@ running
 .idea/jsLinters/tslint.xml
 .idea/misc.xml
 .idea/watcherTasks.xml
+bin/port.js
+bin/update.sh
 Makefile
+ports.txt
 test/jasmine.js
 test/mockDom.ts
 test/reporter.ts
@@ -35,7 +37,6 @@ webpack.deploy.js
 webpack.dev.js
 webpack.library.js
 webpack.local.js
-webpack.port.js
 webpack.prod.js
 webpack.publish.js
 webpack.qa.js

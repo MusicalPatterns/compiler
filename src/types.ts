@@ -1,6 +1,6 @@
 import { OscillatorName, SampleName, TimbreName } from '@musical-patterns/performer'
 import { Maybe, Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
-import { SoundFeature } from './nominal'
+import { SoundFeature } from './nominals'
 
 // tslint:disable-next-line variable-name typedef
 const TimbreNameEnum = {

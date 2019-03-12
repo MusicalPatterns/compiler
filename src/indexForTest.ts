@@ -2,14 +2,14 @@
 
 export { compileSound } from './sounds'
 export { compileSoundFeature } from './features'
-export { compilePattern } from './pattern'
-export { compileSourceRequest } from './source'
-export { compileVoice } from './voice'
+export { compilePattern } from './patterns'
+export { compileSourceRequest } from './sources'
+export { compileVoice } from './voices'
 export {
     computeNotesTotalCompiledDuration,
     computePatternTotalCompiledDuration,
 } from './support/indexForTest'
-export { SoundFeature, to } from './nominal'
+export { SoundFeature, to } from './nominals'
 
 export {
     CompileSoundsOptions,

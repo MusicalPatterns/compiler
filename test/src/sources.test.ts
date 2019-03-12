@@ -2,7 +2,7 @@ import { OscillatorName, SampleName, SourceRequest, SourceType } from '@musical-
 import { Maybe } from '@musical-patterns/utilities'
 import { compileSourceRequest, TimbreNameEnum } from '../../src/indexForTest'
 
-describe('compile source request', () => {
+describe('compile source', () => {
     it('works for samples', () => {
         const sourceRequest: Maybe<SourceRequest> = compileSourceRequest(TimbreNameEnum.KICK)
 

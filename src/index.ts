@@ -1,4 +1,4 @@
-export { compilePattern } from './pattern'
+export { compilePattern } from './patterns'
 
 export {
     computeNotesTotalCompiledDuration,

@@ -1,6 +1,6 @@
 import { ADDITIVE_IDENTITY, apply, INITIAL, Maybe, MULTIPLICATIVE_IDENTITY, round } from '@musical-patterns/utilities'
 import { COMPILER_PRECISION } from './constants'
-import { SoundFeature } from './nominal'
+import { SoundFeature } from './nominals'
 import { CompileSoundsOptions, ComputeScalePropertiesParameters, NoteFeature, Scale, ScaleProperties } from './types'
 
 const computeScaleProperties: (scaleStuffParameters: ComputeScalePropertiesParameters) => ScaleProperties =

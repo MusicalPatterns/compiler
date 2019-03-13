@@ -30,7 +30,7 @@ interface Material {
 interface CompilePatternParameters {
     material: Material,
     // tslint:disable-next-line no-any
-    spec?: { initial: any },
+    spec?: { initialSpecs: any },
     // tslint:disable-next-line no-any
     specs?: any,
 }

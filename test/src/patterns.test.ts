@@ -73,10 +73,10 @@ describe('compile pattern', () => {
     })
 
     it('if specs are not explicitly provided to override default, the default is finding the initial specs within spec, so that you can just pass it a friggin pattern', async (done: DoneFn) => {
-        const patternLikeObject: { material: Material, spec: { initial: TestSpecs } } = {
+        const patternLikeObject: { material: Material, spec: { initialSpecs: TestSpecs } } = {
             material,
             spec: {
-                initial: specs,
+                initialSpecs: specs,
             },
         }
 
@@ -102,10 +102,10 @@ describe('compile pattern', () => {
     })
 
     it('prefers the top-level specs provision to the finding it inside spec', async (done: DoneFn) => {
-        const patternLikeObject: { material: Material, spec: { initial: TestSpecs } } = {
+        const patternLikeObject: { material: Material, spec: { initialSpecs: TestSpecs } } = {
             material,
             spec: {
-                initial: {
+                initialSpecs: {
                     testSpec: to.Scalar(293587293873),
                 },
             },

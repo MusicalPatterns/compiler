@@ -1,5 +1,5 @@
 import { Sound, Voice } from '@musical-patterns/performer'
-import { from, Integer, leastCommonMultiple, Ms, round, sum, to } from '@musical-patterns/utilities'
+import { computeLeastCommonMultiple, from, Integer, Ms, round, sum, to } from '@musical-patterns/utilities'
 import { compileSoundFeature } from '../features'
 import { compilePattern } from '../patterns'
 import { CompilePatternParameters, Note, NoteFeature, Scale } from '../types'
@@ -33,7 +33,7 @@ const computePatternTotalCompiledDuration: (parameters: CompilePatternParameters
             .filter((duration: number) => duration !== 0)
             .map(to.Integer)
 
-        return to.Ms(leastCommonMultiple(...rawRoundedDurations))
+        return to.Ms(computeLeastCommonMultiple(...rawRoundedDurations))
     }
 
 export {

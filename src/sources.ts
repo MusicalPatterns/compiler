@@ -14,21 +14,20 @@ const compileSourceRequest: (timbreName?: TimbreName) => Maybe<SourceRequest> =
         if (isUndefined(timbreName)) {
             return undefined
         }
-        else if (isSampleName(timbreName)) {
+        if (isSampleName(timbreName)) {
             return {
                 sourceType: SourceType.SAMPLE,
                 timbreName,
             }
         }
-        else if (isOscillatorName(timbreName)) {
+        if (isOscillatorName(timbreName)) {
             return {
                 sourceType: SourceType.OSCILLATOR,
                 timbreName,
             }
         }
-        else {
-            return undefined
-        }
+
+        return undefined
     }
 
 export {

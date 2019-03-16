@@ -1,6 +1,10 @@
-import { OscillatorName, SampleName, TimbreName } from '@musical-patterns/performer'
+// tslint:disable no-any
+
+import { OscillatorName, SampleName } from '@musical-patterns/performer'
 import { Maybe, Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
 import { SoundFeature } from './nominals'
+
+type TimbreName = SampleName | OscillatorName
 
 // tslint:disable-next-line variable-name typedef
 const TimbreNameEnum = {
@@ -29,15 +33,11 @@ interface Material {
 
 interface CompilePatternParameters {
     material: Material,
-    // tslint:disable-next-line no-any
     spec?: { initialSpecs: any },
-    // tslint:disable-next-line no-any
     specs?: any,
 }
 
-// tslint:disable-next-line no-any
 type MaterializeEntities = (specs?: any) => Entity[]
-// tslint:disable-next-line no-any
 type MaterializeScales = (specs?: any) => Scale[]
 
 interface Entity {
@@ -93,6 +93,7 @@ export {
     CompilePatternParameters,
     Material,
     TimbreNameEnum,
+    TimbreName,
     ScaleProperties,
     ComputeScalePropertiesParameters,
 }

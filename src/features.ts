@@ -1,4 +1,12 @@
-import { ADDITIVE_IDENTITY, apply, INITIAL, Maybe, MULTIPLICATIVE_IDENTITY, round } from '@musical-patterns/utilities'
+import {
+    ADDITIVE_IDENTITY,
+    apply,
+    INITIAL,
+    isEmpty,
+    Maybe,
+    MULTIPLICATIVE_IDENTITY,
+    round,
+} from '@musical-patterns/utilities'
 import { COMPILER_PRECISION } from './constants'
 import { SoundFeature } from './nominals'
 import { CompileSoundsOptions, ComputeScalePropertiesParameters, NoteFeature, Scale, ScaleProperties } from './types'
@@ -6,14 +14,14 @@ import { CompileSoundsOptions, ComputeScalePropertiesParameters, NoteFeature, Sc
 const computeScaleProperties: (scaleStuffParameters: ComputeScalePropertiesParameters) => ScaleProperties =
     ({ index, scaleIndex, options }: ComputeScalePropertiesParameters): ScaleProperties => {
         const { scales = [] } = options || {}
-        const scale: Scale = scales.length !== 0 ? apply.Ordinal(scales, scaleIndex) : { scalars: [] }
+        const scale: Scale = isEmpty(scales) ? { scalars: [] } : apply.Ordinal(scales, scaleIndex)
         const {
             translation: scaleTranslation = ADDITIVE_IDENTITY,
             scalar: scaleScalar = MULTIPLICATIVE_IDENTITY,
             scalars = [],
         }: Scale = scale
 
-        const scaleElement: Maybe<SoundFeature> = scalars.length !== 0 ? apply.Ordinal(scalars, index) : undefined
+        const scaleElement: Maybe<SoundFeature> = isEmpty(scalars) ? undefined : apply.Ordinal(scalars, index)
 
         return { scaleTranslation, scaleScalar, scaleElement }
     }

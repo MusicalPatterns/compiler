@@ -10,7 +10,7 @@ import {
 
 describe('total compiled duration', () => {
     describe('of notes', () => {
-        it('tells you how long a set of note are going to last once compiled', () => {
+        it('tells you how long a set of note are going to take to play once compiled', () => {
             const notes: Note[] = [
                 {
                     duration: {

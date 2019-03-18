@@ -168,4 +168,14 @@ describe('compile sound feature', () => {
         expect(soundFeature)
             .toBe(compilerTo.SoundFeature(2.12391))
     })
+
+    it('does not crash when given super tiny numbers', () => {
+        const noteFeature: NoteFeature = {
+            scalar: to.Scalar(1.000000001e-9),
+        }
+        const soundFeature: SoundFeature = compileSoundFeature(noteFeature, options)
+
+        expect(soundFeature)
+            .toBe(compilerTo.SoundFeature(0))
+    })
 })

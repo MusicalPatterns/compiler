@@ -1,5 +1,6 @@
-import { OscillatorName, SampleName, SourceRequest, SourceType, TimbreName } from '@musical-patterns/performer'
+import { OscillatorName, SampleName, SourceRequest, SourceType } from '@musical-patterns/performer'
 import { isUndefined, Maybe } from '@musical-patterns/utilities'
+import { TimbreName } from './types'
 
 const isSampleName: (timbreName: TimbreName) => timbreName is SampleName =
     (timbreName: TimbreName): timbreName is SampleName =>

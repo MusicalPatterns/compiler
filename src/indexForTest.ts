@@ -8,6 +8,7 @@ export { compileVoice } from './voices'
 export {
     computeNotesTotalCompiledDuration,
     computePatternTotalCompiledDuration,
+    computeVoicesDuration,
 } from './support/indexForTest'
 export { SoundFeature, to } from './nominals'
 

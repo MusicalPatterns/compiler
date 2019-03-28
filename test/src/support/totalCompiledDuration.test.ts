@@ -1,7 +1,9 @@
+import { Sound, Voice } from '@musical-patterns/performer'
 import { Ms, to } from '@musical-patterns/utilities'
 import {
     computeNotesTotalCompiledDuration,
     computePatternTotalCompiledDuration,
+    computeVoicesDuration,
     Entity,
     Material,
     Note,
@@ -121,6 +123,36 @@ describe('total compiled duration', () => {
                 .toBe(to.Ms(5))
 
             done()
+        })
+    })
+
+    describe('of voices', () => {
+        it('in this case the pattern has already been compiled', () => {
+            const testSoundFeatures: Sound = {
+                duration: to.Ms(0),
+                frequency: to.Hz(0),
+                gain: to.Scalar(0),
+                position: [ to.Meters(0) ],
+                sustain: to.Ms(0),
+            }
+            const voices: Voice[] = [
+                {
+                    sounds: [
+                        { ...testSoundFeatures, duration: to.Ms(2) },
+                        { ...testSoundFeatures, duration: to.Ms(3) },
+                    ],
+                },
+                {
+                    sounds: [
+                        { ...testSoundFeatures, duration: to.Ms(1) },
+                        { ...testSoundFeatures, duration: to.Ms(5) },
+                    ],
+                },
+            ]
+            const actual: Ms = computeVoicesDuration(voices)
+
+            expect(actual)
+                .toBe(to.Ms(30))
         })
     })
 })

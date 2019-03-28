@@ -1,3 +1,7 @@
 // tslint:disable no-reaching-imports
 
-export { computeNotesTotalCompiledDuration, computePatternTotalCompiledDuration } from './totalCompiledDuration'
+export {
+    computeNotesTotalCompiledDuration,
+    computePatternTotalCompiledDuration,
+    computeVoicesDuration,
+} from './totalCompiledDuration'

@@ -20,6 +20,11 @@ const computePatternTotalCompiledDuration: (parameters: CompilePatternParameters
     async (parameters: CompilePatternParameters): Promise<Ms> => {
         const voices: Voice[] = await compilePattern(parameters)
 
+        return computeVoicesDuration(voices)
+    }
+
+const computeVoicesDuration: (voices: Voice[]) => Ms =
+    (voices: Voice[]): Ms => {
         const durations: Ms[] = voices.map((voice: Voice): Ms =>
             voice.sounds ? voice.sounds.reduce(
                 (accumulator: Ms, sound: Sound): Ms =>
@@ -39,4 +44,5 @@ const computePatternTotalCompiledDuration: (parameters: CompilePatternParameters
 export {
     computeNotesTotalCompiledDuration,
     computePatternTotalCompiledDuration,
+    computeVoicesDuration,
 }

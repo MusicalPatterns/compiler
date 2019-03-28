@@ -3,6 +3,7 @@ export { compilePattern } from './patterns'
 export {
     computeNotesTotalCompiledDuration,
     computePatternTotalCompiledDuration,
+    computeVoicesDuration,
 } from './support'
 export {
     Adjustable,

@@ -4,14 +4,18 @@ import {
     INITIAL,
     isEmpty,
     Maybe,
-    MULTIPLICATIVE_IDENTITY,
+    MULTIPLICATIVE_IDENTITY, Ordinal,
     round,
 } from '@musical-patterns/utilities'
 import { COMPILER_PRECISION } from './constants'
 import { SoundFeature } from './nominals'
 import { CompileSoundsOptions, ComputeScalePropertiesParameters, NoteFeature, Scale, ScaleProperties } from './types'
 
-const computeScaleProperties: (scaleStuffParameters: ComputeScalePropertiesParameters) => ScaleProperties =
+const computeScaleProperties: (scaleStuffParameters: {
+    index: Ordinal,
+    options?: CompileSoundsOptions,
+    scaleIndex: Ordinal,
+}) => ScaleProperties =
     ({ index, scaleIndex, options }: ComputeScalePropertiesParameters): ScaleProperties => {
         const { scales = [] } = options || {}
         const scale: Scale = isEmpty(scales) ? { scalars: [] } : apply.Ordinal(scales, scaleIndex)
@@ -28,7 +32,7 @@ const computeScaleProperties: (scaleStuffParameters: ComputeScalePropertiesParam
 
 const compileSoundFeature:
     <SoundFeatureType extends SoundFeature>(
-        noteFeature: NoteFeature, options?: CompileSoundsOptions,
+        noteFeature: NoteFeature, options?: { scales?: Scale[] },
     ) => SoundFeatureType =
     <SoundFeatureType extends SoundFeature>(
         noteFeature: NoteFeature, options?: CompileSoundsOptions,

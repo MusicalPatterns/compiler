@@ -2,7 +2,7 @@ import { Sound, Voice } from '@musical-patterns/performer'
 import { computeLeastCommonMultiple, from, Integer, Ms, round, sum, to } from '@musical-patterns/utilities'
 import { compileSoundFeature } from '../features'
 import { compilePattern } from '../patterns'
-import { CompilePatternParameters, Note, NoteFeature, Scale } from '../types'
+import { CompilePatternParameters, Material, Note, NoteFeature, Scale } from '../types'
 
 const computeNotesTotalCompiledDuration: (notes: Note[], scales?: Scale[]) => Ms =
     (notes: Note[], scales?: Scale[]): Ms =>
@@ -16,7 +16,13 @@ const computeNotesTotalCompiledDuration: (notes: Note[], scales?: Scale[]) => Ms
             to.Ms(0),
         )
 
-const computePatternTotalCompiledDuration: (parameters: CompilePatternParameters) => Promise<Ms> =
+const computePatternTotalCompiledDuration: (parameters: {
+    material: Material,
+    // tslint:disable-next-line no-any
+    spec?: { initialSpecs: any },
+    // tslint:disable-next-line no-any
+    specs?: any,
+}) => Promise<Ms> =
     async (parameters: CompilePatternParameters): Promise<Ms> => {
         const voices: Voice[] = await compilePattern(parameters)
 

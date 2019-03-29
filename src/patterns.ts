@@ -2,7 +2,13 @@ import { Voice } from '@musical-patterns/performer'
 import { CompilePatternParameters, Entity, Material, Scale } from './types'
 import { compileVoices } from './voices'
 
-const compilePattern: (compilePatternParameters: CompilePatternParameters) => Promise<Voice[]> =
+const compilePattern: (compilePatternParameters: {
+    material: Material,
+    // tslint:disable-next-line no-any
+    spec?: { initialSpecs: any },
+    // tslint:disable-next-line no-any
+    specs?: any,
+}) => Promise<Voice[]> =
     async ({ specs, material, spec }: CompilePatternParameters): Promise<Voice[]> => {
         // tslint:disable-next-line no-any
         const specsToCompileWith: any = specs || spec && spec.initialSpecs

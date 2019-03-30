@@ -17,4 +17,5 @@ export {
     MaterializeScales,
     TimbreNameEnum,
     TimbreName,
+    NotesSection,
 } from './types'

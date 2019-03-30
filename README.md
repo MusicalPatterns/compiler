@@ -13,7 +13,7 @@ So, once thus materialized, the compiler reduces the large amount of data produc
 
 ```
 import { compilePattern } from '@musical-patterns/compiler'
-import { setupPerformer } from '@musical-patterns/performer'
+import { setupPerformer, Voice } from '@musical-patterns/performer'
 
 const material: Material = {
 	materializeEntities,

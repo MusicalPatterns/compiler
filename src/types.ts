@@ -1,6 +1,6 @@
-// tslint:disable no-any
+// tslint:disable no-any max-file-line-count
 
-import { OscillatorName, SampleName } from '@musical-patterns/performer'
+import { OscillatorName, SampleName, Section } from '@musical-patterns/performer'
 import { Maybe, Ordinal, Scalar, Translation } from '@musical-patterns/utilities'
 import { SoundFeature } from './nominals'
 
@@ -41,12 +41,16 @@ type MaterializeEntities = (specs?: any) => Entity[]
 type MaterializeScales = (specs?: any) => Scale[]
 
 interface Entity {
-    notes?: Note[],
+    sections?: NotesSection[],
     timbreName?: TimbreName,
 }
 
 interface Scale extends Adjustable {
     scalars?: Scalar[],
+}
+
+interface NotesSection extends Section {
+    notes?: Note[],
 }
 
 interface Note {
@@ -96,4 +100,5 @@ export {
     TimbreName,
     ScaleProperties,
     ComputeScalePropertiesParameters,
+    NotesSection,
 }

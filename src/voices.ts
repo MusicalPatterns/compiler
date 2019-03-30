@@ -1,21 +1,21 @@
-import { Sound, SourceRequest, Voice } from '@musical-patterns/performer'
+import { SoundsSection, SourceRequest, Voice } from '@musical-patterns/performer'
 import { Maybe } from '@musical-patterns/utilities'
-import { compileSounds } from './sounds'
+import { compileSections } from './sections'
 import { compileSourceRequest } from './sources'
 import { CompileVoiceParameters, CompileVoicesParameters, Entity, Scale } from './types'
 
 const compileVoice: (compileVoiceParameters: { entity: Entity, scales?: Scale[] }) => Voice =
     ({ entity, scales }: CompileVoiceParameters): Voice => {
         const {
-            notes = [],
+            sections: notesSections = [],
             timbreName,
         } = entity
 
-        const sounds: Sound[] = compileSounds(notes, { scales })
+        const soundsSections: SoundsSection[] = compileSections(notesSections, { scales })
         const sourceRequest: Maybe<SourceRequest> = compileSourceRequest(timbreName)
 
         return {
-            sounds,
+            sections: soundsSections,
             sourceRequest,
         }
     }

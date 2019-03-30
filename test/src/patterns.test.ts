@@ -19,20 +19,23 @@ describe('compile pattern', () => {
     let specs: TestSpecs
 
     beforeEach(() => {
-        const materializeEntities: MaterializeEntities = (specsForEntities: TestSpecs): Entity[] =>
-            [
-                {
-                    notes: [
-                        {
-                            duration: { scalar: specsForEntities.testSpec },
-                            gain: { scalar: specsForEntities.testSpec },
-                            pitch: { scalar: specsForEntities.testSpec },
-                            position: { scalar: specsForEntities.testSpec },
-                            sustain: { scalar: specsForEntities.testSpec },
-                        },
-                    ],
-                },
-            ]
+        const materializeEntities: MaterializeEntities = (specsForEntities: TestSpecs): Entity[] => [
+            {
+                sections: [
+                    {
+                        notes: [
+                            {
+                                duration: { scalar: specsForEntities.testSpec },
+                                gain: { scalar: specsForEntities.testSpec },
+                                pitch: { scalar: specsForEntities.testSpec },
+                                position: { scalar: specsForEntities.testSpec },
+                                sustain: { scalar: specsForEntities.testSpec },
+                            },
+                        ],
+                    },
+                ],
+            },
+        ]
 
         const materializeScales: MaterializeScales = (specsForScales: TestSpecs): Scale[] => [
             {
@@ -56,13 +59,17 @@ describe('compile pattern', () => {
         expect(actualVoices)
             .toEqual([
                 {
-                    sounds: [
+                    sections: [
                         {
-                            duration: to.Ms(9),
-                            frequency: to.Hz(9),
-                            gain: to.Scalar(9),
-                            position: [ 9, 0, 0 ].map(to.Meters),
-                            sustain: to.Ms(8.9),
+                            sounds: [
+                                {
+                                    duration: to.Ms(9),
+                                    frequency: to.Hz(9),
+                                    gain: to.Scalar(9),
+                                    position: [ 9, 0, 0 ].map(to.Meters),
+                                    sustain: to.Ms(8.9),
+                                },
+                            ],
                         },
                     ],
                     sourceRequest: undefined,
@@ -85,13 +92,17 @@ describe('compile pattern', () => {
         expect(actualVoices)
             .toEqual([
                 {
-                    sounds: [
+                    sections: [
                         {
-                            duration: to.Ms(9),
-                            frequency: to.Hz(9),
-                            gain: to.Scalar(9),
-                            position: [ 9, 0, 0 ].map(to.Meters),
-                            sustain: to.Ms(8.9),
+                            sounds: [
+                                {
+                                    duration: to.Ms(9),
+                                    frequency: to.Hz(9),
+                                    gain: to.Scalar(9),
+                                    position: [ 9, 0, 0 ].map(to.Meters),
+                                    sustain: to.Ms(8.9),
+                                },
+                            ],
                         },
                     ],
                     sourceRequest: undefined,
@@ -116,13 +127,17 @@ describe('compile pattern', () => {
         expect(actualVoices)
             .toEqual([
                 {
-                    sounds: [
+                    sections: [
                         {
-                            duration: to.Ms(9),
-                            frequency: to.Hz(9),
-                            gain: to.Scalar(9),
-                            position: [ 9, 0, 0 ].map(to.Meters),
-                            sustain: to.Ms(8.9),
+                            sounds: [
+                                {
+                                    duration: to.Ms(9),
+                                    frequency: to.Hz(9),
+                                    gain: to.Scalar(9),
+                                    position: [ 9, 0, 0 ].map(to.Meters),
+                                    sustain: to.Ms(8.9),
+                                },
+                            ],
                         },
                     ],
                     sourceRequest: undefined,

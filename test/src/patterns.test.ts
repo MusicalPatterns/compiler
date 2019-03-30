@@ -23,6 +23,7 @@ describe('compile pattern', () => {
             {
                 sections: [
                     {
+                        delayFor: to.Ms(1),
                         notes: [
                             {
                                 duration: { scalar: specsForEntities.testSpec },
@@ -32,6 +33,8 @@ describe('compile pattern', () => {
                                 sustain: { scalar: specsForEntities.testSpec },
                             },
                         ],
+                        repetitions: to.Cardinal(8),
+                        wrapAt: to.Ms(500),
                     },
                 ],
             },
@@ -53,7 +56,7 @@ describe('compile pattern', () => {
         }
     })
 
-    it('given a spec, takes it into account', async (done: DoneFn) => {
+    it('given specs, takes them into account', async (done: DoneFn) => {
         const actualVoices: Voice[] = await compilePattern({ material, specs })
 
         expect(actualVoices)
@@ -61,6 +64,8 @@ describe('compile pattern', () => {
                 {
                     sections: [
                         {
+                            delayFor: to.Ms(1),
+                            repetitions: to.Cardinal(8),
                             sounds: [
                                 {
                                     duration: to.Ms(9),
@@ -70,6 +75,7 @@ describe('compile pattern', () => {
                                     sustain: to.Ms(8.9),
                                 },
                             ],
+                            wrapAt: to.Ms(500),
                         },
                     ],
                     sourceRequest: undefined,
@@ -79,7 +85,7 @@ describe('compile pattern', () => {
         done()
     })
 
-    it('if specs are not explicitly provided to override default, the default is finding the initial specs within spec, so that you can just pass it a friggin pattern', async (done: DoneFn) => {
+    it('if specs are not explicitly provided to override default, the default is finding the initial specs within the spec key of the pattern, so that you can just pass it a friggin pattern', async (done: DoneFn) => {
         const patternLikeObject: { material: Material, spec: { initialSpecs: TestSpecs } } = {
             material,
             spec: {
@@ -94,6 +100,8 @@ describe('compile pattern', () => {
                 {
                     sections: [
                         {
+                            delayFor: to.Ms(1),
+                            repetitions: to.Cardinal(8),
                             sounds: [
                                 {
                                     duration: to.Ms(9),
@@ -103,6 +111,7 @@ describe('compile pattern', () => {
                                     sustain: to.Ms(8.9),
                                 },
                             ],
+                            wrapAt: to.Ms(500),
                         },
                     ],
                     sourceRequest: undefined,
@@ -112,7 +121,7 @@ describe('compile pattern', () => {
         done()
     })
 
-    it('prefers the top-level specs provision to the finding it inside spec', async (done: DoneFn) => {
+    it('prefers the top-level specs provision to the finding it inside spec key of pattern', async (done: DoneFn) => {
         const patternLikeObject: { material: Material, spec: { initialSpecs: TestSpecs } } = {
             material,
             spec: {
@@ -129,6 +138,8 @@ describe('compile pattern', () => {
                 {
                     sections: [
                         {
+                            delayFor: to.Ms(1),
+                            repetitions: to.Cardinal(8),
                             sounds: [
                                 {
                                     duration: to.Ms(9),
@@ -138,6 +149,7 @@ describe('compile pattern', () => {
                                     sustain: to.Ms(8.9),
                                 },
                             ],
+                            wrapAt: to.Ms(500),
                         },
                     ],
                     sourceRequest: undefined,

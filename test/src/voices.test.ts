@@ -10,7 +10,7 @@ describe('compile voice', () => {
 
         expect(voice)
             .toEqual({
-                sections: [],
+                sounds: [],
                 sourceRequest: undefined,
             })
     })

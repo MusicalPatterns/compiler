@@ -32,7 +32,6 @@ describe('compile pattern', () => {
                                 sustain: { scalar: specsForEntities.testSpec },
                             },
                         ],
-                        repetitions: to.Cardinal(8),
                     },
                 ],
             },
@@ -60,18 +59,13 @@ describe('compile pattern', () => {
         expect(actualVoices)
             .toEqual([
                 {
-                    sections: [
+                    sounds: [
                         {
-                            repetitions: to.Cardinal(8),
-                            sounds: [
-                                {
-                                    duration: to.Ms(9),
-                                    frequency: to.Hz(9),
-                                    gain: to.Scalar(9),
-                                    position: [ 9, 0, 0 ].map(to.Meters),
-                                    sustain: to.Ms(8.9),
-                                },
-                            ],
+                            duration: to.Ms(9),
+                            frequency: to.Hz(9),
+                            gain: to.Scalar(9),
+                            position: [ 9, 0, 0 ].map(to.Meters),
+                            sustain: to.Ms(8.9),
                         },
                     ],
                     sourceRequest: undefined,
@@ -94,18 +88,13 @@ describe('compile pattern', () => {
         expect(actualVoices)
             .toEqual([
                 {
-                    sections: [
+                    sounds: [
                         {
-                            repetitions: to.Cardinal(8),
-                            sounds: [
-                                {
-                                    duration: to.Ms(9),
-                                    frequency: to.Hz(9),
-                                    gain: to.Scalar(9),
-                                    position: [ 9, 0, 0 ].map(to.Meters),
-                                    sustain: to.Ms(8.9),
-                                },
-                            ],
+                            duration: to.Ms(9),
+                            frequency: to.Hz(9),
+                            gain: to.Scalar(9),
+                            position: [ 9, 0, 0 ].map(to.Meters),
+                            sustain: to.Ms(8.9),
                         },
                     ],
                     sourceRequest: undefined,
@@ -130,18 +119,13 @@ describe('compile pattern', () => {
         expect(actualVoices)
             .toEqual([
                 {
-                    sections: [
+                    sounds: [
                         {
-                            repetitions: to.Cardinal(8),
-                            sounds: [
-                                {
-                                    duration: to.Ms(9),
-                                    frequency: to.Hz(9),
-                                    gain: to.Scalar(9),
-                                    position: [ 9, 0, 0 ].map(to.Meters),
-                                    sustain: to.Ms(8.9),
-                                },
-                            ],
+                            duration: to.Ms(9),
+                            frequency: to.Hz(9),
+                            gain: to.Scalar(9),
+                            position: [ 9, 0, 0 ].map(to.Meters),
+                            sustain: to.Ms(8.9),
                         },
                     ],
                     sourceRequest: undefined,

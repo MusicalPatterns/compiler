@@ -153,26 +153,16 @@ describe('total compiled duration', () => {
             }
             const voices: Voice[] = [
                 {
-                    sections: [
-                        {
-                            sounds: [
-                                { ...testSoundFeatures, duration: to.Ms(2) },
-                                { ...testSoundFeatures, duration: to.Ms(3) },
-                            ],
-                        },
+                    sounds: [
+                        { ...testSoundFeatures, duration: to.Ms(2) },
+                        { ...testSoundFeatures, duration: to.Ms(3) },
                     ],
-
                 },
                 {
-                    sections: [
-                        {
-                            sounds: [
-                                { ...testSoundFeatures, duration: to.Ms(1) },
-                                { ...testSoundFeatures, duration: to.Ms(5) },
-                            ],
-                        },
+                    sounds: [
+                        { ...testSoundFeatures, duration: to.Ms(1) },
+                        { ...testSoundFeatures, duration: to.Ms(5) },
                     ],
-
                 },
             ]
             const actual: Ms = computeVoicesDuration(voices)

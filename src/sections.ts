@@ -1,21 +1,20 @@
-import { SoundsSection } from '@musical-patterns/performer'
-import { isUndefined } from '@musical-patterns/utilities'
+import { Sound } from '@musical-patterns/performer'
+import { ONCE, repeat } from '@musical-patterns/utilities'
 import { compileSounds } from './sounds'
 import { CompileSoundsOptions, Section } from './types'
 
-const compileSections: (sections: Section[], options: CompileSoundsOptions) => SoundsSection[] =
-    (sections: Section[], options: CompileSoundsOptions): SoundsSection[] =>
-        sections.map(({ notes = [], repetitions }: Section) => {
-            const soundsSection: SoundsSection = {
-                sounds: compileSounds(notes, options),
-            }
-
-            if (!isUndefined(repetitions)) {
-                soundsSection.repetitions = repetitions
-            }
-
-            return soundsSection
-        })
+const compileSections: (sections: Section[], options: CompileSoundsOptions) => Sound[] =
+    (sections: Section[], options: CompileSoundsOptions): Sound[] =>
+        sections.reduce(
+            (accumulator: Sound[], { notes = [], repetitions }: Section) =>
+                accumulator.concat(
+                    repeat(
+                        compileSounds(notes, options),
+                        repetitions || ONCE,
+                    ),
+                ),
+            [],
+        )
 
 export {
     compileSections,

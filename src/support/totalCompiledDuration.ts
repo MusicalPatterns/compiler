@@ -1,4 +1,4 @@
-import { Sound, SoundsSection, Voice } from '@musical-patterns/performer'
+import { Sound, Voice } from '@musical-patterns/performer'
 import { computeLeastCommonMultiple, from, Integer, Ms, round, sum, to } from '@musical-patterns/utilities'
 import { compileSoundFeature } from '../features'
 import { compilePattern } from '../patterns'
@@ -32,21 +32,11 @@ const computePatternTotalCompiledDuration: (parameters: {
 const computeVoicesDuration: (voices: Voice[]) => Ms =
     (voices: Voice[]): Ms => {
         const durations: Ms[] = voices.map((voice: Voice): Ms =>
-            voice.sections ?
-                voice.sections.reduce(
-                    (sectionsAccumulator: Ms, section: SoundsSection): Ms =>
-                        sum(
-                            sectionsAccumulator,
-                            section.sounds.reduce(
-                                (soundsAccumulator: Ms, sound: Sound): Ms =>
-                                    sum(soundsAccumulator, sound.duration),
-                                to.Ms(0),
-                            ),
-                        ),
-                    to.Ms(0),
-                ) :
+            voice.sounds ? voice.sounds.reduce(
+                (accumulator: Ms, sound: Sound): Ms =>
+                    sum(accumulator, sound.duration),
                 to.Ms(0),
-        )
+            ) : to.Ms(0))
 
         const rawRoundedDurations: Integer[] = durations.map(from.Ms)
         // tslint:disable-next-line no-unnecessary-callback-wrapper

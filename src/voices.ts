@@ -7,11 +7,11 @@ import { CompileVoiceParameters, CompileVoicesParameters, Entity, Scale } from '
 const compileVoice: (compileVoiceParameters: { entity: Entity, scales?: Scale[] }) => Voice =
     ({ entity, scales }: CompileVoiceParameters): Voice => {
         const {
-            sections: notesSections = [],
+            sections = [],
             timbreName,
         } = entity
 
-        const soundsSections: SoundsSection[] = compileSections(notesSections, { scales })
+        const soundsSections: SoundsSection[] = compileSections(sections, { scales })
         const sourceRequest: Maybe<SourceRequest> = compileSourceRequest(timbreName)
 
         return {

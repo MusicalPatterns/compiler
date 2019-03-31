@@ -23,7 +23,6 @@ describe('compile pattern', () => {
             {
                 sections: [
                     {
-                        delayFor: to.Ms(1),
                         notes: [
                             {
                                 duration: { scalar: specsForEntities.testSpec },
@@ -34,7 +33,6 @@ describe('compile pattern', () => {
                             },
                         ],
                         repetitions: to.Cardinal(8),
-                        wrapAt: to.Ms(500),
                     },
                 ],
             },
@@ -64,7 +62,6 @@ describe('compile pattern', () => {
                 {
                     sections: [
                         {
-                            delayFor: to.Ms(1),
                             repetitions: to.Cardinal(8),
                             sounds: [
                                 {
@@ -75,7 +72,6 @@ describe('compile pattern', () => {
                                     sustain: to.Ms(8.9),
                                 },
                             ],
-                            wrapAt: to.Ms(500),
                         },
                     ],
                     sourceRequest: undefined,
@@ -100,7 +96,6 @@ describe('compile pattern', () => {
                 {
                     sections: [
                         {
-                            delayFor: to.Ms(1),
                             repetitions: to.Cardinal(8),
                             sounds: [
                                 {
@@ -111,7 +106,6 @@ describe('compile pattern', () => {
                                     sustain: to.Ms(8.9),
                                 },
                             ],
-                            wrapAt: to.Ms(500),
                         },
                     ],
                     sourceRequest: undefined,
@@ -138,7 +132,6 @@ describe('compile pattern', () => {
                 {
                     sections: [
                         {
-                            delayFor: to.Ms(1),
                             repetitions: to.Cardinal(8),
                             sounds: [
                                 {
@@ -149,7 +142,6 @@ describe('compile pattern', () => {
                                     sustain: to.Ms(8.9),
                                 },
                             ],
-                            wrapAt: to.Ms(500),
                         },
                     ],
                     sourceRequest: undefined,

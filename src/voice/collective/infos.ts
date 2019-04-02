@@ -1,4 +1,13 @@
-import { allValuesAreTheSame, computeLeastCommonMultiple, from, max, Ms, sum, to } from '@musical-patterns/utilities'
+import {
+    allValuesAreTheSame,
+    computeLeastCommonMultiple,
+    from,
+    max,
+    Ms,
+    round,
+    sum,
+    to,
+} from '@musical-patterns/utilities'
 import { HAS_NO_REPETEND } from '../constants'
 import { IndividualVoiceAndInfo, IndividualVoiceInfo } from '../individual'
 import { CollectiveVoiceInfos, PluckedVoiceInfos } from './types'
@@ -39,6 +48,8 @@ const computeCollectiveInfosFromPluckedInfos: (parameters: {
         const collectiveRepetendDuration: Ms = to.Ms(computeLeastCommonMultiple(
             ...individualRepetendDurations
                 .filter((individualRepetendDuration: Ms) => individualRepetendDuration !== to.Ms(0))
+                // tslint:disable-next-line no-unnecessary-callback-wrapper
+                .map((individualRepetendDuration: Ms) => round(individualRepetendDuration))
                 .map(from.Ms)
                 .map(to.Integer),
         ))

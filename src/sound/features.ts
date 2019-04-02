@@ -7,9 +7,10 @@ import {
     MULTIPLICATIVE_IDENTITY, Ordinal,
     round,
 } from '@musical-patterns/utilities'
+import { SoundFeature } from '../nominals'
+import { Scale } from '../types'
 import { COMPILER_PRECISION } from './constants'
-import { SoundFeature } from './nominals'
-import { CompileSoundsOptions, ComputeScalePropertiesParameters, NoteFeature, Scale, ScaleProperties } from './types'
+import { CompileSoundsOptions, ComputeScalePropertiesParameters, NoteFeature, ScaleProperties } from './types'
 
 const computeScaleProperties: (scaleStuffParameters: {
     index: Ordinal,

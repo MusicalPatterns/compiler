@@ -1,25 +1,33 @@
 // tslint:disable no-reaching-imports
 
-export { compileSound } from './sounds'
-export { compileSoundFeature } from './features'
 export { compilePattern } from './patterns'
-export { compileSourceRequest } from './sources'
-export { compileVoice } from './voices'
-export {
-    computeNotesTotalCompiledDuration,
-    computePatternTotalCompiledDuration,
-    computeVoicesDuration,
-} from './support/indexForTest'
 export { SoundFeature, to } from './nominals'
 
 export {
-    CompileSoundsOptions,
+    compileSound,
+    compileSoundFeature,
     NoteFeature,
-    Scale,
     Note,
+    CompileSoundsOptions,
+} from './sound/indexForTest'
+export {
+    compileSourceRequest,
+    TimbreNameEnum,
+} from './source/indexForTest'
+export {
+    computeNotesTotalCompiledDuration,
+} from './support/indexForTest'
+export {
+    computeIndividualVoiceAndInfo,
+    IndividualVoiceAndInfo,
+    HAS_NO_REPETEND,
+} from './voice/indexForTest'
+
+export {
+    Scale,
     Material,
     MaterializeEntities,
     MaterializeScales,
     Entity,
-    TimbreNameEnum,
+    CompiledPattern,
 } from './types'

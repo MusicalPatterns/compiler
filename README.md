@@ -23,8 +23,21 @@ const spec: MySpec extends StandardSpec = {
 	// anything
 }
 
-const voices: Voice[] = await compilePattern({ material, spec })
+const { voices, totalDuration, segnoTime }: CompiledPattern = await compilePattern({ material, spec })
 
 setupPerformer({ autoStart: { voices } })
 
 ```
+
+## terminology
+
+### repetend
+
+When a voice has a section which does not specify the number of times it should repeat, it will repeat forever. 
+In this case, it is the voice's repetend. A repetend is a section. Its index is the index within an array of sections.
+
+### segno
+
+Italian for 'sign', this is the time position a voice repeats from once it reaches its end.
+The segno index is the index of a sound in the voice's sounds array.
+The segno time is a position in milliseconds.

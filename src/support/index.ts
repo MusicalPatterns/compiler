@@ -1,5 +1,4 @@
 export {
     computeNotesTotalCompiledDuration,
-    computePatternTotalCompiledDuration,
-    computeVoicesDuration,
+    computeSoundsDuration,
 } from './totalCompiledDuration'

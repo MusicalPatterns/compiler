@@ -8,7 +8,7 @@ import {
     Scale,
     SoundFeature,
     to as compilerTo,
-} from '../../src/indexForTest'
+} from '../../../src/indexForTest'
 
 describe('compile sound feature', () => {
     let scales: Scale[]

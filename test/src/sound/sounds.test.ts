@@ -1,6 +1,6 @@
 import { Sound } from '@musical-patterns/performer'
 import { to } from '@musical-patterns/utilities'
-import { compileSound, Note } from '../../src/indexForTest'
+import { compileSound, Note } from '../../../src/indexForTest'
 
 describe('compile sound', () => {
     describe('defaults', () => {

@@ -1,6 +1,6 @@
 import { OscillatorName, SampleName, SourceRequest, SourceType } from '@musical-patterns/performer'
 import { Maybe } from '@musical-patterns/utilities'
-import { compileSourceRequest, TimbreNameEnum } from '../../src/indexForTest'
+import { compileSourceRequest, TimbreNameEnum } from '../../../src/indexForTest'
 
 describe('compile source', () => {
     it('works for samples', () => {

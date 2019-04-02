@@ -1,8 +1,12 @@
 import { Sound } from '@musical-patterns/performer'
-import { apply, from, indexOfFinalElement, INITIAL, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
+import { apply, from, indexOfFinalElement, INITIAL, isEmpty, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
 
 const computeFillGapSounds: (repetendSounds: Sound[], gapToBeFilled: Ms) => Sound[] =
     (repetendSounds: Sound[], gapToBeFilled: Ms): Sound[] => {
+        if (isEmpty(repetendSounds)) {
+            throw new Error('You will never fill a gap from a source of no sounds')
+        }
+
         const fillGapSounds: Sound[] = []
         let gapFilled: Ms = to.Ms(0)
         let soundIndex: Ordinal = INITIAL

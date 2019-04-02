@@ -26,7 +26,7 @@ const computeRepetendSounds:
             return undefined
         }
 
-        const repetend: Section = apply.Ordinal(sections, repetendIndex)
+        const repetend: Section = isEmpty(sections) ? {} : apply.Ordinal(sections, repetendIndex)
         const repetendNotes: Maybe<Note[]> = repetend.notes
         if (isUndefined(repetendNotes) || isEmpty(repetendNotes)) {
             throw new Error('Repetend was empty or undefined')

@@ -1,10 +1,17 @@
 import { Voice } from '@musical-patterns/performer'
-import { apply, Maybe, Ms, Ordinal } from '@musical-patterns/utilities'
+import { apply, isEmpty, Maybe, Ms, Ordinal } from '@musical-patterns/utilities'
 import { Entity, Scale } from '../../types'
 import { SectionInfo } from '../individual'
+import { Section } from '../types'
 import { fillGap } from './fillGap'
 import { computeSegnoIndex } from './segnoIndex'
 import { ApplyCollectiveInfosParameters } from './types'
+
+const computeSections: (entities: Entity[], index: Ordinal) => Section[] =
+    (entities: Entity[], index: Ordinal): Section[] =>
+        isEmpty(entities) ?
+            [] :
+            apply.Ordinal(entities, index).sections || []
 
 const applyCollectiveInfos: (parameters: {
     collectiveEndTime: Ms,
@@ -33,7 +40,7 @@ const applyCollectiveInfos: (parameters: {
                 collectiveEndTime,
                 scales: scales || [],
                 sectionInfos,
-                sections: apply.Ordinal(entities, index).sections || [],
+                sections: computeSections(entities, index),
                 sounds: voice.sounds || [],
             })
         }

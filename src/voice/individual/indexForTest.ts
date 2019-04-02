@@ -4,4 +4,5 @@ export { computeIndividualVoiceAndInfo } from './voiceAndInfos'
 
 export {
     IndividualVoiceAndInfo,
+    SectionInfo,
 } from './types'

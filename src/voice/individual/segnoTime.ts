@@ -1,5 +1,5 @@
 import { Sound } from '@musical-patterns/performer'
-import { apply, INITIAL, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
+import { apply, INITIAL, isEmpty, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
 import { computeSoundsDuration } from '../../support'
 import { HAS_NO_REPETEND, NOT_FOUND } from '../constants'
 import {
@@ -15,6 +15,10 @@ const computeSegnoTimeWhenItIsSimplyTheEndTime: (sounds: Sound[]) => Ms =
 const computeSegnoTimeWhenItIsSomewhereInTheMiddle:
     (sectionInfos: SectionInfo[], individualRepetendIndex: Ordinal) => Ms =
     (sectionInfos: SectionInfo[], individualRepetendIndex: Ordinal): Ms => {
+        if (isEmpty(sectionInfos)) {
+            throw new Error('you cannot find the segno time without section infos')
+        }
+
         let individualSegnoTime: Ms = to.Ms(0)
         for (
             let index: Ordinal = INITIAL;

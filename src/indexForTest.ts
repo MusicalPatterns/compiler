@@ -21,6 +21,15 @@ export {
     computeIndividualVoiceAndInfo,
     IndividualVoiceAndInfo,
     HAS_NO_REPETEND,
+    Section,
+    SectionInfo,
+    computeRepetendSounds,
+    computeFillGapSounds,
+    fillGap,
+    computeSegnoIndex,
+    applyCollectiveInfos,
+    CollectiveVoiceInfos,
+    computeCollectiveInfos,
 } from './voice/indexForTest'
 
 export {

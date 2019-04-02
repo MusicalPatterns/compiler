@@ -1,10 +1,14 @@
 import { NON_SEGNO_INDEX, Sound, Voice } from '@musical-patterns/performer'
-import { apply, from, indexOfFinalElement, INITIAL, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
+import { apply, from, indexOfFinalElement, INITIAL, isEmpty, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
 import { HAS_NO_REPETEND } from '../constants'
 import { ComputeSegnoIndexParameters } from './types'
 
 const computeFirstSoundIndexAfterTime: (sounds: Sound[], timePosition: Ms) => Ordinal =
     (sounds: Sound[], timePosition: Ms): Ordinal => {
+        if (isEmpty(sounds)) {
+            throw new Error('there will be no sound index if the sounds are empty')
+        }
+
         let soundIndex: Ordinal = INITIAL
         let nextStart: Ms = to.Ms(0)
         while (nextStart < timePosition) {

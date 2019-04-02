@@ -15,11 +15,8 @@ const fillGap: (parameters: {
     sections: Section[],
     sounds: Sound[],
 }) => Sound[] =
-    (parameters: FillGapParameters): Sound[] => {
-        const { sounds, sectionInfos, sections, scales, collectiveEndTime } = parameters
-
-        const repetendSounds: Maybe<Sound[]> =
-            computeRepetendSounds({ sections, scales, sectionInfos })
+    ({ sounds, sectionInfos, sections, scales, collectiveEndTime }: FillGapParameters): Sound[] => {
+        const repetendSounds: Maybe<Sound[]> = computeRepetendSounds({ sections, scales, sectionInfos })
 
         if (isUndefined(repetendSounds)) {
             return sounds

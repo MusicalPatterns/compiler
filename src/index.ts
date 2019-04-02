@@ -10,6 +10,7 @@ export {
 } from './source'
 export {
     computeNotesTotalCompiledDuration,
+    computeSoundsDuration,
 } from './support'
 export {
     Section,

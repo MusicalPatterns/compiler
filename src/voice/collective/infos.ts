@@ -1,3 +1,4 @@
+import { NON_SEGNO_TIME } from '@musical-patterns/performer'
 import {
     allValuesAreTheSame,
     computeLeastCommonMultiple,
@@ -8,7 +9,6 @@ import {
     sum,
     to,
 } from '@musical-patterns/utilities'
-import { HAS_NO_REPETEND } from '../constants'
 import { IndividualVoiceAndInfo, IndividualVoiceInfo } from '../individual'
 import { CollectiveVoiceInfos, PluckedVoiceInfos } from './types'
 
@@ -45,8 +45,8 @@ const computeCollectiveInfosFromPluckedInfos: (parameters: {
     ): CollectiveVoiceInfos => {
         const collectiveShareSegnoTime: boolean = allValuesAreTheSame(individualSegnoTimes)
         const collectiveSegnoTime: Ms = max(...individualSegnoTimes)
-        const collectiveRepetendDuration: Ms = collectiveSegnoTime === HAS_NO_REPETEND ?
-            HAS_NO_REPETEND :
+        const collectiveRepetendDuration: Ms = collectiveSegnoTime === NON_SEGNO_TIME ?
+            NON_SEGNO_TIME :
             to.Ms(computeLeastCommonMultiple(
                 ...individualRepetendDurations
                     .filter((individualRepetendDuration: Ms) => individualRepetendDuration !== to.Ms(0))
@@ -55,7 +55,7 @@ const computeCollectiveInfosFromPluckedInfos: (parameters: {
                     .map(from.Ms)
                     .map(to.Integer),
             ))
-        const collectiveEndTime: Ms = collectiveSegnoTime === HAS_NO_REPETEND ?
+        const collectiveEndTime: Ms = collectiveSegnoTime === NON_SEGNO_TIME ?
             max(...individualEndTimes) :
             sum(collectiveSegnoTime, collectiveRepetendDuration)
 

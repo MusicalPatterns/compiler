@@ -1,6 +1,5 @@
-import { NON_SEGNO_INDEX, Sound, Voice } from '@musical-patterns/performer'
+import { NON_SEGNO_INDEX, NON_SEGNO_TIME, Sound, Voice } from '@musical-patterns/performer'
 import { apply, from, indexOfFinalElement, INITIAL, isEmpty, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
-import { HAS_NO_REPETEND } from '../constants'
 import { ComputeSegnoIndexParameters } from './types'
 
 const computeFirstSoundIndexAfterTime: (sounds: Sound[], timePosition: Ms) => Ordinal =
@@ -35,7 +34,7 @@ const computeSegnoIndex: (parameters: {
          individualSegnoTime,
          voice,
      }: ComputeSegnoIndexParameters): Ordinal =>
-        individualSegnoTime === HAS_NO_REPETEND ?
+        individualSegnoTime === NON_SEGNO_TIME ?
             NON_SEGNO_INDEX :
             computeFirstSoundIndexAfterTime(
                 voice.sounds || [],

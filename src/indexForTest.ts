@@ -20,7 +20,6 @@ export {
 export {
     computeIndividualVoiceAndInfo,
     IndividualVoiceAndInfo,
-    HAS_NO_REPETEND,
     Section,
     SectionInfo,
     computeRepetendSounds,

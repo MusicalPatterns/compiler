@@ -1,5 +1,6 @@
+import { NON_SEGNO_TIME } from '@musical-patterns/performer'
 import { apply, INITIAL, Ms, Ordinal, slice, to } from '@musical-patterns/utilities'
-import { HAS_NO_REPETEND, NOT_FOUND } from '../constants'
+import { NOT_FOUND } from '../constants'
 import { ComputeIndividualSegnoTimeParameters, SectionInfo } from './types'
 
 const computeIndividualSegnoTimeWhenVoiceHasRepetend:
@@ -16,7 +17,7 @@ const computeIndividualSegnoTime:
     (parameters: { individualRepetendIndex: Ordinal, sectionInfos: SectionInfo[] }) => Ms =
     ({ individualRepetendIndex, sectionInfos }: ComputeIndividualSegnoTimeParameters): Ms =>
         individualRepetendIndex === NOT_FOUND ?
-            HAS_NO_REPETEND :
+            NON_SEGNO_TIME :
             computeIndividualSegnoTimeWhenVoiceHasRepetend(sectionInfos, individualRepetendIndex)
 
 export {

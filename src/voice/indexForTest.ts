@@ -24,8 +24,5 @@ export {
 } from './collective/indexForTest'
 
 export {
-    HAS_NO_REPETEND,
-} from './constants'
-export {
     Section,
 } from './types'

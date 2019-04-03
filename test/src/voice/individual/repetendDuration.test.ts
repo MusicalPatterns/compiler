@@ -1,4 +1,5 @@
-import { Ms, Ordinal, to } from '@musical-patterns/utilities'
+import { NON_SEGNO_INDEX } from '@musical-patterns/performer'
+import { Ms, NO_DURATION, Ordinal, to } from '@musical-patterns/utilities'
 import { computeIndividualRepetendDuration, SectionInfo } from '../../../../src/indexForTest'
 
 describe('compute individual repetend duration', () => {
@@ -29,7 +30,7 @@ describe('compute individual repetend duration', () => {
     })
 
     it('when the voice has no repetend, is zero', () => {
-        const individualRepetendIndex: Ordinal = to.Ordinal(-1)
+        const individualRepetendIndex: Ordinal = NON_SEGNO_INDEX
         const sectionInfos: SectionInfo[] = [
             {
                 doesRepeatForever: false,
@@ -51,7 +52,7 @@ describe('compute individual repetend duration', () => {
         })
 
         expect(actualIndividualRepetendDuration)
-            .toBe(to.Ms(0))
+            .toBe(NO_DURATION)
     })
 
     it('when the section infos are empty, is zero', () => {
@@ -64,6 +65,6 @@ describe('compute individual repetend duration', () => {
         })
 
         expect(actualIndividualRepetendDuration)
-            .toBe(to.Ms(0))
+            .toBe(NO_DURATION)
     })
 })

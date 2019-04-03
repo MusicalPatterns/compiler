@@ -5,6 +5,7 @@ import {
     from,
     max,
     Ms,
+    NO_DURATION,
     round,
     sum,
     to,
@@ -49,7 +50,7 @@ const computeCollectiveInfosFromPluckedInfos: (parameters: {
             NON_SEGNO_TIME :
             to.Ms(computeLeastCommonMultiple(
                 ...individualRepetendDurations
-                    .filter((individualRepetendDuration: Ms) => individualRepetendDuration !== to.Ms(0))
+                    .filter((individualRepetendDuration: Ms) => individualRepetendDuration !== NO_DURATION)
                     // tslint:disable-next-line no-unnecessary-callback-wrapper
                     .map((individualRepetendDuration: Ms) => round(individualRepetendDuration))
                     .map(from.Ms)

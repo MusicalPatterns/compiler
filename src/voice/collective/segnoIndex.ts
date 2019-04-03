@@ -1,5 +1,16 @@
 import { NON_SEGNO_INDEX, NON_SEGNO_TIME, Sound, Voice } from '@musical-patterns/performer'
-import { apply, from, indexOfFinalElement, INITIAL, isEmpty, Ms, NEXT, Ordinal, to } from '@musical-patterns/utilities'
+import {
+    apply,
+    BEGINNING,
+    from,
+    indexOfFinalElement,
+    INITIAL,
+    isEmpty,
+    Ms,
+    NEXT,
+    Ordinal,
+    to,
+} from '@musical-patterns/utilities'
 import { ComputeSegnoIndexParameters } from './types'
 
 const computeFirstSoundIndexAfterTime: (sounds: Sound[], timePosition: Ms) => Ordinal =
@@ -9,7 +20,7 @@ const computeFirstSoundIndexAfterTime: (sounds: Sound[], timePosition: Ms) => Or
         }
 
         let soundIndex: Ordinal = INITIAL
-        let nextStart: Ms = to.Ms(0)
+        let nextStart: Ms = BEGINNING
         while (nextStart < timePosition) {
             const nextSound: Sound = apply.Ordinal(sounds, soundIndex)
             const duration: Ms = nextSound.duration

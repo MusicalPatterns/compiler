@@ -1,3 +1,4 @@
+import { NON_SEGNO_INDEX } from '@musical-patterns/performer'
 import { Ms, Ordinal, to } from '@musical-patterns/utilities'
 import { computeIndividualSegnoTime, SectionInfo } from '../../../../src/indexForTest'
 
@@ -26,7 +27,7 @@ describe('compute individual segno time', () => {
     })
 
     it('gives -1 if voice has no repetend', () => {
-        const individualRepetendIndex: Ordinal = to.Ordinal(-1)
+        const individualRepetendIndex: Ordinal = NON_SEGNO_INDEX
         const sectionInfos: SectionInfo[] = [
             {
                 doesRepeatForever: false,

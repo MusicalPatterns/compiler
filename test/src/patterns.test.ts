@@ -1,5 +1,5 @@
 import { CompiledPattern, Sound } from '@musical-patterns/performer'
-import { to } from '@musical-patterns/utilities'
+import { BEGINNING, to } from '@musical-patterns/utilities'
 import { compilePattern, Entity, Material, Note, Scale } from '../../src/indexForTest'
 import { TestSpecs } from '../support'
 
@@ -52,7 +52,7 @@ describe('compile pattern', () => {
 
         expect(actualCompiledPattern)
             .toEqual({
-                segnoTime: to.Ms(0),
+                segnoTime: BEGINNING,
                 totalDuration: to.Ms(9),
                 voices: [
                     {
@@ -78,7 +78,7 @@ describe('compile pattern', () => {
 
         expect(actualCompiledPattern)
             .toEqual({
-                segnoTime: to.Ms(0),
+                segnoTime: BEGINNING,
                 totalDuration: to.Ms(9),
                 voices: [
                     {
@@ -106,7 +106,7 @@ describe('compile pattern', () => {
 
         expect(actualCompiledPattern)
             .toEqual({
-                segnoTime: to.Ms(0),
+                segnoTime: BEGINNING,
                 totalDuration: to.Ms(9),
                 voices: [
                     {

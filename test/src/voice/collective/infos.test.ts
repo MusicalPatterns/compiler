@@ -1,4 +1,4 @@
-import { to } from '@musical-patterns/utilities'
+import { BEGINNING, NO_DURATION, to } from '@musical-patterns/utilities'
 import { CollectiveVoiceInfos, computeCollectiveInfos, IndividualVoiceAndInfo } from '../../../../src/indexForTest'
 
 describe('compute collective infos', () => {
@@ -18,7 +18,7 @@ describe('compute collective infos', () => {
                 voiceInfo: {
                     individualEndTime: to.Ms(3),
                     individualRepetendDuration: to.Ms(3),
-                    individualSegnoTime: to.Ms(0),
+                    individualSegnoTime: BEGINNING,
                     sectionInfos: [],
                 },
             },
@@ -26,7 +26,7 @@ describe('compute collective infos', () => {
                 voice: {},
                 voiceInfo: {
                     individualEndTime: to.Ms(9),
-                    individualRepetendDuration: to.Ms(0),
+                    individualRepetendDuration: NO_DURATION,
                     individualSegnoTime: to.Ms(-1),
                     sectionInfos: [],
                 },
@@ -125,7 +125,7 @@ describe('compute collective infos', () => {
                 voice: {},
                 voiceInfo: {
                     individualEndTime: to.Ms(9),
-                    individualRepetendDuration: to.Ms(0),
+                    individualRepetendDuration: NO_DURATION,
                     individualSegnoTime: to.Ms(-1),
                     sectionInfos: [],
                 },
@@ -150,7 +150,7 @@ describe('compute collective infos', () => {
                 voiceInfo: {
                     individualEndTime: to.Ms(12.999999),
                     individualRepetendDuration: to.Ms(12.999999),
-                    individualSegnoTime: to.Ms(0),
+                    individualSegnoTime: BEGINNING,
                     sectionInfos: [],
                 },
             },
@@ -159,7 +159,7 @@ describe('compute collective infos', () => {
                 voiceInfo: {
                     individualEndTime: to.Ms(13.000001),
                     individualRepetendDuration: to.Ms(13.000001),
-                    individualSegnoTime: to.Ms(0),
+                    individualSegnoTime: BEGINNING,
                     sectionInfos: [],
                 },
             },
@@ -171,7 +171,7 @@ describe('compute collective infos', () => {
             .toEqual({
                 collectiveEndTime: to.Ms(13),
                 collectiveRepetendDuration: to.Ms(13),
-                collectiveSegnoTime: to.Ms(0),
+                collectiveSegnoTime: BEGINNING,
                 collectiveShareSegnoTime: true,
             })
     })

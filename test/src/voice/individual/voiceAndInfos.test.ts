@@ -1,5 +1,5 @@
 import { NON_SEGNO_TIME } from '@musical-patterns/performer'
-import { to } from '@musical-patterns/utilities'
+import { BEGINNING, NO_DURATION } from '@musical-patterns/utilities'
 import { computeIndividualVoiceAndInfo, IndividualVoiceAndInfo } from '../../../../src/indexForTest'
 
 describe('compute individual voice and info', () => {
@@ -13,8 +13,8 @@ describe('compute individual voice and info', () => {
                     sourceRequest: undefined,
                 },
                 voiceInfo: {
-                    individualEndTime: to.Ms(0),
-                    individualRepetendDuration: to.Ms(0),
+                    individualEndTime: BEGINNING,
+                    individualRepetendDuration: NO_DURATION,
                     individualSegnoTime: NON_SEGNO_TIME,
                     sectionInfos: [],
                 },

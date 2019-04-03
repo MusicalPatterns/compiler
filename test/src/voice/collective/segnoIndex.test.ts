@@ -1,4 +1,4 @@
-import { Voice } from '@musical-patterns/performer'
+import { NON_SEGNO_INDEX, Voice } from '@musical-patterns/performer'
 import { Ms, Ordinal, repeat, to } from '@musical-patterns/utilities'
 import { computeSegnoIndex } from '../../../../src/indexForTest'
 
@@ -33,7 +33,7 @@ describe('compute segno index', () => {
             })
 
             expect(actualSegnoIndex)
-                .toBe(to.Ordinal(-1))
+                .toBe(NON_SEGNO_INDEX)
         })
     })
 

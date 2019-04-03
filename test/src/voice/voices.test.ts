@@ -1,5 +1,5 @@
 import { CompiledPattern, NON_SEGNO_INDEX, Sound } from '@musical-patterns/performer'
-import { INITIAL, to } from '@musical-patterns/utilities'
+import { BEGINNING, INITIAL, to } from '@musical-patterns/utilities'
 import { compileVoices, Entity, Note, Scale } from '../../../src/indexForTest'
 
 describe('compile voices', () => {
@@ -396,7 +396,7 @@ describe('compile voices', () => {
 
             expect(actualCompiledPattern)
                 .toEqual({
-                    segnoTime: to.Ms(0),
+                    segnoTime: BEGINNING,
                     totalDuration: to.Ms(54),
                     voices: [
                         {

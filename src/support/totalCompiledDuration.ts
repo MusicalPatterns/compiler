@@ -1,5 +1,5 @@
 import { Sound } from '@musical-patterns/performer'
-import { Ms, sum, to } from '@musical-patterns/utilities'
+import { Ms, NO_DURATION, sum, to } from '@musical-patterns/utilities'
 import { compileSoundFeature, Note, NoteFeature } from '../sound'
 import { Scale } from '../types'
 
@@ -12,7 +12,7 @@ const computeNotesTotalCompiledDuration: (notes: Note[], scales?: Scale[]) => Ms
 
                 return sum(totalDuration, duration)
             },
-            to.Ms(0),
+            NO_DURATION,
         )
 
 const computeSoundsDuration: (sounds: Sound[]) => Ms =
@@ -20,7 +20,7 @@ const computeSoundsDuration: (sounds: Sound[]) => Ms =
         sounds.reduce(
             (accumulator: Ms, sound: Sound): Ms =>
                 sum(accumulator, sound.duration),
-            to.Ms(0),
+            NO_DURATION,
         )
 
 export {

@@ -366,7 +366,7 @@ describe('compile voices', () => {
         })
     })
 
-    describe('when all entities repeat forever from the beginning (from their initial, and if not their only section they are wasting space)', () => {
+    describe('when all entities repeat forever from the beginning', () => {
         it('each voice has a segno index of 0', () => {
             const entities: Entity[] = [
                 {

@@ -23,9 +23,9 @@ const spec: MySpec extends StandardSpec = {
 	// anything
 }
 
-const { voices, totalDuration, segnoTime }: CompiledPattern = await compilePattern({ material, spec })
+const compiledPattern: CompiledPattern = await compilePattern({ material, spec })
 
-setupPerformer({ autoStart: { voices } })
+setupPerformer({ compiledPattern })
 
 ```
 

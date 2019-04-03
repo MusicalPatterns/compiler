@@ -24,5 +24,4 @@ export {
     Entity,
     MaterializeEntities,
     MaterializeScales,
-    CompiledPattern,
 } from './types'

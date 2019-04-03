@@ -1,6 +1,6 @@
-import { NON_SEGNO_INDEX, Sound } from '@musical-patterns/performer'
+import { CompiledPattern, NON_SEGNO_INDEX, Sound } from '@musical-patterns/performer'
 import { INITIAL, to } from '@musical-patterns/utilities'
-import { CompiledPattern, compileVoices, Entity, Note, Scale } from '../../../src/indexForTest'
+import { compileVoices, Entity, Note, Scale } from '../../../src/indexForTest'
 
 describe('compile voices', () => {
     const scales: Scale[] = [ { scalars: [ to.Scalar(3) ] } ]

@@ -1,6 +1,6 @@
-import { Sound } from '@musical-patterns/performer'
+import { CompiledPattern, Sound } from '@musical-patterns/performer'
 import { to } from '@musical-patterns/utilities'
-import { CompiledPattern, compilePattern, Entity, Material, Note, Scale } from '../../src/indexForTest'
+import { compilePattern, Entity, Material, Note, Scale } from '../../src/indexForTest'
 import { TestSpecs } from '../support'
 
 describe('compile pattern', () => {

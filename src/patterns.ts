@@ -1,4 +1,5 @@
-import { CompiledPattern, CompilePatternParameters, Entity, Material, Scale } from './types'
+import { CompiledPattern } from '@musical-patterns/performer'
+import { CompilePatternParameters, Entity, Material, Scale } from './types'
 import { compileVoices } from './voice'
 
 const compilePattern: (compilePatternParameters: {

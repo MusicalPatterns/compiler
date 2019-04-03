@@ -33,12 +33,6 @@ interface Adjustable {
     translation?: Translation,
 }
 
-interface CompiledPattern {
-    segnoTime: Ms,
-    totalDuration: Ms,
-    voices: Voice[],
-}
-
 export {
     Material,
     MaterializeEntities,
@@ -46,6 +40,5 @@ export {
     Entity,
     Scale,
     Adjustable,
-    CompiledPattern,
     CompilePatternParameters,
 }

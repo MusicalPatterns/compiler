@@ -1,6 +1,6 @@
-import { Voice } from '@musical-patterns/performer'
+import { CompiledPattern, Voice } from '@musical-patterns/performer'
 import { map, Ordinal } from '@musical-patterns/utilities'
-import { CompiledPattern, Entity, Scale } from '../types'
+import { Entity, Scale } from '../types'
 import { applyCollectiveInfos, computeCollectiveInfos } from './collective'
 import { computeIndividualVoiceAndInfo, IndividualVoiceAndInfo } from './individual'
 import { CompileVoicesParameters } from './types'

@@ -5,11 +5,9 @@ import { ComputeIndividualRepetendDurationParameters, SectionInfo } from './type
 const computeIndividualRepetendDuration:
     (parameters: { individualRepetendIndex: Ordinal, sectionInfos: SectionInfo[] }) => Ms =
     ({ individualRepetendIndex, sectionInfos }: ComputeIndividualRepetendDurationParameters): Ms =>
-        individualRepetendIndex === NOT_FOUND ?
+        individualRepetendIndex === NOT_FOUND || isEmpty(sectionInfos) ?
             to.Ms(0) :
-            isEmpty(sectionInfos) ?
-                to.Ms(0) :
-                apply.Ordinal(sectionInfos, individualRepetendIndex).totalDuration
+            apply.Ordinal(sectionInfos, individualRepetendIndex).totalDuration
 
 export {
     computeIndividualRepetendDuration,

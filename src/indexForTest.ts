@@ -30,6 +30,13 @@ export {
     applyCollectiveInfos,
     CollectiveVoiceInfos,
     computeCollectiveInfos,
+    computeIndividualVoiceInfo,
+    IndividualVoiceInfo,
+    computeIndividualRepetendDuration,
+    computeIndividualSegnoTime,
+    computeIndividualSoundsAndSectionInfos,
+    SoundsAndSectionInfos,
+    compileVoices,
 } from './voice/indexForTest'
 
 export {

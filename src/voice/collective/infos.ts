@@ -45,14 +45,16 @@ const computeCollectiveInfosFromPluckedInfos: (parameters: {
     ): CollectiveVoiceInfos => {
         const collectiveShareSegnoTime: boolean = allValuesAreTheSame(individualSegnoTimes)
         const collectiveSegnoTime: Ms = max(...individualSegnoTimes)
-        const collectiveRepetendDuration: Ms = to.Ms(computeLeastCommonMultiple(
-            ...individualRepetendDurations
-                .filter((individualRepetendDuration: Ms) => individualRepetendDuration !== to.Ms(0))
-                // tslint:disable-next-line no-unnecessary-callback-wrapper
-                .map((individualRepetendDuration: Ms) => round(individualRepetendDuration))
-                .map(from.Ms)
-                .map(to.Integer),
-        ))
+        const collectiveRepetendDuration: Ms = collectiveSegnoTime === HAS_NO_REPETEND ?
+            HAS_NO_REPETEND :
+            to.Ms(computeLeastCommonMultiple(
+                ...individualRepetendDurations
+                    .filter((individualRepetendDuration: Ms) => individualRepetendDuration !== to.Ms(0))
+                    // tslint:disable-next-line no-unnecessary-callback-wrapper
+                    .map((individualRepetendDuration: Ms) => round(individualRepetendDuration))
+                    .map(from.Ms)
+                    .map(to.Integer),
+            ))
         const collectiveEndTime: Ms = collectiveSegnoTime === HAS_NO_REPETEND ?
             max(...individualEndTimes) :
             sum(collectiveSegnoTime, collectiveRepetendDuration)

@@ -4,7 +4,8 @@ import {
     INITIAL,
     isEmpty,
     Maybe,
-    MULTIPLICATIVE_IDENTITY, Ordinal,
+    MULTIPLICATIVE_IDENTITY,
+    Ordinal,
     round,
 } from '@musical-patterns/utilities'
 import { SoundFeature } from '../nominals'

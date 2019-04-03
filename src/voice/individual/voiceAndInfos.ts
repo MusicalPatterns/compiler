@@ -4,7 +4,7 @@ import { compileSourceRequest } from '../../source'
 import { Entity, Scale } from '../../types'
 import { CompileVoiceParameters } from '../types'
 import { computeIndividualVoiceInfo } from './infos'
-import { computeFirstPassIndividualSoundsAndSectionInfos } from './sections'
+import { computeIndividualSoundsAndSectionInfos } from './sections'
 import { IndividualVoiceAndInfo, IndividualVoiceInfo, SoundsAndSectionInfos } from './types'
 
 const computeIndividualVoiceAndInfo:
@@ -13,10 +13,10 @@ const computeIndividualVoiceAndInfo:
         const { sections = [], timbreName } = entity
 
         const sourceRequest: Maybe<SourceRequest> = compileSourceRequest(timbreName)
-        const soundsAndSectionInfos: SoundsAndSectionInfos =
-            computeFirstPassIndividualSoundsAndSectionInfos(sections, { scales })
-        const voice: Voice = { sounds: soundsAndSectionInfos.sounds, sourceRequest }
-        const voiceInfo: IndividualVoiceInfo = computeIndividualVoiceInfo(soundsAndSectionInfos)
+        const { sounds, sectionInfos }: SoundsAndSectionInfos =
+            computeIndividualSoundsAndSectionInfos(sections, { scales })
+        const voice: Voice = { sounds, sourceRequest }
+        const voiceInfo: IndividualVoiceInfo = computeIndividualVoiceInfo(sectionInfos)
 
         return { voice, voiceInfo }
     }

@@ -5,7 +5,7 @@ import {
     from,
     indexOfFinalElement,
     INITIAL,
-    isEmpty,
+    isEmpty, isUndefined,
     Ms,
     NEXT,
     Ordinal,
@@ -15,10 +15,6 @@ import { ComputeSegnoIndexParameters } from './types'
 
 const computeFirstSoundIndexAfterTime: (sounds: Sound[], timePosition: Ms) => Ordinal =
     (sounds: Sound[], timePosition: Ms): Ordinal => {
-        if (isEmpty(sounds)) {
-            throw new Error('there will be no sound index if the sounds are empty')
-        }
-
         let soundIndex: Ordinal = INITIAL
         let nextStart: Ms = BEGINNING
         while (nextStart < timePosition) {
@@ -45,10 +41,10 @@ const computeSegnoIndex: (parameters: {
          individualSegnoTime,
          voice,
      }: ComputeSegnoIndexParameters): Ordinal =>
-        individualSegnoTime === NON_SEGNO_TIME ?
+        individualSegnoTime === NON_SEGNO_TIME || isUndefined(voice.sounds) || isEmpty(voice.sounds) ?
             NON_SEGNO_INDEX :
             computeFirstSoundIndexAfterTime(
-                voice.sounds || [],
+                voice.sounds,
                 collectiveSegnoTime,
             )
 

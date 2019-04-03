@@ -54,4 +54,24 @@ describe('compute segno index', () => {
                 .toBe(to.Ordinal(3))
         })
     })
+
+    describe('when the voice has no sounds', () => {
+        beforeEach(() => {
+            const ANY_SEGNO_TIME_OTHER_THAN_NON_SEGNO_TIME: Ms = to.Ms(35)
+            individualSegnoTime = ANY_SEGNO_TIME_OTHER_THAN_NON_SEGNO_TIME
+        })
+
+        it('returns the non segno index', () => {
+            const actualSegnoIndex: Ordinal = computeSegnoIndex({
+                collectiveSegnoTime,
+                individualSegnoTime,
+                voice: {
+                    sounds: [],
+                },
+            })
+
+            expect(actualSegnoIndex)
+                .toBe(to.Ordinal(-1))
+        })
+    })
 })

@@ -7,6 +7,9 @@ export { computeIndividualSegnoTime } from './segnoTime'
 export { computeIndividualSoundsAndSectionInfos } from './sections'
 
 export {
+    TEMPORARY_UNDEFINED_SEGNO_INDEX,
+} from './constants'
+export {
     IndividualVoiceAndInfo,
     IndividualVoiceInfo,
     SectionInfo,

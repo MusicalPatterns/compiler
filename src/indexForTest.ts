@@ -36,6 +36,7 @@ export {
     computeIndividualSoundsAndSectionInfos,
     SoundsAndSectionInfos,
     compileVoices,
+    TEMPORARY_UNDEFINED_SEGNO_INDEX,
 } from './voice/indexForTest'
 
 export {

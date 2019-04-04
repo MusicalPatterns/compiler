@@ -1,8 +1,9 @@
 import { SourceRequest, Voice } from '@musical-patterns/performer'
-import { Maybe } from '@musical-patterns/utilities'
+import { to } from '@musical-patterns/utilities'
 import { compileSourceRequest } from '../../source'
 import { Entity, Scale } from '../../types'
 import { CompileVoiceParameters } from '../types'
+import { TEMPORARY_UNDEFINED_SEGNO_INDEX } from './constants'
 import { computeIndividualVoiceInfo } from './infos'
 import { computeIndividualSoundsAndSectionInfos } from './sections'
 import { IndividualVoiceAndInfo, IndividualVoiceInfo, SoundsAndSectionInfos } from './types'
@@ -10,12 +11,12 @@ import { IndividualVoiceAndInfo, IndividualVoiceInfo, SoundsAndSectionInfos } fr
 const computeIndividualVoiceAndInfo:
     (parameters: { entity: Entity, scales?: Scale[] }) => IndividualVoiceAndInfo =
     ({ entity, scales }: CompileVoiceParameters): IndividualVoiceAndInfo => {
-        const { sections = [], timbreName } = entity
+        const { delay = to.Ms(0), sections = [], timbreName } = entity
 
-        const sourceRequest: Maybe<SourceRequest> = compileSourceRequest(timbreName)
+        const sourceRequest: SourceRequest = compileSourceRequest(timbreName)
         const { sounds, sectionInfos }: SoundsAndSectionInfos =
             computeIndividualSoundsAndSectionInfos(sections, { scales })
-        const voice: Voice = { sounds, sourceRequest }
+        const voice: Voice = { delay, sounds, sourceRequest, segnoIndex: TEMPORARY_UNDEFINED_SEGNO_INDEX }
         const voiceInfo: IndividualVoiceInfo = computeIndividualVoiceInfo(sectionInfos)
 
         return { voice, voiceInfo }

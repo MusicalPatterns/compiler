@@ -1,5 +1,5 @@
-import { Sound, Voice } from '@musical-patterns/performer'
-import { Ms, Ordinal, repeat, to } from '@musical-patterns/utilities'
+import { OscillatorName, Sound, SourceType, Voice } from '@musical-patterns/performer'
+import { INITIAL, Ms, NO_DURATION, Ordinal, repeat, to } from '@musical-patterns/utilities'
 import { applyCollectiveInfos, Entity, Scale, SectionInfo } from '../../../../src/indexForTest'
 
 describe('apply collective infos', () => {
@@ -17,7 +17,13 @@ describe('apply collective infos', () => {
             to.Cardinal(5),
         )
         const voice: Voice = {
+            delay: NO_DURATION,
+            segnoIndex: INITIAL,
             sounds: originalSounds,
+            sourceRequest: {
+                sourceType: SourceType.OSCILLATOR,
+                timbreName: OscillatorName.SINE,
+            },
         }
 
         const index: Ordinal = to.Ordinal(2)
@@ -69,6 +75,7 @@ describe('apply collective infos', () => {
 
         expect(actualVoice)
             .toEqual({
+                delay: NO_DURATION,
                 segnoIndex: to.Ordinal(3),
                 sounds: originalSounds.concat([
                     {
@@ -93,6 +100,10 @@ describe('apply collective infos', () => {
                         sustain: to.Ms(10.9),
                     },
                 ]),
+                sourceRequest: {
+                    sourceType: SourceType.OSCILLATOR,
+                    timbreName: OscillatorName.SINE,
+                },
             })
     })
 })

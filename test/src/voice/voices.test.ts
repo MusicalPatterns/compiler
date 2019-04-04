@@ -1,5 +1,5 @@
-import { CompiledPattern, NON_SEGNO_INDEX, Sound } from '@musical-patterns/performer'
-import { BEGINNING, INITIAL, to } from '@musical-patterns/utilities'
+import { CompiledPattern, NON_SEGNO_INDEX, OscillatorName, Sound, SourceType } from '@musical-patterns/performer'
+import { BEGINNING, INITIAL, NO_DURATION, to } from '@musical-patterns/utilities'
 import { compileVoices, Entity, Note, Scale } from '../../../src/indexForTest'
 
 describe('compile voices', () => {
@@ -85,6 +85,7 @@ describe('compile voices', () => {
                     totalDuration: to.Ms(54),
                     voices: [
                         {
+                            delay: NO_DURATION,
                             segnoIndex: NON_SEGNO_INDEX,
                             sounds: [
                                 otherExpectedSound,
@@ -94,9 +95,13 @@ describe('compile voices', () => {
                                 otherExpectedSound,
                                 expectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                         {
+                            delay: NO_DURATION,
                             segnoIndex: NON_SEGNO_INDEX,
                             sounds: [
                                 expectedSound,
@@ -104,7 +109,10 @@ describe('compile voices', () => {
                                 expectedSound,
                                 otherExpectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                     ],
                 })
@@ -160,6 +168,7 @@ describe('compile voices', () => {
                     totalDuration: to.Ms(45),
                     voices: [
                         {
+                            delay: NO_DURATION,
                             segnoIndex: NON_SEGNO_INDEX,
                             sounds: [
                                 expectedSound,
@@ -167,9 +176,13 @@ describe('compile voices', () => {
                                 expectedSound,
                                 expectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                         {
+                            delay: NO_DURATION,
                             segnoIndex: to.Ordinal(3),
                             sounds: [
                                 otherOtherExpectedSound,
@@ -178,9 +191,13 @@ describe('compile voices', () => {
                                 otherExpectedSound,
                                 expectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                         {
+                            delay: NO_DURATION,
                             segnoIndex: to.Ordinal(3),
                             sounds: [
                                 expectedSound,
@@ -189,7 +206,10 @@ describe('compile voices', () => {
                                 otherExpectedSound,
                                 expectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                     ],
                 })
@@ -238,6 +258,7 @@ describe('compile voices', () => {
                     totalDuration: to.Ms(99),
                     voices: [
                         {
+                            delay: NO_DURATION,
                             segnoIndex: to.Ordinal(1),
                             sounds: [
                                 expectedSound,
@@ -252,9 +273,13 @@ describe('compile voices', () => {
                                 expectedSound,
                                 expectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                         {
+                            delay: NO_DURATION,
                             segnoIndex: to.Ordinal(1),
                             sounds: [
                                 otherExpectedSound,
@@ -269,7 +294,10 @@ describe('compile voices', () => {
                                 expectedSound,
                                 otherExpectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                     ],
                 })
@@ -326,6 +354,7 @@ describe('compile voices', () => {
                     totalDuration: to.Ms(117),
                     voices: [
                         {
+                            delay: NO_DURATION,
                             segnoIndex: to.Ordinal(3),
                             sounds: [
                                 otherOtherExpectedSound,
@@ -342,9 +371,13 @@ describe('compile voices', () => {
                                 // Listener will see before time repeats in playroom: expectedSound,
                                 // Listener will see before time repeats in playroom: expectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                         {
+                            delay: NO_DURATION,
                             segnoIndex: to.Ordinal(3),
                             sounds: [
                                 otherOtherExpectedSound,
@@ -359,7 +392,10 @@ describe('compile voices', () => {
                                 // Listener will see before time repeats in playroom: otherExpectedSound,
                                 // Listener will see before time repeats in playroom: expectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                     ],
                 })
@@ -400,6 +436,7 @@ describe('compile voices', () => {
                     totalDuration: to.Ms(54),
                     voices: [
                         {
+                            delay: NO_DURATION,
                             segnoIndex: INITIAL,
                             sounds: [
                                 otherExpectedSound,
@@ -409,9 +446,13 @@ describe('compile voices', () => {
                                 // Listener will see before time repeats in playroom: otherExpectedSound,
                                 // Listener will see before time repeats in playroom: expectedSound,
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                         {
+                            delay: NO_DURATION,
                             segnoIndex: INITIAL,
                             sounds: [
                                 otherExpectedSound,
@@ -421,7 +462,10 @@ describe('compile voices', () => {
                                 // Listener will see before time repeats in playroom: expectedSound,
                                 // Listener will see before time repeats in playroom: expectedSound
                             ],
-                            sourceRequest: undefined,
+                            sourceRequest: {
+                                sourceType: SourceType.OSCILLATOR,
+                                timbreName: OscillatorName.SINE,
+                            },
                         },
                     ],
                 })

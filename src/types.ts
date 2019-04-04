@@ -20,6 +20,7 @@ type MaterializeEntities = (specs?: any) => Entity[]
 type MaterializeScales = (specs?: any) => Scale[]
 
 interface Entity {
+    delay?: Ms,
     sections?: Section[],
     timbreName?: TimbreName,
 }

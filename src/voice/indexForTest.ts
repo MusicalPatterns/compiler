@@ -12,6 +12,7 @@ export {
     computeIndividualSegnoTime,
     computeIndividualSoundsAndSectionInfos,
     SoundsAndSectionInfos,
+    TEMPORARY_UNDEFINED_SEGNO_INDEX,
 } from './individual/indexForTest'
 export {
     applyCollectiveInfos,

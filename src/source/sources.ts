@@ -1,6 +1,11 @@
 import { OscillatorName, SampleName, SourceRequest, SourceType } from '@musical-patterns/performer'
-import { isUndefined, Maybe } from '@musical-patterns/utilities'
+import { isUndefined } from '@musical-patterns/utilities'
 import { TimbreName } from './types'
+
+const defaultSourceRequest: SourceRequest = {
+    sourceType: SourceType.OSCILLATOR,
+    timbreName: OscillatorName.SINE,
+}
 
 const isSampleName: (timbreName: TimbreName) => timbreName is SampleName =
     (timbreName: TimbreName): timbreName is SampleName =>
@@ -10,10 +15,10 @@ const isOscillatorName: (timbreName: TimbreName) => timbreName is OscillatorName
     (timbreName: TimbreName): timbreName is OscillatorName =>
         timbreName in OscillatorName
 
-const compileSourceRequest: (timbreName?: TimbreName) => Maybe<SourceRequest> =
-    (timbreName?: TimbreName): Maybe<SourceRequest> => {
+const compileSourceRequest: (timbreName?: TimbreName) => SourceRequest =
+    (timbreName?: TimbreName): SourceRequest => {
         if (isUndefined(timbreName)) {
-            return undefined
+            return defaultSourceRequest
         }
         if (isSampleName(timbreName)) {
             return {
@@ -28,7 +33,7 @@ const compileSourceRequest: (timbreName?: TimbreName) => Maybe<SourceRequest> =
             }
         }
 
-        return undefined
+        return defaultSourceRequest
     }
 
 export {

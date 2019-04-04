@@ -1,5 +1,5 @@
-import { CompiledPattern, Sound } from '@musical-patterns/performer'
-import { BEGINNING, to } from '@musical-patterns/utilities'
+import { CompiledPattern, OscillatorName, Sound, SourceType } from '@musical-patterns/performer'
+import { BEGINNING, NO_DURATION, to } from '@musical-patterns/utilities'
 import { compilePattern, Entity, Material, Note, Scale } from '../../src/indexForTest'
 import { TestSpecs } from '../support'
 
@@ -56,9 +56,13 @@ describe('compile pattern', () => {
                 totalDuration: to.Ms(9),
                 voices: [
                     {
+                        delay: NO_DURATION,
                         segnoIndex: to.Ordinal(0),
                         sounds: [ expectedSound ],
-                        sourceRequest: undefined,
+                        sourceRequest: {
+                            sourceType: SourceType.OSCILLATOR,
+                            timbreName: OscillatorName.SINE,
+                        },
                     },
                 ],
             })
@@ -82,9 +86,13 @@ describe('compile pattern', () => {
                 totalDuration: to.Ms(9),
                 voices: [
                     {
+                        delay: NO_DURATION,
                         segnoIndex: to.Ordinal(0),
                         sounds: [ expectedSound ],
-                        sourceRequest: undefined,
+                        sourceRequest: {
+                            sourceType: SourceType.OSCILLATOR,
+                            timbreName: OscillatorName.SINE,
+                        },
                     },
                 ],
             })
@@ -110,9 +118,13 @@ describe('compile pattern', () => {
                 totalDuration: to.Ms(9),
                 voices: [
                     {
+                        delay: NO_DURATION,
                         segnoIndex: to.Ordinal(0),
                         sounds: [ expectedSound ],
-                        sourceRequest: undefined,
+                        sourceRequest: {
+                            sourceType: SourceType.OSCILLATOR,
+                            timbreName: OscillatorName.SINE,
+                        },
                     },
                 ],
             })

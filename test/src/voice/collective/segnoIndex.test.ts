@@ -1,10 +1,12 @@
-import { NON_SEGNO_INDEX, Voice } from '@musical-patterns/performer'
-import { Ms, Ordinal, repeat, to } from '@musical-patterns/utilities'
-import { computeSegnoIndex } from '../../../../src/indexForTest'
+import { NON_SEGNO_INDEX, OscillatorName, SourceType, Voice } from '@musical-patterns/performer'
+import { Ms, NO_DURATION, Ordinal, repeat, to } from '@musical-patterns/utilities'
+import { computeSegnoIndex, TEMPORARY_UNDEFINED_SEGNO_INDEX } from '../../../../src/indexForTest'
 
 describe('compute segno index', () => {
     const collectiveSegnoTime: Ms = to.Ms(44)
     const voice: Voice = {
+        delay: NO_DURATION,
+        segnoIndex: TEMPORARY_UNDEFINED_SEGNO_INDEX,
         sounds: repeat(
             [
                 {
@@ -17,6 +19,10 @@ describe('compute segno index', () => {
             ],
             to.Cardinal(5),
         ),
+        sourceRequest: {
+            sourceType: SourceType.OSCILLATOR,
+            timbreName: OscillatorName.SINE,
+        },
     }
     let individualSegnoTime: Ms
 
@@ -66,7 +72,13 @@ describe('compute segno index', () => {
                 collectiveSegnoTime,
                 individualSegnoTime,
                 voice: {
+                    delay: NO_DURATION,
+                    segnoIndex: TEMPORARY_UNDEFINED_SEGNO_INDEX,
                     sounds: [],
+                    sourceRequest: {
+                        sourceType: SourceType.OSCILLATOR,
+                        timbreName: OscillatorName.SINE,
+                    },
                 },
             })
 

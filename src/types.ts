@@ -1,6 +1,5 @@
 // tslint:disable no-any
 
-import { Voice } from '@musical-patterns/performer'
 import { Ms, Scalar, Translation } from '@musical-patterns/utilities'
 import { TimbreName } from './source'
 import { Section } from './voice'

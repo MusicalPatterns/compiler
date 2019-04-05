@@ -24,17 +24,19 @@ const applyCollectiveInfos: (parameters: {
     sectionInfos: SectionInfo[],
     voice: Voice,
 }) => Voice =
-    ({
-         collectiveEndTime,
-         collectiveSegnoTime,
-         collectiveShareSegnoTime,
-         entities,
-         index,
-         voice,
-         sectionInfos,
-         individualSegnoTime,
-         scales,
-     }: ApplyCollectiveInfosParameters): Voice => {
+    (
+        {
+            collectiveEndTime,
+            collectiveSegnoTime,
+            collectiveShareSegnoTime,
+            entities,
+            index,
+            voice,
+            sectionInfos,
+            individualSegnoTime,
+            scales,
+        }: ApplyCollectiveInfosParameters,
+    ): Voice => {
         if (!collectiveShareSegnoTime) {
             voice.sounds = fillGap({
                 collectiveEndTime,

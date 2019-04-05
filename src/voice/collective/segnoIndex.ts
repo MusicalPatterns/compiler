@@ -5,7 +5,8 @@ import {
     from,
     indexOfFinalElement,
     INITIAL,
-    isEmpty, isUndefined,
+    isEmpty,
+    isUndefined,
     Ms,
     NEXT,
     Ordinal,
@@ -36,11 +37,13 @@ const computeSegnoIndex: (parameters: {
     individualSegnoTime: Ms,
     voice: Voice,
 }) => Ordinal =
-    ({
-         collectiveSegnoTime,
-         individualSegnoTime,
-         voice,
-     }: ComputeSegnoIndexParameters): Ordinal =>
+    (
+        {
+            collectiveSegnoTime,
+            individualSegnoTime,
+            voice,
+        }: ComputeSegnoIndexParameters,
+    ): Ordinal =>
         individualSegnoTime === NON_SEGNO_TIME || isUndefined(voice.sounds) || isEmpty(voice.sounds) ?
             NON_SEGNO_INDEX :
             computeFirstSoundIndexAfterTime(

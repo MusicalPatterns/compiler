@@ -1,5 +1,5 @@
 import { Sound } from '@musical-patterns/performer'
-import { Ms, NO_DURATION, sum, to } from '@musical-patterns/utilities'
+import { Ms, NO_DURATION, sum } from '@musical-patterns/utilities'
 import { compileSoundFeature, Note, NoteFeature } from '../sound'
 import { Scale } from '../types'
 
